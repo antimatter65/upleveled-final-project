@@ -1,14 +1,15 @@
+// crypto used bor crating a random token
 import crypto from 'node:crypto';
 import bcrypt from 'bcrypt';
+import { randomBytes } from 'crypto';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createSerializedRegisterSessionTokenCookie } from '../../utls/cookies';
 import {
   createSession,
-  createUser,
-  getUserByUserName,
+  getUserWithPasswordHashByUsername,
 } from '../../utls/database';
 
-export type RegisterResponseBody =
+export type LoginResponseBody =
   | {
       errors: {
         message: string;
@@ -18,14 +19,14 @@ export type RegisterResponseBody =
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<RegisterResponseBody>,
+  res: NextApiResponse<LoginResponseBody>,
 ) {
   // check the method to be post
 
   if (req.method === 'POST') {
     // get the request body
-    // const user = req.body;
-    // console.log(user);
+    // const userWithPasswordOnlyUseWhereNeeded = req.body;
+    // console.log(userWithPasswordOnlyUseWhereNeeded);
     // get the username
 
     if (
@@ -35,45 +36,54 @@ export default async function handler(
       !req.body.password
     ) {
       res
-        .status(400)
+        .status(401)
         .json({ errors: [{ message: `username or password not provided` }] });
 
       // return required to stop the code bellow from running
       return;
     }
 
-    // here is the pace to add extra checks and constraints
+    // this var should only be used where strictly needed as it is a risk of exposing passwords
+    const userWithPasswordOnlyUseWhereNeeded =
+      await getUserWithPasswordHashByUsername(req.body.username);
 
-    if (await getUserByUserName(req.body.username)) {
+    if (!userWithPasswordOnlyUseWhereNeeded) {
       res.status(401).json({
         errors: [
-          { message: 'username in use, please try a different username' },
+          {
+            message: 'password or username are incorrect',
+          },
         ],
       });
       return;
     }
 
-    // const username = user.username;
+    // console.log(userWithPasswordOnlyUseWhereNeeded);
+    // compare the hash and the password
 
-    // hash the password
+    const passwordMatchHash = await bcrypt.compare(
+      req.body.password,
+      userWithPasswordOnlyUseWhereNeeded.passwordHash,
+    );
 
-    const passwordHash = await bcrypt.hash(req.body.password, 12);
+    // console.log(passwordMatchHash);
+
+    if (!passwordMatchHash) {
+      res
+        .status(401)
+        .json({ errors: [{ message: `password or username are incorrect` }] });
+    }
 
     // console.log('hash', passwordHash);
 
-    // create the user
-    const newUser = await createUser(req.body.username, passwordHash);
-
-    console.log('new user', newUser);
-
-    // to use username as identifier return username too
+    const userId = userWithPasswordOnlyUseWhereNeeded.id;
 
     // create a session for user
 
     const token = crypto.randomBytes(80).toString('base64');
     console.log('my token', token);
 
-    const session = await createSession(token, newUser.id);
+    const session = await createSession(token, userId);
 
     console.log('my sessiom', session);
 
@@ -85,7 +95,7 @@ export default async function handler(
       .status(200)
       // tells the browser to create the cookie
       .setHeader('set-Cookie', serializedCookie)
-      .json({ user: { id: newUser.id } });
+      .json({ user: { id: userId } });
   } else {
     res.status(405).json({ errors: [{ message: `method no allowed` }] });
   }

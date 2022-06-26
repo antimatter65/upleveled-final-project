@@ -41,14 +41,20 @@ export default function Footer() {
       <div>This website is for demonstration purposes only</div>
       <div css={footerLinkStyles}>
         {/* <div css={footerLinkStyles}> */}
-        <Link href="/">home</Link>
+        <div>
+          <Link href="/">home</Link>
+        </div>
         {/* </div> */}
-        {/* <div css={footerLinkStyles}> */}
-        <Link href="/faq">faq</Link>
+        <div>
+          {/* <div css={footerLinkStyles}> */}
+          <Link href="/faq">faq</Link>
+        </div>
         {/* </div> */}
-        {/* <div css={footerLinkStyles}> */}
-        <Link href="/contactus">contact us</Link>
-        {/* </div> */}
+        <div>
+          {/* <div css={footerLinkStyles}> */}
+          <Link href="/contactus">contact us</Link>
+          {/* </div> */}
+        </div>
       </div>
     </footer>
   );
