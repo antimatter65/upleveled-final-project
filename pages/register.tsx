@@ -74,7 +74,7 @@ export default function Register() {
     ) {
       await router.push(returnTo);
     } else {
-      // direct user to home after registering or other page
+      // direct user to home after registering or other page as required
       await router.push(`/`);
     }
   }

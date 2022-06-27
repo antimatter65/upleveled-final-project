@@ -6,9 +6,11 @@ export default function Layout(props) {
     // <body>
     <div>
       <Header
-        cart={props.cart}
-        itemInCart={props.itemInCart}
-        setItemInCart={props.setItemInCart}
+        // cart={props.cart}
+        // itemInCart={props.itemInCart}
+        // setItemInCart={props.setItemInCart}
+        user={props.user}
+        refreshUserProfile={props.refreshUserProfile}
       />
       {
         // Page content

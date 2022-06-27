@@ -47,11 +47,14 @@ export default function UserPage(props: props) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   // for getUserByUsername parseInt is not
 
+  // get just the sessionToken (without this all the cookie are returned) and set to equal to const user
   const user = await getUserByValidSessionToken(
     context.req.cookies.sessionToken,
   );
 
-  console.log(user);
+  //const user = await getUserByUserId(1);
+
+  console.log('what does user contain?', user);
 
   if (user) {
     return {
@@ -63,7 +66,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // redirect to login page if not logged then return to the profile page after successfull log in
   return {
     redirect: {
-      destination: '/login?returnTo=/private-page',
+      destination: '/login?returnTo=/users/private-page',
       permanent: false,
     },
   };

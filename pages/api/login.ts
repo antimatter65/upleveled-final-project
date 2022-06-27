@@ -78,7 +78,7 @@ export default async function handler(
 
     const userId = userWithPasswordOnlyUseWhereNeeded.id;
 
-    // create a session for user
+    // create a session for user - create after validation of the hash and before the response
 
     const token = crypto.randomBytes(80).toString('base64');
     console.log('my token', token);

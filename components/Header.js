@@ -63,7 +63,7 @@ const headerLinkStyles = css`
   }
 `;
 
-export default function Header() {
+export default function Header(props) {
   return (
     <header css={headerStyles}>
       {/* adds a home link to the image in the header */}
@@ -92,7 +92,6 @@ export default function Header() {
         <div css={headerLinkStyles}>
           <Link href="/merch">Merch</Link>
         </div>
-
         <div css={headerLinkStyles} href="/login">
           <Link href="/login">Login</Link>
         </div>
@@ -100,7 +99,13 @@ export default function Header() {
           <Link href="/register">Register</Link>
         </div>
         <div css={headerLinkStyles}>
-          <Link href="/user/private-page">Profile</Link>
+          <Link href="/about/">About</Link>
+        </div>
+        <div css={headerLinkStyles}>
+          <Link href="/contact/">Contact & Booking</Link>
+        </div>
+        <div css={headerLinkStyles}>
+          <Link href="/users/private-page">Private-Page</Link>
         </div>
         {/* <div css={headerLinkStyles}>
           <Link href="/users/private-page">{props.user.username}</Link>
