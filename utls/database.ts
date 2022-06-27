@@ -115,6 +115,8 @@ export async function createSession(token: string, userId: User['id']) {
   id,
   token
   `;
+
+  await logoutOfExpiredSessions();
   return camelcaseKeys(session);
 }
 
@@ -132,8 +134,10 @@ export async function getUserByValidSessionToken(token: string) {
       sessions.token = ${token} AND
       sessions.user_id = users.id AND
       sessions.expiry_timestamp > now();
-  `;
 
+  `;
+  // every time this is checked the expired sessions are deleted
+  await logoutOfExpiredSessions();
   return user && camelcaseKeys(user);
 }
 
