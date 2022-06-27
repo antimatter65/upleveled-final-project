@@ -20,7 +20,7 @@ const signInBoxStyles1 = css`
   padding-bottom: 5%;
 `;
 
-export default function Register() {
+export default function Register(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<
@@ -69,12 +69,13 @@ export default function Register() {
       returnTo &&
       !Array.isArray(returnTo) &&
       // (validate expected returnTo as this is untrusted user input)
-      // the is to make sure javescript can not be run in the url bar via the return to
+      // the is to make sure javascript can not be run in the url bar via the return to
       /^\/[a-zA-Z0-9-?=/]*$/.test(returnTo)
     ) {
       await router.push(returnTo);
     } else {
       // direct user to home after registering or other page as required
+      await props.refreshUserProfile();
       await router.push(`/`);
     }
   }

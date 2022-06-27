@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { productionBrowserSourceMaps } from '../next.config';
 import { LoginResponseBody } from './api/login';
 import { errorStyles } from './register';
 
@@ -16,7 +17,7 @@ const signInBoxStyles1 = css`
   padding-bottom: 5%;
 `;
 
-export default function About() {
+export default function About(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<
@@ -60,6 +61,8 @@ export default function About() {
       /^\/[a-zA-Z0-9-?=/]*$/.test(returnTo)
     ) {
       await router.push(returnTo);
+      // props.refreshUserProfile so username appears in header
+      await props.refreshUserProfile;
     } else {
       // direct user to home after registering or other page in this case redirect to user profile based on user.id
       await router.push(`/users/${loginResponseBody.user.id}`);

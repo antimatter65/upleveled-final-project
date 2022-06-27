@@ -1,7 +1,45 @@
 import { css, Global } from '@emotion/react';
+import { useCallback, useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 
+//import { User } from '../utls/database';
+
 export default function MyApp({ Component, pageProps }) {
+  const [user, setUser] = useState();
+
+  // console.log('hey', user);
+
+  // callback used so only created one time - optimisation
+
+  const refreshUserProfile = useCallback(async () => {
+    const profileResponse = await fetch('/api/profile');
+    const profileResponseBody = await profileResponse.json();
+
+    if (!('errors' in profileResponseBody)) {
+      setUser(profileResponseBody.user);
+    } else {
+      profileResponseBody.errors.forEach((error) => console.log(error.message));
+      setUser(undefined);
+    }
+  }, []);
+
+  // async function refreshUserProfile() {
+  //   const profileResponse = await fetch('/api/profile');
+  //   const profileResponseBody = await profileResponse.json();
+
+  //   if (!('errors' in profileResponseBody)) {
+  //     setUser(profileResponseBody.user);
+  //     // console.log('hey2', profileResponseBody);
+  //   } else {
+  //     profileResponseBody.errors.forEach((error) => console.log(error.message));
+  //     setUser(undefined);
+  //   }
+  // }
+
+  useEffect(() => {
+    refreshUserProfile().catch(() => console.log('fetch api failed'));
+  }, []);
+
   return (
     <>
       <Global
@@ -28,8 +66,8 @@ export default function MyApp({ Component, pageProps }) {
           }
         `}
       />
-      <Layout>
-        <Component {...pageProps} />
+      <Layout user={user} refreshUserProfile={refreshUserProfile}>
+        <Component {...pageProps} refreshUserProfile={refreshUserProfile} />
       </Layout>
     </>
   );

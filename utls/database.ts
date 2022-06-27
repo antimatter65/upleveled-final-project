@@ -153,7 +153,7 @@ export async function logoutOfExpiredSessions() {
     DELETE FROM
     sessions
     WHERE
-    sessions.expiry_timestamp < now()
+    expiry_timestamp < now()
     RETURNING *
   `;
   return sessions.map((session) => camelcaseKeys(session));

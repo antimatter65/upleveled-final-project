@@ -104,8 +104,9 @@ export default function Header(props) {
         <div css={headerLinkStyles}>
           <Link href="/contact/">Contact & Booking</Link>
         </div>
+        <div>{props.user && props.user.username}</div>
         <div css={headerLinkStyles}>
-          <Link href="/users/private-page">Private-Page</Link>
+          <Link href="/users/private-page">Private-Page:</Link>
         </div>
         {/* <div css={headerLinkStyles}>
           <Link href="/users/private-page">{props.user.username}</Link>

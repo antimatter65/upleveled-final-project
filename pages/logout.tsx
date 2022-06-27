@@ -2,14 +2,14 @@ import cookie from 'cookie';
 import { GetServerSidePropsContext } from 'next';
 import { logoutOfSession } from '../utls/database';
 
-export function Logout() {
+export default function Logout() {
   return null;
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const token = context.req.cookies.sessionToken;
 
-  // if there is a token, delete the session and set cookie for destruction
+  // if there is a token, delete the session and set cookie for destruction imidialty
   if (token) {
     await logoutOfSession(token);
 
