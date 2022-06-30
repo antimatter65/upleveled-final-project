@@ -1,7 +1,6 @@
 // crypto used bor crating a random token
 import crypto from 'node:crypto';
 import bcrypt from 'bcrypt';
-import { randomBytes } from 'crypto';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createSerializedRegisterSessionTokenCookie } from '../../utls/cookies';
 import {
@@ -66,7 +65,7 @@ export default async function handler(
       userWithPasswordOnlyUseWhereNeeded.passwordHash,
     );
 
-    // console.log(passwordMatchHash);
+    console.log('password match?', passwordMatchHash);
 
     if (!passwordMatchHash) {
       res

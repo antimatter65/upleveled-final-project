@@ -32,6 +32,8 @@ const headerLinkContainerStyles = css`
   position: relative;
   flex-direction: column;
   margin-top: 0.1%;
+  margin-top: 8%;
+  width: 20%;
 `;
 
 const headerLinkStyles = css`
@@ -49,7 +51,7 @@ const headerLinkStyles = css`
   border-color: grey solid 1px;
   color: grey;
   background-color: white;
-  width: 150px;
+  width: 80%;
   padding-top: 0;
   padding-left: 20px;
   padding-right: 20px;
@@ -90,6 +92,12 @@ export default function Header(props) {
           <Link href="/releases">Releases</Link>
         </div>
         <div css={headerLinkStyles}>
+          <Link href="/mixes">Mixes</Link>
+        </div>
+        <div css={headerLinkStyles}>
+          <Link href="/about/">About</Link>
+        </div>
+        <div css={headerLinkStyles}>
           <Link href="/merch">Merch</Link>
         </div>
         <div css={headerLinkStyles} href="/login">
@@ -98,15 +106,13 @@ export default function Header(props) {
         <div css={headerLinkStyles}>
           <Link href="/register">Register</Link>
         </div>
+
         <div css={headerLinkStyles}>
-          <Link href="/about/">About</Link>
+          <Link href="/contact/">Contact/Booking</Link>
         </div>
+        <div css={headerLinkStyles}>{props.user && props.user.username}</div>
         <div css={headerLinkStyles}>
-          <Link href="/contact/">Contact & Booking</Link>
-        </div>
-        <div>{props.user && props.user.username}</div>
-        <div css={headerLinkStyles}>
-          <Link href="/users/private-page">Private-Page:</Link>
+          <Link href="/users/private-page">Edit Data:</Link>
         </div>
         {/* <div css={headerLinkStyles}>
           <Link href="/users/private-page">{props.user.username}</Link>

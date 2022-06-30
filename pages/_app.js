@@ -50,9 +50,9 @@ export default function MyApp({ Component, pageProps }) {
             padding: 0px;
             margin-left: 0px;
             margin-right: 0px;
-            font-family: Dosis, -apple-system, BlinkMacSystemFont, Segoe UI,
-              Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-              Helvetica Neue, sans-serif;
+            font-family: Lexend Zetta, sans-serif, Dosis, -apple-system,
+              BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+              Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
             background-color: white;
           }
 

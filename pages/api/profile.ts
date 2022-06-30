@@ -6,7 +6,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   if (req.method === 'GET') {
-    // get the cookue from the request
+    // get the cookie from the request
     const token = req.cookies.sessionToken;
 
     if (!token) {

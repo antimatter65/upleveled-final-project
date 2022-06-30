@@ -153,7 +153,7 @@ export async function logoutOfSession(token: string) {
 }
 
 export async function logoutOfExpiredSessions() {
-  const [sessions] = await sql<[Session[]]>`
+  const sessions = await sql<[Session[]]>`
     DELETE FROM
     sessions
     WHERE

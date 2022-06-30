@@ -65,7 +65,8 @@ export default function About(props) {
       await props.refreshUserProfile;
     } else {
       // direct user to home after registering or other page in this case redirect to user profile based on user.id
-      await router.push(`/users/${loginResponseBody.user.id}`);
+      // await router.push(`/users/${loginResponseBody.user.id}`);
+      await router.push('/');
     }
   }
 
