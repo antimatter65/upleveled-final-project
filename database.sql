@@ -27,7 +27,3 @@ CREATE TABLE logindatabase (
 CREATE DATABASE <database name>;
 CREATE USER <user name> WITH ENCRYPTED PASSWORD '<user password>';
 GRANT ALL PRIVILEGES ON DATABASE <database name> TO <user name>;
-
-CREATE DATABASE final-project-upleveled-dom;
-CREATE USER final_project_upleveled_dom WITH ENCRYPTED PASSWORD 'final_project_upleveled_dom';
-GRANT ALL PRIVILEGES ON DATABASE final_project_upleveled_dom TO final_project_upleveled_dom;

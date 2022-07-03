@@ -96,6 +96,7 @@ export default function About(props) {
               password:
               <input
                 value={password}
+                type="password"
                 onChange={(event) => {
                   setPassword(event.currentTarget.value);
                 }}

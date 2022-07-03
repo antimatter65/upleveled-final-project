@@ -1,3 +1,4 @@
+import camelCase from 'camelcase-keys';
 import camelcaseKeys from 'camelcase-keys';
 import { config } from 'dotenv-safe';
 import postgres from 'postgres';
@@ -162,3 +163,33 @@ export async function logoutOfExpiredSessions() {
   `;
   return sessions.map((session) => camelcaseKeys(session));
 }
+
+// function to return all the releases in the database for the releases page
+
+export async function getReleases() {
+  const releases = await sql`
+  SELECT * FROM releases
+  `;
+  return releases.map((release) => camelCase(release));
+}
+
+// function to return single release/products for the dynamic page [release]
+
+export async function getRelease(id: number) {
+  const [release] = await sql`
+  SELECT * FROM releases
+  WHERE id = ${id}
+  `;
+  return camelCase(release);
+}
+
+// SELECT
+// users.id,
+// users.username
+// FROM
+// users,
+// sessions
+// WHERE
+// sessions.token = ${token} AND
+// sessions.user_id = users.id AND
+// sessions.expiry_timestamp > now();

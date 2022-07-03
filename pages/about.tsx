@@ -1,19 +1,22 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect } from 'react';
-import darkbackground1 from '../public/darkbackground1.jpeg';
+import aboutbackground from '../public/aboutbackground.jpeg';
 import styles from '../styles/Home.module.css';
 
-const mainVideoStyles = css`
-  margin: 10%;
+const mainTextStyles = css`
+  margin: 1%;
   margin-top: 5%;
+  color: grey;
 `;
 
 const backgroundImageStyles = css`
-  width: 100%;
-  z-index: 0;
+  width: 90%;
+  padding: 5%;
 `;
+
 type Props = {
   refreshUserProfile: () => Promise<void>;
 };
@@ -31,19 +34,38 @@ export default function Home(props: Props) {
       </Head>
 
       <main>
-        {/* <div ccs={backgroundImageStyles}>
-          <Image src={darkbackground1} />
-        </div> */}
-        <section css={mainVideoStyles}>
-          <iframe
-            width="1120"
-            height="630"
-            src="https://www.youtube-nocookie.com/embed/HwwtvZ45PB4"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
+        <div css={backgroundImageStyles}>
+          <Image
+            src={aboutbackground}
+            alt="bridges and canals in Manchester at night"
+            // width="600"
+            // height="400"
           />
+        </div>
+        <section css={mainTextStyles}>
+          <div>
+            Locoda are a Drum and Bass Producer / DJ Duo from Manchester, UK
+          </div>
+          <br />
+          <div>
+            Locoda delivered a thundering debut in the form of “Closer”
+            featuring the stunning vocals of Tricia McTeague who has previously
+            worked with the likes of Paul van Dyk, Schiller, and Giuseppe
+            Ottaviani as well as touring with Nile Rogers, Natalie Imbruglia and
+            more.
+          </div>
+          <br />
+          <div>
+            In a time when we have all been wanting to dance carefree, “Closer”
+            really sets the tone for the return to festivals and the dancefloor
+            with its uplifting lyrics about being back together, back with
+            big-room DnB vibes to deliver a real highlight to any set. The duo
+            debuted the track at the One In The Woods festival supporting Sub
+            Focus, Friction, Grooverider and more, and got it's premiere on BBC
+            Radio 1 - Rene LaVice DnB Show.
+          </div>
+          <br />
+          <Link href="/">Radio 1 DnB Show </Link>
         </section>
       </main>
 

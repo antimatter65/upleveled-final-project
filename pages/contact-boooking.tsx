@@ -2,18 +2,13 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect } from 'react';
-import darkbackground1 from '../public/darkbackground1.jpeg';
 import styles from '../styles/Home.module.css';
 
-const mainVideoStyles = css`
+const mainStyles = css`
   margin: 10%;
   margin-top: 5%;
 `;
 
-const backgroundImageStyles = css`
-  width: 100%;
-  z-index: 0;
-`;
 type Props = {
   refreshUserProfile: () => Promise<void>;
 };
@@ -31,20 +26,8 @@ export default function Home(props: Props) {
       </Head>
 
       <main>
-        {/* <div ccs={backgroundImageStyles}>
-          <Image src={darkbackground1} />
-        </div> */}
-        <section css={mainVideoStyles}>
-          <iframe
-            width="1120"
-            height="630"
-            src="https://www.youtube-nocookie.com/embed/HwwtvZ45PB4"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </section>
+        Contact & Bookings:
+        <section css={mainStyles}></section>
       </main>
 
       {/* <main className={styles.main}>

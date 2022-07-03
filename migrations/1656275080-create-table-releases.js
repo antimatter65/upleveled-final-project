@@ -5,7 +5,7 @@ exports.up = async (sql) => {
     	id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   		release_name varchar(150) NOT NULL UNIQUE,
   		tracks integer NOT NULL,
-			release_date date NOT NULL,
+			release_date varchar(50) NOT NULL,
 			record_label  varchar(100),
 			cover_art_link varchar(200),
 			buy_link varchar(500),

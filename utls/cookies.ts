@@ -3,7 +3,7 @@ import cookie from 'cookie';
 // dependency cookie is for the backend, cookie.js is front-end
 
 export function createSerializedRegisterSessionTokenCookie(token: string) {
-  // check if we are in production e.g Heroku - yarn dev opens in production therefore not required as http required for delevopment but https for implimentation
+  // check if we are in production e.g Heroku - yarn dev opens in production therefore not required as http required for delevopment but https for implamentation
   const isProduction = process.env.NODE_ENV === 'production';
 
   const maxAge = 60 * 60 * 24; // 24 hours converted into seconds

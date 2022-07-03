@@ -1,8 +1,16 @@
 import { css, Global } from '@emotion/react';
+import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import Layout from '../components/Layout';
+import darkbackground1 from '../public/darkbackground1.jpeg';
 
 //import { User } from '../utls/database';
+
+const backgroundImageStyles = css`
+  z-index: -0;
+  width: 1%;
+  opacity: 0.5;
+`;
 
 export default function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState();
@@ -66,7 +74,11 @@ export default function MyApp({ Component, pageProps }) {
           }
         `}
       />
+
       <Layout user={user} refreshUserProfile={refreshUserProfile}>
+        {/*         <div ccs={backgroundImageStyles}>
+          <Image src={darkbackground1} />
+        </div> */}
         <Component {...pageProps} refreshUserProfile={refreshUserProfile} />
       </Layout>
     </>

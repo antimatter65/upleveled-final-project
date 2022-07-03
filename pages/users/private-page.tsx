@@ -1,5 +1,6 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 // import { userInfo } from 'os';
 // import Layout from '../../components/Layout';
 import { getUserByValidSessionToken, User } from '../../utls/database';
@@ -28,7 +29,7 @@ export default function UserPage(props: props) {
     <div>
       <Head>
         <title>User Page</title>
-        <meta name="description" content="user page" />
+        <meta name="description" content="private edit menu page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -39,6 +40,20 @@ export default function UserPage(props: props) {
         </h2>
         <div>id: {props.user.id} </div>
         <div> username: {props.user.username}</div>
+        <h2>Whats Up Smithy, what do you want to do today..?</h2>
+        <div>
+          <Link href="/">Update Releases</Link>
+          <br />
+          <Link href="/">AddDJ /Live Dates </Link>
+          <br />
+          <Link href="/">Add Profile Info </Link>
+          <br />
+          <Link href="/">Update Featured Mixes</Link>
+          <br />
+          <Link href="/">Change Contact Information</Link>
+          <br />
+          <Link href="/">Change Landing Page Video</Link>
+        </div>
       </main>
     </div>
   );

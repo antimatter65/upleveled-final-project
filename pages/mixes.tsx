@@ -2,7 +2,6 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect } from 'react';
-import darkbackground1 from '../public/darkbackground1.jpeg';
 import styles from '../styles/Home.module.css';
 
 const mainVideoStyles = css`
@@ -10,10 +9,6 @@ const mainVideoStyles = css`
   margin-top: 5%;
 `;
 
-const backgroundImageStyles = css`
-  width: 100%;
-  z-index: 0;
-`;
 type Props = {
   refreshUserProfile: () => Promise<void>;
 };
@@ -31,9 +26,7 @@ export default function Home(props: Props) {
       </Head>
 
       <main>
-        {/* <div ccs={backgroundImageStyles}>
-          <Image src={darkbackground1} />
-        </div> */}
+        <h1>Mixes</h1>
         <section css={mainVideoStyles}>
           <iframe
             width="1120"
@@ -43,6 +36,8 @@ export default function Home(props: Props) {
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            // sandbox="allow-scripts allow-same-origin"
+            sandbox=""
           />
         </section>
       </main>
