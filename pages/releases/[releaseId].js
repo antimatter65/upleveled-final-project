@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { getReleaseByReleaseId } from '../../utls/database';
-import { getReducedRelease } from '../../utls/dataStructure';
+import { getReleaseByReleaseId } from '../../utils/database';
+import { getReducedRelease } from '../../utils/dataStructure';
 
 const mainReleaseStyles = css`
   font-size: 13px;

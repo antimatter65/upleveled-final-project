@@ -2,11 +2,11 @@
 import crypto from 'node:crypto';
 import bcrypt from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createSerializedRegisterSessionTokenCookie } from '../../utls/cookies';
+import { createSerializedRegisterSessionTokenCookie } from '../../utils/cookies';
 import {
   createSession,
   getUserWithPasswordHashByUsername,
-} from '../../utls/database';
+} from '../../utils/database';
 
 export type LoginResponseBody =
   | {

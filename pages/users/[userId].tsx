@@ -2,7 +2,7 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { userInfo } from 'os';
 import Layout from '../../components/Layout';
-import { getUserByUserId, User } from '../../utls/database';
+import { getUserByUserId, User } from '../../utils/database';
 
 /// start again with creating the dynamic page
 

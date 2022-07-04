@@ -1,6 +1,6 @@
 import cookie from 'cookie';
 import { GetServerSidePropsContext } from 'next';
-import { logoutOfSession } from '../utls/database';
+import { logoutOfSession } from '../utils/database';
 
 export default function Logout() {
   return null;

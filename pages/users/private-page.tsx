@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 // import { userInfo } from 'os';
 // import Layout from '../../components/Layout';
-import { getUserByValidSessionToken, User } from '../../utls/database';
+import { getUserByValidSessionToken, User } from '../../utils/database';
 
 // creating the dynamic page for private profile
 

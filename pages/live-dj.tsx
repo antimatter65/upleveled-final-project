@@ -3,7 +3,7 @@ import Head from 'next/head';
 // import Image from 'next/image';
 // import Link from 'next/link';
 // import mixtape1 from '../public/mixtape1.png';
-import { getTourDates } from '../utls/database';
+import { getTourDates } from '../utils/database';
 
 // import { releases.Database } from '../util/database';
 

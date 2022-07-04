@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { getUserByUserName, User } from '../../../utls/database';
+import { getUserByUserName, User } from '../../../utils/database';
 
 /// start again with creating the dynamic page
 

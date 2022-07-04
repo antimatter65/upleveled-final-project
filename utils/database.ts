@@ -189,7 +189,7 @@ export async function getTourDates() {
   return tourdates.map((tour) => camelCase(tour));
 }
 
-// function to return single release/products for the dynamic page [release]
+// function to return single release/products for the dynamic page [release] from database release
 
 export async function getRelease(id: number) {
   const [release] = await sql`
@@ -199,16 +199,7 @@ export async function getRelease(id: number) {
   return camelCase(release);
 }
 
-// SELECT
-// users.id,
-// users.username
-// FROM
-// users,
-// sessions
-// WHERE
-// sessions.token = ${token} AND
-// sessions.user_id = users.id AND
-// sessions.expiry_timestamp > now();
+// join function to get data from both databases based on where release.id =release1.release_id.
 
 export async function getReleaseByReleaseId(releaseId: number) {
   if (!releaseId) return undefined;
@@ -226,3 +217,98 @@ export async function getReleaseByReleaseId(releaseId: number) {
     `;
   return camelcaseKeys(releaseWithTrackData);
 }
+
+// create new release in database releases
+
+export async function insertNewReleaseIntoReleases(
+  releaseName: string,
+  tracks: number,
+  releaseDate: string,
+  recordLabel: string,
+  coverArtLink: string,
+  buyLink: string,
+  streamingLink: string,
+  bandcampLink: string,
+) {
+  const [release] = await sql`
+    INSERT INTO releases
+      (release_name, tracks, release_date, record_label, cover_art_link, buy_link, streaming_link, bandcamp_link)
+    VALUES
+      (${releaseName}, ${tracks}, ${releaseDate}, ${recordLabel}, ${coverArtLink}, ${buyLink}, ${streamingLink}, ${bandcampLink})
+    RETURNING *
+  `;
+  return camelcaseKeys(release);
+}
+
+// export async function insertAnimal(
+//   firstName: string,
+//   type: string,
+//   accessory: string,
+// ) {
+//   const [animal] = await sql`
+//     INSERT INTO animals
+//       (first_name, type, accessory)
+//     VALUES
+//       (${firstName}, ${type}, ${accessory})
+//     RETURNING *
+//   `;
+//   return camelcaseKeys(animal);
+// }
+
+// update the database releases - this is not currently working - needs review
+
+export async function updateReleaseInReleases(
+  id: number,
+  releaseName: string,
+  tracks: number,
+  releaseDate: string,
+  recordLabel: string,
+  coverArtLink: string,
+  buyLink: string,
+  streamingLink: string,
+  bandcampLink: string,
+) {
+  const [release] = await sql`
+    UPDATE
+      releases
+    SET
+      id = ${id},
+      release_name = ${releaseName},
+      tracks = ${tracks},
+      release_date = ${releaseDate},
+      record_label = ${recordLabel},
+      cover_art_link = ${coverArtLink},
+      buy_link = ${buyLink},
+      streaming_link = ${streamingLink},
+      bandcamp_link = ${bandcampLink}
+
+    WHERE
+      id = ${id}
+    RETURNING *
+  `;
+  return camelcaseKeys(release);
+}
+
+// delete a single release from the releases database
+
+export async function deleteReleaseFromReleasesById(id: number) {
+  const [release] = await sql`
+      DELETE FROM
+        release
+      WHERE
+        id = ${id}
+      RETURNING *
+    `;
+  return camelcaseKeys(release);
+}
+
+// export async function deleteAnimalById(id: number) {
+//   const [animal] = await sql`
+//     DELETE FROM
+//       animals
+//     WHERE
+//       id = ${id}
+//     RETURNING *
+//   `;
+//   return camelcaseKeys(animal);
+// }
