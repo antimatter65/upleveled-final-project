@@ -32,41 +32,40 @@ export default async function handler(
     return res.status(200).json(individualRelease);
   }
 
-  // to updated a release within the releases database - currently not working -
-  // also a fail case is required when id is not a valid release.
-  // if (req.method === 'PUT') {
-  //   if (!individualReleaseId) {
-  //     res.status(400).json({
-  //       error:
-  //         'to insert into current release, a valid release_id, is required',
-  //     });
-  //   }
+  // to updated a release within the releases database from release_id in url - working but requires data for all columns in the database other than id to be included in the request.body -
 
-  //   const updatedRelease = await updateReleaseInReleases(
-  //     individualReleaseId,
-  //     req.body.releaseName,
-  //     req.body.tracks,
-  //     req.body.releaseDate,
-  //     req.body.recordLabel,
-  //     req.body.coverArtLink,
-  //     req.body.buyLink,
-  //     req.body.streamingLink,
-  //     req.body.bandcampLink,
-  //   );
+  if (req.method === 'PUT') {
+    if (!individualReleaseId) {
+      res.status(400).json({
+        error: 'to insert into current release, a valid release_id is required',
+      });
+    }
 
-  //   //   // normal working with apis it to sent the response back
-  //   //   return res.status(200).json(updatedRelease);
-  //   // }
+    const updatedRelease = await updateReleaseInReleases(
+      individualReleaseId,
+      req.body.releaseName,
+      req.body.tracks,
+      req.body.releaseDate,
+      req.body.recordLabel,
+      req.body.coverArtLink,
+      req.body.buyLink,
+      req.body.streamingLink,
+      req.body.bandcampLink,
+    );
 
-  //   // delete a individual release by id
-  //   if (req.method === 'DELETE') {
-  //     const deleteRelease = await deleteReleaseFromReleasesById(
-  //       individualReleaseId,
-  //     );
+    //   // normal working with apis it to sent the response back
+    return res.status(200).json(updatedRelease);
+  }
 
-  //     return res.status(200).json(deleteRelease);
-  //   }
+  // delete a individual release by id
+  if (req.method === 'DELETE') {
+    const deleteRelease = await deleteReleaseFromReleasesById(
+      individualReleaseId,
+    );
 
-  //   // if any other method used
-  //   return res.status(405).json({ error: 'wrong way! method not allowed' });
+    return res.status(200).json(deleteRelease);
+  }
+
+  // if any other method used
+  return res.status(405).json({ error: 'wrong way! method not allowed' });
 }

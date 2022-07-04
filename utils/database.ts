@@ -240,22 +240,7 @@ export async function insertNewReleaseIntoReleases(
   return camelcaseKeys(release);
 }
 
-// export async function insertAnimal(
-//   firstName: string,
-//   type: string,
-//   accessory: string,
-// ) {
-//   const [animal] = await sql`
-//     INSERT INTO animals
-//       (first_name, type, accessory)
-//     VALUES
-//       (${firstName}, ${type}, ${accessory})
-//     RETURNING *
-//   `;
-//   return camelcaseKeys(animal);
-// }
-
-// update the database releases - this is not currently working - needs review
+// update release data currently in the database releases
 
 export async function updateReleaseInReleases(
   id: number,
@@ -272,7 +257,6 @@ export async function updateReleaseInReleases(
     UPDATE
       releases
     SET
-      id = ${id},
       release_name = ${releaseName},
       tracks = ${tracks},
       release_date = ${releaseDate},
@@ -294,21 +278,10 @@ export async function updateReleaseInReleases(
 export async function deleteReleaseFromReleasesById(id: number) {
   const [release] = await sql`
       DELETE FROM
-        release
+        releases
       WHERE
         id = ${id}
       RETURNING *
     `;
   return camelcaseKeys(release);
 }
-
-// export async function deleteAnimalById(id: number) {
-//   const [animal] = await sql`
-//     DELETE FROM
-//       animals
-//     WHERE
-//       id = ${id}
-//     RETURNING *
-//   `;
-//   return camelcaseKeys(animal);
-// }
