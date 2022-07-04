@@ -14,11 +14,7 @@ CREATE TABLE logindatabase (
 --   ('The White Mixtape', 'white', 7, '90 minutes'),
 --   ('The Black Mixtape', 'black', 7, '90 minutes'),
 --   ('The Clear Neon Mixtape', 'clear', 15, '180 minutes'),
---   ('The Blue Mixtape ', 'blue', 13, '180 minutes'),
---   ('The Yellow Mixtape', 'yellow', 13, '180 minutes'),
---   ('The Clear Mixtape','clear', 13, '180 minutes'),
---   ('Retro Walkman', 'red', 35, 'N/A'),
---   ('The Grey Mixtape','grey', 15, '180 minutes');
+
 
 
 

@@ -2,7 +2,6 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { productionBrowserSourceMaps } from '../next.config';
 import { LoginResponseBody } from './api/login';
 import { errorStyles } from './register';
 
@@ -65,8 +64,8 @@ export default function About(props) {
       await props.refreshUserProfile;
     } else {
       // direct user to home after registering or other page in this case redirect to user profile based on user.id
-      // await router.push(`/users/${loginResponseBody.user.id}`);
-      await router.push('/');
+      await router.push(`/users/${loginResponseBody.user.id}`);
+      // await router.push('/');
     }
   }
 

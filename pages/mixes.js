@@ -55,16 +55,45 @@ const releasesListItemLinkStyles = css`
   }
 `;
 
-export default function releaseList(props) {
+export default function mixesList(props) {
   return (
     <div>
       <Head>
-        <title>Releases</title>
+        <title>Mixes</title>
         <meta name="description" content="all locoda releases" />
         {/* <link rel="icon" href="/faviconmixtape.png" /> */}
       </Head>
-      <h1 css={titleStyles}>Releases</h1>
+      <h1 css={titleStyles}>Mixes</h1>
       <hr />
+
+      <iframe
+        width="100%"
+        height="120"
+        src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Flocoda%2Flocoda-live-the-one-in-the-woods-2021%2F"
+        frameborder="0"
+      />
+      <br />
+      <iframe
+        width="100%"
+        height="60"
+        src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&light=1&feed=%2Flocoda%2Fliquid-mix-001%2F"
+        frameborder="0"
+      />
+      <br />
+      <iframe
+        width="100%"
+        height="60"
+        src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&light=1&feed=%2Flocoda%2Fliquid-mini-mix-002%2F"
+        frameborder="0"
+      />
+      <br />
+      <iframe
+        width="100%"
+        height="60"
+        src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&light=1&feed=%2Flocoda%2Fliquid-mini-mix-001%2F"
+        frameborder="0"
+        sandbox=""
+      />
 
       <main>
         <div css={releasesListStyles}>
@@ -79,23 +108,20 @@ export default function releaseList(props) {
                     {releases.release_name}
                   </Link> */}
                 </div>
+
+                <iframe
+                  width="100%"
+                  height="120"
+                  src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Flocoda%2Flocoda-live-the-one-in-the-woods-2021%2F"
+                  frameborder="0"
+                />
                 {/* <div>Length: {releases.release_date}</div> */}
                 <div>Name: {release.releaseName}</div>
                 <br />
                 <div>Number of Tracks: {release.tracks}</div>
                 <br />
                 <div>Record Label: {release.recordLabel}</div>
-                <br />
-                <div>Release Date: {release.releaseDate}</div>
-                <br />
-                <div>Cover Art Link: {release.coverArtLink}</div>
-                <br />
-                <div>Beatport Link: {release.buyLink}</div>
-                <br />
-                <div>Streaming Link: {release.streamingLink}</div>
-                <br />
-                <div>Bandcamp Link: {release.bandcampLink}</div>
-                <br />
+
                 <Link href={`/releases/${release.id}`}>
                   <Image src={`/${release.id}.jpeg`} width="600" height="400" />
                 </Link>

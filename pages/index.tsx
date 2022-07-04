@@ -8,12 +8,18 @@ import styles from '../styles/Home.module.css';
 const mainVideoStyles = css`
   margin: 10%;
   margin-top: 5%;
+  background-color: grey;
 `;
 
 const backgroundImageStyles = css`
   width: 100%;
   z-index: 0;
 `;
+
+const mainStyles = css`
+  background-color: grey;
+`;
+
 type Props = {
   refreshUserProfile: () => Promise<void>;
 };
@@ -30,7 +36,7 @@ export default function Home(props: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main css={mainStyles}>
         {/* <div ccs={backgroundImageStyles}>
           <Image src={darkbackground1} />
         </div> */}

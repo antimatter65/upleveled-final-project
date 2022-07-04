@@ -42,9 +42,9 @@ export default function UserPage(props: props) {
         <div> username: {props.user.username}</div>
         <h2>Whats Up Smithy, what do you want to do today..?</h2>
         <div>
-          <Link href="/">Update Releases</Link>
+          <Link href="/users/add-new-release-1">Update Releases</Link>
           <br />
-          <Link href="/">AddDJ /Live Dates </Link>
+          <Link href="/users/add-tour-dates">Add DJ/Live Dates </Link>
           <br />
           <Link href="/">Add Profile Info </Link>
           <br />

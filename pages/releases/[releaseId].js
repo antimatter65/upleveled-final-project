@@ -1,13 +1,14 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { getRelease } from '../../utls/database';
+import { getReleaseByReleaseId } from '../../utls/database';
+import { getReducedRelease } from '../../utls/dataStructure';
 
 const mainReleaseStyles = css`
   font-size: 13px;
   display: flex;
   position: relative;
-  flex-direction: column;
+  flex-direction: row;
   height: 49vw;
   padding-top: 50px;
   padding-left: 100px;
@@ -34,7 +35,7 @@ const sectionStyles = css`
 `;
 
 export default function Release(props) {
-  if (!props.release) {
+  if (!props.allReleaseData) {
     return (
       <div>
         <Head>
@@ -53,10 +54,10 @@ export default function Release(props) {
   return (
     <div>
       <Head>
-        <title>{props.release.releaseName}</title>
+        <title>{props.allReleaseData.releaseName}</title>
         <meta
           name="description"
-          content={`Release Name: ${props.release.releaseName} `}
+          content={`Release Name: ${props.allReleaseData.releaseName} `}
         />
       </Head>
 
@@ -65,31 +66,64 @@ export default function Release(props) {
           <div>
             <Image
               css={imageStyles}
-              src={`/${props.release.id}.jpeg`}
+              src={`/${props.allReleaseData.id}.jpeg`}
               width="300"
               height="300"
             />
           </div>
           <section css={sectionStyles}>
             <br />
-            <div>Name: {props.release.releaseName}</div>
+            <div>Name: {props.allReleaseData.releaseName}</div>
             <br />
-            <div>Number of Track: {props.release.tracks}</div>
+            <div>Number of Track: {props.allReleaseData.tracks}</div>
             <br />
-            <div>Record Label: {props.release.recordLabel}</div>
+            <div>Record Label: {props.allReleaseData.recordLabel}</div>
             <br />
-            <div>Release Date: {props.release.releaseDate}</div>
+            <div>Release Date: {props.allReleaseData.releaseDate}</div>
             <br />
-            <div>Cover Art Link: {props.release.coverArtLink}</div>
+            <div>Cover Art Link: {props.allReleaseData.coverArtLink}</div>
             <br />
-            <div>Beatport Link: {props.release.buyLink}</div>
+            <div>Beatport Link: {props.allReleaseData.buyLink}</div>
             <br />
-            <div>Streaming Link: {props.release.streamingLink}</div>
+            <div>Streaming Link: {props.allReleaseData.streamingLink}</div>
             <br />
-            <div>Bandcamp Link: {props.release.bandcampLink}</div>
+            <div>Bandcamp Link: {props.allReleaseData.bandcampLink}</div>
+            <br />
+            <div>Track Name: {props.allReleaseDatatrackName}</div>
+            <br />
+            <div>Colab: {props.allReleaseData.contributingArtists}</div>
+            <br />
+            <div>Track Length: {props.allReleaseData.trackLength}</div>
             <br />
             <br />
-            <br />
+          </section>
+          <section>
+            <div>
+              track names:
+              <ul>
+                {props.allReleaseData.trackData.map((release) => {
+                  return (
+                    <li key={`release-${release.releaseId}`}>
+                      {release.trackName}
+                      <br />
+                      {release.trackLength}
+                      <br />
+                      {release.colab}
+                      <br />
+                      {release.trackNumber}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            {/* <div>
+            foods:
+            <ul>
+              {props.animalWithFoods.foods.map((food) => {
+                return <li key={`food-${food.id}`}>{food.name}</li>;
+              })}
+            </ul>
+          </div>           */}
           </section>
         </main>
       </div>
@@ -98,11 +132,16 @@ export default function Release(props) {
 }
 
 export async function getServerSideProps(context) {
-  const selectedRelease = await getRelease(context.query.releaseId);
-  console.log('what is here?', selectedRelease);
+  const selectedRelease = await getReleaseByReleaseId(context.query.releaseId);
+  console.log('what is here 2?', selectedRelease);
+
+  const singleReleaseAllData = getReducedRelease(selectedRelease);
+
+  console.log('what is here 3?', singleReleaseAllData);
+
   return {
     props: {
-      release: selectedRelease,
+      allReleaseData: singleReleaseAllData,
     },
   };
 }

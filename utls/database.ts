@@ -40,6 +40,11 @@ export type User = {
   username: string;
 };
 
+export type Release = {
+  id: number;
+  release_id: number;
+};
+
 // this use the User typescript type and requires an additional value of string for passwordHash
 type UserWithPasswordHash = User & {
   passwordHash: string;
@@ -142,6 +147,7 @@ export async function getUserByValidSessionToken(token: string) {
   return user && camelcaseKeys(user);
 }
 
+// logout function
 export async function logoutOfSession(token: string) {
   const [session] = await sql<[Session | undefined]>`
     DELETE FROM sessions
@@ -152,6 +158,7 @@ export async function logoutOfSession(token: string) {
 
   return session && camelcaseKeys(session);
 }
+// ensures all expired sessions are deleted
 
 export async function logoutOfExpiredSessions() {
   const sessions = await sql<[Session[]]>`
@@ -171,6 +178,15 @@ export async function getReleases() {
   SELECT * FROM releases
   `;
   return releases.map((release) => camelCase(release));
+}
+
+// function to return all the tour in the database for the releases page
+
+export async function getTourDates() {
+  const tourdates = await sql`
+  SELECT * FROM tourdates
+  `;
+  return tourdates.map((tour) => camelCase(tour));
 }
 
 // function to return single release/products for the dynamic page [release]
@@ -193,3 +209,20 @@ export async function getRelease(id: number) {
 // sessions.token = ${token} AND
 // sessions.user_id = users.id AND
 // sessions.expiry_timestamp > now();
+
+export async function getReleaseByReleaseId(releaseId: number) {
+  if (!releaseId) return undefined;
+
+  const releaseWithTrackData = await sql`
+    SELECT
+      *
+    FROM
+      releases,
+      release1
+    WHERE
+      releases.id = ${releaseId}
+      AND
+      release1.release_id = releases.id
+    `;
+  return camelcaseKeys(releaseWithTrackData);
+}

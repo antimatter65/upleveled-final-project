@@ -3,8 +3,10 @@ exports.up = async (sql) => {
 		CREATE TABLE tourdates
 		(
     	id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  		location varchar(100) NOT NULL UNIQUE,
-  		date date NOT NULL,
+  		location varchar(100) NOT NULL,
+  		date varchar(20) NOT NULL,
+			event_location varchar(100),
+			type varchar (20),
 			event_link varchar(500),
 			ticket_link varchar(500),
 			tickets_left boolean,
