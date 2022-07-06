@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { Release } from '../../utils/database';
+import { TourDate } from '../../utils/database';
 
 const mainHeaderStyles = css`
   margin: 2%;
@@ -21,226 +21,200 @@ const inputStyles = css`
   flex-direction: column;
 `;
 
-export default function ApiFrontEndReleases() {
-  // const [releaseList, setReleaseList] = useState([
-  //   {
-  //     id: 1,
-  //     releaseName: 'Closer',
-  //     tracks: 2,
-  //     releaseDate: '2022/04/21',
-  //     recordLabel: 'Code Recordings',
-  //     coverArtLink: 'somelink',
-  //     buyLink: 'somelink',
-  //     streamingLink: 'somelink',
-  //     bandcampLink: 'somelink',
-  //   },
-  //   {
-  //     id: 2,
-  //     releaseName: 'White-Label-1',
-  //     tracks: 3,
-  //     releaseDate: '2022/07/05',
-  //     recordLabel: 'DOM Recordings',
-  //     coverArtLink: 'somelink',
-  //     buyLink: 'somelink',
-  //     streamingLink: 'somelink',
-  //     bandcampLink: 'somelink',
-  //   },
-  // ]);
+export default function ApiFrontEndTourDates() {
+  const [tourDatesList, setTourDatesList] = useState<TourDate[]>([]);
 
-  const [releaseList, setReleaseList] = useState<Release[]>([]);
-
-  const [currentReleaseEdit, setCurrentReleaseEdit] = useState<
+  const [editActiveOnEventNumber, setEditActiveOnEventNumber] = useState<
     number | undefined
   >(undefined);
 
-  // state for new release inputs
+  // state for new event inputs
 
-  const [newReleaseName, setNewReleaseName] = useState('');
-  const [newNumberOfTracks, setNewNumberOfTracks] = useState('');
-  const [newReleaseDate, setNewReleaseDate] = useState('');
-  const [newRecordLabel, setNewRecordLabel] = useState('');
-  const [newCoverArtLink, setNewCoverArtLink] = useState('');
-  const [newBuyLink, setNewBuyLink] = useState('');
+  const [newLocation, setNewLocation] = useState('');
+  const [newEventDate, setNewEventDate] = useState('');
+  const [newEventVenue, setNewEventVenue] = useState('');
+  const [newLiveType, setNewLiveType] = useState('');
+  const [newEventLink, setNewEventLink] = useState('');
+  const [newTicketLink, setNewTicketLink] = useState('');
   const [newStreamingLink, setNewStreamingLink] = useState('');
-  const [newBandcampLink, setNewBandcampLink] = useState('');
+  const [newSoldOutCheck, setNewSoldOutCheck] = useState('');
 
-  // edit state for the edit release inputs
+  // edit state for the edit event inputs
 
-  const [editReleaseName, setEditReleaseName] = useState('');
-  const [editNumberOfTracks, setEditNumberOfTracks] = useState('');
-  const [editReleaseDate, setEditReleaseDate] = useState('');
-  const [editRecordLabel, setEditRecordLabel] = useState('');
-  const [editCoverArtLink, setEditCoverArtLink] = useState('');
-  const [editBuyLink, setEditBuyLink] = useState('');
+  const [editLocation, setEditLocation] = useState('');
+  const [editEventDate, setEditEventDate] = useState('');
+  const [editEventVenue, setEditEventVenue] = useState('');
+  const [editLiveType, setEditLiveType] = useState('');
+  const [editEventLink, setEditEventLink] = useState('');
+  const [editTicketLink, setEditTicketLink] = useState('');
   const [editStreamingLink, setEditStreamingLink] = useState('');
-  const [editBandcampLink, setEditBandcampLink] = useState('');
+  const [editSoldOutCheck, setEditSoldOutCheck] = useState('');
 
-  // useEffect to GET the database from releases on first load of the page
+  // useEffect to GET the full current list of events from database tourdates on first load of the page
 
   useEffect(() => {
-    async function getReleases() {
-      const response = await fetch('/api/releases');
-      const releases = await response.json();
-      setReleaseList(releases);
+    async function getTourDates() {
+      const response = await fetch('/api/tourdates');
+      const events = await response.json();
+      setTourDatesList(events);
     }
-    getReleases().catch(() => {
-      console.log('request to get releases from database failed');
+    getTourDates().catch(() => {
+      console.log('request to get events from database failed');
     });
   }, []);
 
-  // for onclick function to add new release to database
+  // for onclick function to add new event to database
 
-  async function newReleaseHandeler() {
-    const response = await fetch('/api/releases', {
+  async function newTourDateHandler() {
+    const response = await fetch('/api/tourdates', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        releaseName: newReleaseName,
-        tracks: newNumberOfTracks,
-        releaseDate: newReleaseDate,
-        recordLabel: newRecordLabel,
-        coverArtLink: newCoverArtLink,
-        buyLink: newBuyLink,
+        location: newLocation,
+        date: newEventDate,
+        eventLocation: newEventVenue,
+        type: newLiveType,
+        eventLink: newEventLink,
+        ticketLink: newTicketLink,
         streamingLink: newStreamingLink,
-        bandcampLink: newBandcampLink,
+        ticketsLeft: newSoldOutCheck,
       }),
     });
-    const createdNewRelease = await response.json();
+    const createdNewEvent = await response.json();
 
     // copy and update copy of the state
 
-    const newState = [...releaseList, createdNewRelease];
+    const newState = [...tourDatesList, createdNewEvent];
 
     // update setState Function
-    setReleaseList(newState);
-    setNewReleaseName('');
-    setNewNumberOfTracks('');
-    setNewReleaseDate('');
-    setNewRecordLabel('');
-    setNewCoverArtLink('');
-    setNewBuyLink('');
+    setTourDatesList(newState);
+    setNewLocation('');
+    setNewEventDate('');
+    setEditLiveType('');
+    setNewEventVenue('');
+    setNewTicketLink('');
+    setNewSoldOutCheck('');
     setNewStreamingLink('');
-    setNewBandcampLink('');
+    setNewEventLink('');
   }
 
-  // onclick function to delete a release from database
-  async function deleteReleaseHandeler(id: number) {
-    const response = await fetch(`/api/releases/${id}`, {
+  // onclick function to delete a tour date / event from database
+  async function deleteTourDateHandler(id: number) {
+    const response = await fetch(`/api/tourdates/${id}`, {
       method: 'DELETE',
     });
-    const deletedRelease = await response.json();
+    const deletedEvent = await response.json();
 
     // copy and update copy of the state
 
-    const newState = releaseList.filter(
-      (release) => release.id !== deletedRelease.id,
+    const newState = tourDatesList.filter(
+      (event) => event.id !== deletedEvent.id,
     );
 
     // update setState Function
-    setReleaseList(newState);
+    setTourDatesList(newState);
   }
 
-  // onclick function to update a release in the releases database
-  async function updateReleaseHandler(id: number) {
-    const response = await fetch(`/api/releases/${id}`, {
+  // onclick function to update a event in the events database
+  async function updateEventHandler(id: number) {
+    const response = await fetch(`/api/tourdates/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        releaseName: editReleaseName,
-        tracks: editNumberOfTracks,
-        releaseDate: editReleaseDate,
-        recordLabel: editRecordLabel,
-        coverArtLink: editCoverArtLink,
-        buyLink: editBuyLink,
+        location: editLocation,
+        date: editEventDate,
+        eventLocation: editEventVenue,
+        type: editLiveType,
+        eventLink: editEventLink,
+        ticketLink: editTicketLink,
         streamingLink: editStreamingLink,
-        bandcampLink: editBandcampLink,
+        ticketsLeft: editSoldOutCheck,
       }),
     });
-    const updateRelease = await response.json();
+    const updateEvent = await response.json();
 
     // copy and update copy of the state
 
-    const newState = releaseList.map((release) => {
-      if (release.id === updateRelease.id) {
-        return updateRelease;
+    const newState = tourDatesList.map((event) => {
+      if (event.id === updateEvent.id) {
+        return updateEvent;
       } else {
-        return release;
+        return event;
       }
     });
 
     // update setState Function
-    setReleaseList(newState);
+    setTourDatesList(newState);
   }
 
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
-        <meta name="description" content="Generated by create next app" />
+        <title>Edit Live Dates</title>
+        <meta
+          name="update events"
+          content="API front end for editing tourdates database"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <section css={mainHeaderStyles}>
-          <h1>Add Release:</h1>
+          <h1>Add New Event:</h1>
         </section>
         <hr />
         <section css={mainInputArea}>
           <label>
-            Release Name:
+            Event Location:
             <input
               css={inputStyles}
-              value={newReleaseName}
-              onChange={(event) => setNewReleaseName(event.currentTarget.value)}
+              value={newLocation}
+              onChange={(event) => setNewLocation(event.currentTarget.value)}
             />
           </label>
           <label>
-            Release Date
+            Event Date:
             <input
               css={inputStyles}
-              value={newReleaseDate}
-              onChange={(event) => setNewReleaseDate(event.currentTarget.value)}
+              value={newEventDate}
+              onChange={(event) => setNewEventDate(event.currentTarget.value)}
             />
           </label>
           <label>
-            Record Label:
+            Event Venue:
             <input
               css={inputStyles}
-              value={newRecordLabel}
-              onChange={(event) => setNewRecordLabel(event.currentTarget.value)}
+              value={newEventVenue}
+              onChange={(event) => setNewEventVenue(event.currentTarget.value)}
             />
           </label>
           <label>
-            Tracks:
+            Performance Type (Live / DJ / Etc):
             <input
               css={inputStyles}
-              value={newNumberOfTracks}
-              onChange={(event) =>
-                setNewNumberOfTracks(event.currentTarget.value)
-              }
+              value={newLiveType}
+              onChange={(event) => setNewLiveType(event.currentTarget.value)}
             />
           </label>
           <br />
           <label>
-            CoverArtLink:
+            Link to Event (Website / Event Page / RA / Facebook / Etc) :
             <input
               css={inputStyles}
-              value={newCoverArtLink}
-              onChange={(event) =>
-                setNewCoverArtLink(event.currentTarget.value)
-              }
+              value={newEventLink}
+              onChange={(event) => setNewEventLink(event.currentTarget.value)}
             />
           </label>
           <label>
-            Buy Link:
+            Tickets Link:
             <input
               css={inputStyles}
-              value={newBuyLink}
-              onChange={(event) => setNewBuyLink(event.currentTarget.value)}
+              value={newTicketLink}
+              onChange={(event) => setNewTicketLink(event.currentTarget.value)}
             />
           </label>
           <label>
@@ -254,103 +228,103 @@ export default function ApiFrontEndReleases() {
             />
           </label>
           <label>
-            Bandcamp Link:
+            Event Sold Out (Yes/No):
             <input
               css={inputStyles}
-              value={newBandcampLink}
+              value={newSoldOutCheck}
               onChange={(event) =>
-                setNewBandcampLink(event.currentTarget.value)
+                setNewSoldOutCheck(event.currentTarget.value)
               }
             />
           </label>
           <button
             onClick={() => {
-              newReleaseHandeler().catch(() => {
-                console.log('request to add new releases to database failed');
+              newTourDateHandler().catch(() => {
+                console.log('request to add new tour date to database failed');
               });
             }}
           >
-            Add New Release
+            Add New Event
           </button>
           <br />
           <br />
           <hr />
-          <h2>Edit Releases In Database:</h2>
+          <h2>Edit Events In Database:</h2>
           <hr />
         </section>
         <br />
-        {releaseList
+        {tourDatesList
           .sort((a, b) => a.id - b.id)
-          .map((release) => {
-            // if the release.id is equal to the active edit currentReleaseEdit then the input values are enabled otherwise they are disabled
-            return release.id === currentReleaseEdit ? (
-              <section css={mainInputArea} key={release.id}>
-                <div>Release Id: {release.id}</div>
+          .map((eventdate) => {
+            // if the event.id is equal to the active edit editActiveOnEventNumber then the input values are enabled otherwise they are disabled
+            return eventdate.id === editActiveOnEventNumber ? (
+              <section css={mainInputArea} key={eventdate.id}>
+                <div>Event Id: {eventdate.id}</div>
                 <label>
-                  Release Name:
+                  Location:
                   <input
                     css={inputStyles}
-                    value={editReleaseName}
+                    value={editLocation}
                     onChange={(event) =>
-                      setEditReleaseName(event.currentTarget.value)
+                      setEditLocation(event.currentTarget.value)
                     }
                   />
                 </label>
                 <label>
-                  Release Date:
+                  Event Date:
                   <input
                     css={inputStyles}
-                    value={editReleaseDate}
+                    value={editEventDate}
                     onChange={(event) =>
-                      setEditReleaseDate(event.currentTarget.value)
+                      setEditEventDate(event.currentTarget.value)
                     }
                   />
                 </label>
                 <label>
-                  Record Label:
+                  Event Venue:
                   <input
                     css={inputStyles}
-                    value={editRecordLabel}
+                    value={editEventVenue}
                     onChange={(event) =>
-                      setEditRecordLabel(event.currentTarget.value)
+                      setEditEventVenue(event.currentTarget.value)
                     }
                   />
                 </label>
                 <br />
                 <label>
-                  Tracks:
+                  Performance Type (Live / DJ / Etc):
                   <input
                     css={inputStyles}
-                    value={editNumberOfTracks}
+                    value={editLiveType}
                     onChange={(event) =>
-                      setEditNumberOfTracks(event.currentTarget.value)
+                      setEditLiveType(event.currentTarget.value)
                     }
                   />
                 </label>
 
                 <label>
-                  CoverArtLink:
+                  Link to Event (Website / Event Page / RA / Facebook / Etc) :
                   <input
                     css={inputStyles}
-                    value={editCoverArtLink}
+                    value={editEventLink}
                     onChange={(event) =>
-                      setEditCoverArtLink(event.currentTarget.value)
+                      setEditEventLink(event.currentTarget.value)
                     }
                   />
                 </label>
                 <label>
-                  Buy Link:
+                  Tickets Link:
                   <input
                     css={inputStyles}
-                    value={editBuyLink}
+                    value={editTicketLink}
                     onChange={(event) =>
-                      setEditBuyLink(event.currentTarget.value)
+                      setEditTicketLink(event.currentTarget.value)
                     }
                   />
                 </label>
                 <br />
                 <label>
-                  StreamingLink:
+                  Streaming Link:
                   <input
                     css={inputStyles}
                     value={editStreamingLink}
@@ -360,21 +334,21 @@ export default function ApiFrontEndReleases() {
                   />
                 </label>
                 <label>
-                  Bandcamp Link:
+                  Event Sold Out (Yes/No):
                   <input
                     css={inputStyles}
-                    value={editBandcampLink}
+                    value={editSoldOutCheck}
                     onChange={(event) =>
-                      setEditBandcampLink(event.currentTarget.value)
+                      setEditSoldOutCheck(event.currentTarget.value)
                     }
                   />
                 </label>
                 <button
                   onClick={() => {
-                    setCurrentReleaseEdit(undefined);
-                    updateReleaseHandler(release.id).catch(() => {
+                    setEditActiveOnEventNumber(undefined);
+                    updateEventHandler(eventdate.id).catch(() => {
                       console.log(
-                        'request to update releases in database failed',
+                        'request to update events in database failed',
                       );
                     });
                   }}
@@ -384,91 +358,91 @@ export default function ApiFrontEndReleases() {
                 <br />
                 <button
                   onClick={() => {
-                    deleteReleaseHandeler(release.id).catch(() => {
+                    deleteTourDateHandler(eventdate.id).catch(() => {
                       console.log(
-                        'request to delete release from database failed',
+                        'request to delete event from database failed',
                       );
                     });
                   }}
                 >
-                  Delete Release
+                  Delete Event
                 </button>
                 <br />
                 <hr />
               </section>
             ) : (
-              <section css={mainInputArea} key={release.id}>
-                <div>Release Id: {release.id}</div>
+              <section css={mainInputArea} key={eventdate.id}>
+                <div>Event Id: {eventdate.id}</div>
                 <label>
-                  Release Name:
+                  Event Location:
                   <input
                     css={inputStyles}
-                    value={release.releaseName}
+                    value={eventdate.location}
                     disabled
                   />
                 </label>
                 <label>
-                  Release Date:
+                  Event Date:
+                  <input css={inputStyles} value={eventdate.date} disabled />
+                </label>
+                <label>
+                  Event Venue:
                   <input
                     css={inputStyles}
-                    value={release.releaseDate}
+                    value={eventdate.eventLocation}
                     disabled
                   />
                 </label>
                 <label>
-                  Record Label:
+                  Performance Type (Live / DJ / Etc):
+                  <input css={inputStyles} value={eventdate.type} disabled />
+                </label>
+                <br />
+                <label>
+                  Link to Event (Website / Event Page / RA / Facebook / Etc) :
                   <input
                     css={inputStyles}
-                    value={release.recordLabel}
+                    value={eventdate.eventLink}
+                    disabled
+                  />
+                </label>
+                <label>
+                  Tickets Link:
+                  <input
+                    css={inputStyles}
+                    value={eventdate.ticketLink}
                     disabled
                   />
                 </label>
                 <br />
                 <label>
-                  Tracks:
-                  <input css={inputStyles} value={release.tracks} disabled />
-                </label>
-                <label>
-                  CoverArtLink:
+                  Streaming Link:
                   <input
                     css={inputStyles}
-                    value={release.coverArtLink}
+                    value={eventdate.streamingLink}
                     disabled
                   />
                 </label>
                 <label>
-                  Buy Link:
-                  <input css={inputStyles} value={release.buyLink} disabled />
-                </label>
-                <br />
-                <label>
-                  StreamingLink:
+                  Event Sold Out (Yes/No):
                   <input
                     css={inputStyles}
-                    value={release.streamingLink}
-                    disabled
-                  />
-                </label>
-                <label>
-                  Bandcamp Link:
-                  <input
-                    css={inputStyles}
-                    value={release.bandcampLink}
+                    value={eventdate.ticketsLeft}
                     disabled
                   />
                 </label>
                 <button
                   onClick={() => {
-                    setCurrentReleaseEdit(release.id);
-                    setEditReleaseName(release.releaseName);
-                    setEditReleaseDate(release.releaseDate);
-                    setEditRecordLabel(release.recordLabel);
-                    // may cause issus with database???
-                    setEditNumberOfTracks(release.tracks.toString());
-                    setEditBuyLink(release.buyLink);
-                    setEditStreamingLink(release.streamingLink);
-                    setEditBandcampLink(release.bandcampLink);
-                    setEditCoverArtLink(release.coverArtLink);
+                    setEditActiveOnEventNumber(eventdate.id);
+                    setEditLocation(eventdate.location);
+                    setEditEventDate(eventdate.date);
+                    setEditEventVenue(eventdate.eventLocation);
+                    setEditLiveType(eventdate.type);
+                    setEditEventLink(eventdate.eventLink);
+                    setEditStreamingLink(eventdate.streamingLink);
+                    setEditTicketLink(eventdate.ticketLink);
+                    // this is a boolean and may cause problems and therefore may need amending
+                    setEditSoldOutCheck(eventdate.ticketsLeft);
                   }}
                 >
                   Edit

@@ -53,6 +53,21 @@ export type Release = {
   bandcampLink: string;
 };
 
+export type TourDate = {
+  id: number;
+  location: string;
+  date: string;
+  eventLocation: string;
+  type: string;
+  eventLink: string;
+  ticketLink: string;
+  ticketsLeft: boolean;
+  streamingLink: string;
+};
+
+// req.body.ticketsLeft,
+// req.body.streamingLink,
+
 // this use the User typescript type and requires an additional value of string for passwordHash
 type UserWithPasswordHash = User & {
   passwordHash: string;
@@ -197,7 +212,7 @@ export async function getTourDates() {
   return tourdates.map((tour) => camelCase(tour));
 }
 
-// function to return single release/products for the dynamic page [release] from database release
+// function to return single release for the dynamic page [release] from database release
 
 export async function getRelease(id: number) {
   const [release] = await sql`
@@ -314,4 +329,60 @@ export async function insertNewTourDateIntoTourDates(
     RETURNING *
   `;
   return camelcaseKeys(tourdate);
+}
+
+// delete a single event date from the tourdates database
+
+export async function deleteEventDateFromTourDatesById(id: number) {
+  const [release] = await sql`
+      DELETE FROM
+        tourdates
+      WHERE
+        id = ${id}
+      RETURNING *
+    `;
+  return camelcaseKeys(release);
+}
+
+// update event data currently in the database tourdates by event id
+
+export async function updateEventInTourDates(
+  id: number,
+  location: string,
+  date: string,
+  eventLocation: string,
+  type: string,
+  eventLink: string,
+  ticketLink: string,
+  ticketsLeft: boolean,
+  streamingLink: string,
+) {
+  const [tourdate] = await sql`
+    UPDATE
+      tourdates
+    SET
+      location = ${location},
+      date = ${date},
+      event_location = ${eventLocation},
+      type = ${type},
+      event_link = ${eventLink},
+      ticket_link = ${ticketLink},
+      tickets_left = ${ticketsLeft},
+      streaming_link = ${streamingLink}
+
+    WHERE
+      id = ${id}
+    RETURNING *
+  `;
+  return camelcaseKeys(tourdate);
+}
+
+// function to return single release for the dynamic page [release] from database release
+
+export async function getEvent(id: number) {
+  const [event] = await sql`
+  SELECT * FROM tourdates
+  WHERE id = ${id}
+  `;
+  return camelCase(event);
 }

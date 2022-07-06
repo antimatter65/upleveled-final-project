@@ -3,8 +3,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import {
   deleteReleaseFromReleasesById,
   getRelease,
-  getReleaseByReleaseId,
-  insertNewReleaseIntoReleases,
   updateReleaseInReleases,
 } from '../../../utils/database';
 
@@ -17,6 +15,7 @@ export default async function handler(
 ) {
   // Number is required to change the sting into a number
   const individualReleaseId = Number(req.query.individualReleaseId);
+
   if (!individualReleaseId) {
     return res.status(400).json({ error: 'release id does not exist' });
   }
