@@ -43,6 +43,14 @@ export type User = {
 export type Release = {
   id: number;
   release_id: number;
+  releaseName: string;
+  tracks: number;
+  releaseDate: string;
+  recordLabel: string;
+  coverArtLink: string;
+  buyLink: string;
+  streamingLink: string;
+  bandcampLink: string;
 };
 
 // this use the User typescript type and requires an additional value of string for passwordHash
@@ -284,4 +292,26 @@ export async function deleteReleaseFromReleasesById(id: number) {
       RETURNING *
     `;
   return camelcaseKeys(release);
+}
+
+// create new tour date in database tourdates
+
+export async function insertNewTourDateIntoTourDates(
+  location: string,
+  date: string,
+  eventLocation: string,
+  type: string,
+  eventLink: string,
+  ticketLink: string,
+  ticketsLeft: boolean,
+  streamingLink: string,
+) {
+  const [tourdate] = await sql`
+    INSERT INTO tourdates
+      (location, date, event_location, type, event_link, ticket_link, tickets_left, streaming_link)
+    VALUES
+      (${location}, ${date}, ${eventLocation}, ${type}, ${eventLink}, ${ticketLink}, ${ticketsLeft}, ${streamingLink})
+    RETURNING *
+  `;
+  return camelcaseKeys(tourdate);
 }

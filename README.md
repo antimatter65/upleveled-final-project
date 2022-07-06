@@ -41,7 +41,11 @@ DOMS README STARTS HERE:
 
 ## API design:
 
-base URL (development) :http://localhost:3000/api/
+base URL (for development) :http://localhost:3000/api/
 
 1. Reading all releases: 'GET /releases' ===> api/releases/index.js
 2. Creating a new release to releases: 'POST /releases' ===> api/releases/index.js
+
+3. Reading a single release: 'GET /releases/:id ====> api/releases/[releaseID].js 
+4. Updating a single release: 'PUT /releases/:id ====> api/releases/[releaseID].js 
+5. Reading a single release: 'DELETE /releases/:id ====> api/releases/[releaseID].js 
