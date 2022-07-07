@@ -24,7 +24,9 @@ export default async function handler(
 
     // too make sue that url number refers to an event in the database
     if (!eventData) {
-      return res.status(400).json({ error: 'event does not exist' });
+      return res
+        .status(400)
+        .json({ error: 'event does not exist / incorrect' });
     }
 
     return res.status(200).json(eventData);

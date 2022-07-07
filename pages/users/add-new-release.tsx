@@ -1,7 +1,8 @@
 import { css } from '@emotion/react';
+import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { Release } from '../../utils/database';
+import { getUserByValidSessionToken, Release } from '../../utils/database';
 
 const mainHeaderStyles = css`
   margin: 2%;
@@ -481,4 +482,30 @@ export default function ApiFrontEndReleases() {
       </main>
     </div>
   );
+}
+
+// to ensure that the user has to be logged in to be able to view this page
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  // for getUserByUsername parseInt is not
+
+  // get just the sessionToken (without this all the cookie are returned) and set to equal to const user
+  const user = await getUserByValidSessionToken(
+    context.req.cookies.sessionToken,
+  );
+
+  if (user) {
+    return {
+      props: {
+        user: user,
+      },
+    };
+  }
+  // redirect to login page if not logged then return to the profile page after successful log in
+  return {
+    redirect: {
+      destination: '/login?returnTo=/users/private-page',
+      permanent: false,
+    },
+  };
 }
