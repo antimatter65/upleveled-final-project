@@ -16,7 +16,7 @@ export default async function handler(
   const eventId = Number(req.query.eventId);
 
   if (!eventId) {
-    return res.status(400).json({ error: 'event does not exist' });
+    return res.status(400).json({ error: 'event does not exist in database' });
   }
 
   if (req.method === 'GET') {

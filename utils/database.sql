@@ -74,3 +74,9 @@ Past Dates:
 
   VALUES
   ('Mayrhofen, Austria', '06.04.22', 'Snowbombing 2022 (DJ)', 'Snowbombing 2022 (DJ)',  false, '');
+
+  INSERT INTO about
+  (paragraph_1)
+
+  VALUES
+  ('testdata')

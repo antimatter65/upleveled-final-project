@@ -136,13 +136,13 @@ export default function ApiFrontEndTourDates() {
         ticketsLeft: editSoldOutCheck,
       }),
     });
-    const updateEvent = await response.json();
+    const updatedEvent = await response.json();
 
     // copy and update copy of the state
 
     const newState = tourDatesList.map((event) => {
-      if (event.id === updateEvent.id) {
-        return updateEvent;
+      if (event.id === updatedEvent.id) {
+        return updatedEvent;
       } else {
         return event;
       }
@@ -150,6 +150,7 @@ export default function ApiFrontEndTourDates() {
 
     // update setState Function
     setTourDatesList(newState);
+    console.log('compare tourdates newstate', newState);
   }
 
   return (

@@ -8,7 +8,7 @@ import { getUserByValidSessionToken, User } from '../../utils/database';
 // creating the dynamic page for private profile
 
 type props = {
-  user?: User;
+  user?: User | undefined;
 };
 
 export default function UserPage(props: props) {
@@ -46,7 +46,7 @@ export default function UserPage(props: props) {
           <br />
           <Link href="/users/add-tour-dates">Add DJ/Live Dates </Link>
           <br />
-          <Link href="/">Add Profile Info </Link>
+          <Link href="/users/edit-about">Add Profile Info </Link>
           <br />
           <Link href="/">Update Featured Mixes</Link>
           <br />
@@ -67,9 +67,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     context.req.cookies.sessionToken,
   );
 
-  //const user = await getUserByUserId(1);
-
-  console.log('what does user contain?', user);
+  // const user = await getUserByUserId(1);
+  // console.log('what does user contain?', user);
 
   if (user) {
     return {

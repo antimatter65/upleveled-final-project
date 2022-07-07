@@ -65,6 +65,17 @@ export type TourDate = {
   streamingLink: string;
 };
 
+export type AboutData = {
+  id: number;
+  paragraph1: string;
+  paragraph2: string;
+  paragraph3: string;
+  paragraph4: string;
+  externalLink1: string;
+  externalLink2: string;
+  externalLink3: string;
+};
+
 // req.body.ticketsLeft,
 // req.body.streamingLink,
 
@@ -222,7 +233,7 @@ export async function getRelease(id: number) {
   return camelCase(release);
 }
 
-// join function to get data from both databases based on where release.id =release1.release_id.
+// join function to get data from both databases based on where release.id = release1.release_id.
 
 export async function getReleaseByReleaseId(releaseId: number) {
   if (!releaseId) return undefined;
@@ -385,4 +396,52 @@ export async function getEvent(id: number) {
   WHERE id = ${id}
   `;
   return camelCase(event);
+}
+
+// function to return all the about info in the database for the edit about page (may not require map as this database on contains one row)
+
+export async function getAboutInfo() {
+  const about = await sql`
+  SELECT * FROM about
+  `;
+  return about.map((tour) => camelCase(tour));
+}
+
+// function to return all the about info in the database for the edit about page (may not require map as this database on contains one row)
+
+export async function getAboutInfoById(id: number) {
+  const about = await sql`
+  SELECT * FROM about
+  WHERE id = ${id}
+  `;
+  return about.map((tour) => camelCase(tour));
+}
+
+// update event data currently in the database about
+
+export async function updateAboutInfo(
+  paragraph1: string,
+  paragraph2: string,
+  paragraph3: string,
+  paragraph4: string,
+  externalLink1: string,
+  externalLink2: string,
+  externalLink3: string,
+) {
+  const about = await sql`
+    UPDATE
+      about
+    SET
+      paragraph_1 = ${paragraph1},
+      paragraph_2 = ${paragraph2},
+      paragraph_3 = ${paragraph3},
+      paragraph_4 = ${paragraph4},
+      external_Link_1 = ${externalLink1},
+      external_Link_2 = ${externalLink2},
+      external_Link_3 = ${externalLink3}
+    WHERE
+    id = 1
+    RETURNING *
+  `;
+  return camelcaseKeys(about);
 }

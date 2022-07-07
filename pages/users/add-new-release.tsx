@@ -23,31 +23,6 @@ const inputStyles = css`
 `;
 
 export default function ApiFrontEndReleases() {
-  // const [releaseList, setReleaseList] = useState([
-  //   {
-  //     id: 1,
-  //     releaseName: 'Closer',
-  //     tracks: 2,
-  //     releaseDate: '2022/04/21',
-  //     recordLabel: 'Code Recordings',
-  //     coverArtLink: 'somelink',
-  //     buyLink: 'somelink',
-  //     streamingLink: 'somelink',
-  //     bandcampLink: 'somelink',
-  //   },
-  //   {
-  //     id: 2,
-  //     releaseName: 'White-Label-1',
-  //     tracks: 3,
-  //     releaseDate: '2022/07/05',
-  //     recordLabel: 'DOM Recordings',
-  //     coverArtLink: 'somelink',
-  //     buyLink: 'somelink',
-  //     streamingLink: 'somelink',
-  //     bandcampLink: 'somelink',
-  //   },
-  // ]);
-
   const [releaseList, setReleaseList] = useState<Release[]>([]);
 
   const [currentReleaseEdit, setCurrentReleaseEdit] = useState<
@@ -161,13 +136,14 @@ export default function ApiFrontEndReleases() {
         bandcampLink: editBandcampLink,
       }),
     });
-    const updateRelease = await response.json();
+
+    const updatedRelease = await response.json();
 
     // copy and update copy of the state
 
     const newState = releaseList.map((release) => {
-      if (release.id === updateRelease.id) {
-        return updateRelease;
+      if (release.id === updatedRelease.id) {
+        return updatedRelease;
       } else {
         return release;
       }

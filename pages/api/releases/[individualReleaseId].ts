@@ -13,7 +13,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  // Number is required to change the sting into a number
+  // Number is required to change the string into a number
   const individualReleaseId = Number(req.query.individualReleaseId);
 
   if (!individualReleaseId) {
