@@ -56,9 +56,9 @@ export default function MyApp({ Component, pageProps }) {
           html,
           body {
             text-decoration: none;
-            padding: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
+            padding: 0%;
+            margin-left: 0%;
+            margin-right: 0%;
             font-family: Lexend Zetta, sans-serif, Dosis, -apple-system,
               BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
               Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
