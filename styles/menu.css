@@ -1,0 +1,49 @@
+/* sidebar Nav */
+
+.navBar {
+  position: relative;
+}
+
+/* .navBar button {
+  position: fixed;
+  left: 40px;
+  top: 40px;
+  z-index: 10;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  z-index: 10;
+  color: blue;
+} */
+
+.menuNav {
+  overflow-y: scroll;
+  list-style: none;
+  position: fixed;
+  top: 0;
+  background: grey;
+  right: 0;
+  bottom: 0;
+  opacity: 0.9;
+  height: 100vh;
+  width: 0%;
+  overflow: hidden;
+  max-width: 35%;
+  z-index: 9;
+  z-index: 0;
+}
+
+.menuNav.showMenu {
+  width: 100%;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #3fffd2;
+  padding-top: 20px;
+}
+
+.menuNav li:first-child {
+  margin-top: 7rem;
+}

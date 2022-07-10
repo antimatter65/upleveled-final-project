@@ -61,9 +61,9 @@ const releasesListItemStyles = css`
 `;
 
 const releasesListItemLinkStyles = css`
-  color: grey;
-  text-decoration: underline;
+  color: #ffffff;
   border: 1px solid black;
+  margin: 20%;
   flex-direction: column;
   .a {
     color: green;
@@ -94,19 +94,25 @@ export default function releaseList(props) {
           {props.aboutInfo.map((about) => {
             return (
               <div key={`release-${about.id}`} css={releasesListItemLinkStyles}>
-                <div>Location: {about.paragraph1}</div>
+                <div>{about.paragraph1}</div>
                 <br />
-                <div>Date: {about.paragraph2}</div>
                 <br />
-                <div>Event Location: {about.paragraph3}</div>
+                <div> {about.paragraph2}</div>
                 <br />
-                <div>Type: {about.paragraph4}</div>
                 <br />
-                <div>Event Link: {about.externalLink1}</div>
+                <div> {about.paragraph3}</div>
                 <br />
-                <div>Tickets: {about.externalLink12}</div>
                 <br />
-                <div>Streaming Link: {about.externalLink3}</div>
+                <div>{about.paragraph4}</div>
+                <br />
+                <div>{about.externalLink1}</div>
+                <br />
+                <br />
+                <div>{about.externalLink12}</div>
+                <br />
+                <br />
+                <div>{about.externalLink3}</div>
+                <br />
                 <br />
 
                 {/* <Link href={`/releases/${release.id}`}>

@@ -11,8 +11,8 @@ const headerStyles = css`
   position: static;
   z-index: 5;
   width: 100%;
-  height: 50;
-  background: grey;
+  height: 5%;
+  background: #000000;
   opacity: 0.95;
   border-bottom: grey 1px solid;
   font-size: 12px;
@@ -42,6 +42,7 @@ const headerLinkContainerStyles = css`
 `;
 
 const headerLinkStyles = css`
+  z-index: 10;
   border: grey 1px solid;
   display: flex;
   position: relative;

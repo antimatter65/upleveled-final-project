@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -6,6 +7,12 @@ import Link from 'next/link';
 import { getUserByValidSessionToken, User } from '../../utils/database';
 
 // creating the dynamic page for private profile
+
+const linkStyles = css`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+`;
 
 type props = {
   user?: User | undefined;
@@ -28,29 +35,36 @@ export default function UserPage(props: props) {
   return (
     <div>
       <Head>
-        <title>User Page</title>
+        <title>Edit Page</title>
         <meta name="description" content="private edit menu page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1>User Page</h1>
-        <h2>
-          User #: {props.user.id} (username: {props.user.username})
-        </h2>
-        <div>id: {props.user.id} </div>
-        <div> username: {props.user.username}</div>
-        <h2>Whats Up Smithy, what do you want to do today..?</h2>
-        <div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h1>Edit Menu</h1>
+        <h2>User #: {props.user.id}</h2>
+        {/* <h2>Username: {props.user.username}</h2> */}
+        <h2>Whats Up {props.user.username} what do you want to do today..?</h2>
+        <div css={linkStyles}>
           <Link href="/users/add-new-release">Update Releases</Link>
+          <br />
           <br />
           <Link href="/users/add-tour-dates">Add DJ/Live Dates </Link>
           <br />
+          <br />
           <Link href="/users/edit-about">Add Profile Info </Link>
+          <br />
           <br />
           <Link href="/">Update Featured Mixes</Link>
           <br />
+          <br />
           <Link href="/">Change Contact Information</Link>
+          <br />
           <br />
           <Link href="/">Change Landing Page Video</Link>
         </div>

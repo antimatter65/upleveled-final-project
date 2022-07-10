@@ -22,6 +22,10 @@ const inputStyles = css`
   flex-direction: column;
 `;
 
+const mainStyles = css`
+  margin-left: 10%;
+`;
+
 export default function ApiFrontEndTourDates() {
   const [tourDatesList, setTourDatesList] = useState<TourDate[]>([]);
 
@@ -164,7 +168,11 @@ export default function ApiFrontEndTourDates() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main css={mainStyles}>
+        <br />
+        <br />
+        <br />
+        <br />
         <section css={mainHeaderStyles}>
           <h1>Add New Event:</h1>
         </section>

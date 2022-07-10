@@ -2,15 +2,16 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 
 const footerStyles = css`
-  position: static;
+  position: relative;
   padding: 8px 14px;
   height: 50px;
   background: white;
   border-radius: 10px;
   margin-top: 30px;
-  font-size: 16px;
+  font-size: 10px;
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
   > div > a + a {
     margin-left: 30px;
   }
@@ -19,6 +20,9 @@ const footerStyles = css`
 const footerLinkStyles = css`
   /*   border: white 1px solid;
  */
+  display: flex;
+  position: relative;
+  font-size: 5px;
   a {
     border-radius: 4px;
     color: black;
@@ -52,7 +56,7 @@ export default function Footer() {
         {/* </div> */}
         <div>
           {/* <div css={footerLinkStyles}> */}
-          <Link href="/contactus">contact us</Link>
+          <Link href="/contact">contact</Link>
           {/* </div> */}
         </div>
       </div>

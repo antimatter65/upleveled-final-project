@@ -22,6 +22,10 @@ const inputStyles = css`
   flex-direction: column;
 `;
 
+const mainStyles = css`
+  padding-left: 20%;
+`;
+
 export default function ApiFrontEndReleases() {
   const [releaseList, setReleaseList] = useState<Release[]>([]);
 
@@ -161,7 +165,11 @@ export default function ApiFrontEndReleases() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main css={mainStyles}>
+        <br />
+        <br />
+        <br />
+        <br />
         <section css={mainHeaderStyles}>
           <h1>Add Release:</h1>
         </section>

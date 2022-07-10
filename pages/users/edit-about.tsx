@@ -95,6 +95,12 @@ export default function ApiFrontEndAbout() {
       </Head>
 
       <main>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <h2>Edit About Page:</h2>
         <br />
         {aboutList.map((aboutinput) => {

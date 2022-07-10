@@ -9,6 +9,11 @@ const mainStyles = css`
   margin-top: 5%;
 `;
 
+const titleStyles = css`
+  margin-left: 600px;
+  color: #e499d1;
+`;
+
 export default function Contact() {
   return (
     <div className={styles.container}>
@@ -22,7 +27,9 @@ export default function Contact() {
       </Head>
 
       <main>
-        Contact and Bookings:
+        <br />
+        <h1 css={titleStyles}>Contact and Bookings:</h1>
+        <hr />
         <section css={mainStyles}>
           <div>For Booking and Inquires please contact:</div>
           <div>locodabookings@email.com</div>

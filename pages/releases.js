@@ -15,6 +15,8 @@ const releasesListStyles = css`
   display: flex;
   position: relative;
   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   padding: 10px;
   margin: 30px;
   justify-content: flex-start;
@@ -68,40 +70,43 @@ export default function releaseList(props) {
 
       <main>
         <div css={releasesListStyles}>
-          {props.releases.map((release) => {
-            return (
-              <div
-                key={`release-${release.id}`}
-                css={releasesListItemLinkStyles}
-              >
-                <div css={release.ListItemLinkStyles}>
-                  {/* <Link href={`/releases/${releases.id}`}>
+          {props.releases
+            .sort((a, b) => a.id - b.id)
+            .map((release) => {
+              return (
+                <div
+                  key={`release-${release.id}`}
+                  css={releasesListItemLinkStyles}
+                >
+                  <div css={release.ListItemLinkStyles}>
+                    {/* <Link href={`/releases/${releases.id}`}>
                     {releases.release_name}
                   </Link> */}
+                  </div>
+                  {/* <div>Length: {releases.release_date}</div> */}
+                  <div>Name: {release.releaseName}</div>
+                  <br />
+                  <div>Number of Tracks: {release.tracks}</div>
+                  <br />
+                  <div>Label: {release.recordLabel}</div>
+                  <br />
+                  <div>Released: {release.releaseDate}</div>
+                  <br />
+                  {/* <div>Cover Art Link: {release.coverArtLink}</div> */}
+                  <Link href={`/releases/${release.id}`}>
+                    <Image
+                      src={`/${release.id}.jpeg`}
+                      width="300"
+                      height="300"
+                    />
+                  </Link>
+                  <br />
+                  <Link href={release.buyLink}>Beatport</Link>
+                  <Link href={release.streamingLink}>Stream</Link>
+                  <Link href={release.bandcampLink}>Bandcamp</Link>
                 </div>
-                {/* <div>Length: {releases.release_date}</div> */}
-                <div>Name: {release.releaseName}</div>
-                <br />
-                <div>Number of Tracks: {release.tracks}</div>
-                <br />
-                <div>Record Label: {release.recordLabel}</div>
-                <br />
-                <div>Release Date: {release.releaseDate}</div>
-                <br />
-                <div>Cover Art Link: {release.coverArtLink}</div>
-                <br />
-                <div>Beatport Link: {release.buyLink}</div>
-                <br />
-                <div>Streaming Link: {release.streamingLink}</div>
-                <br />
-                <div>Bandcamp Link: {release.bandcampLink}</div>
-                <br />
-                <Link href={`/releases/${release.id}`}>
-                  <Image src={`/${release.id}.jpeg`} width="600" height="400" />
-                </Link>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </main>
     </div>

@@ -1,23 +1,39 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect } from 'react';
 import darkbackground1 from '../public/darkbackground1.jpeg';
 import styles from '../styles/Home.module.css';
 
 const mainVideoStyles = css`
-  margin: 10%;
-  margin-top: 5%;
-  background-color: grey;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const backgroundImageStyles = css`
   width: 100%;
-  z-index: 0;
+  z-index: -5;
 `;
 
 const mainStyles = css`
-  background-color: grey;
+  // background-color: grey;
+`;
+
+const headerTextStyles = css`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  // border: 2px green solid;
+`;
+
+const footerTextStyles = css`
+  display: flex;
+  font-size: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 `;
 
 type Props = {
@@ -37,13 +53,23 @@ export default function Home(props: Props) {
       </Head>
 
       <main css={mainStyles}>
-        {/* <div ccs={backgroundImageStyles}>
-          <Image src={darkbackground1} />
-        </div> */}
+        <br />
+        <br />
+        <br />
+        <section css={headerTextStyles}>
+          <h1>CLOSER OUT NOW</h1>
+          <br />
+          <h2>on Code Recordings</h2>
+          <br />
+        </section>
+
         <section css={mainVideoStyles}>
+          {/* <div ccs={backgroundImageStyles}>
+            <Image src={darkbackground1} />
+          </div> */}
           <iframe
-            width="1120"
-            height="630"
+            width="1020"
+            height="530"
             src="https://www.youtube-nocookie.com/embed/HwwtvZ45PB4"
             title="YouTube video player"
             frameBorder="0"
@@ -51,61 +77,25 @@ export default function Home(props: Props) {
             allowFullScreen
           />
         </section>
+        <br />
+        <section css={footerTextStyles}>
+          <div>
+            <Link css={footerTextStyles} href="https://ingrv.es/closer-bek-3">
+              Stream |
+            </Link>
+          </div>
+          <div>
+            <Link href="https://www.beatport.com/release/closer/3708354">
+              | Beatport |
+            </Link>
+          </div>
+          <div>
+            <Link href="https://coderecs.bandcamp.com/album/closer-closer-instrumental">
+              | Bandcamp
+            </Link>
+          </div>
+        </section>
       </main>
-
-      {/* <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span> */}
-      {/* </a>
-      </footer> */}
     </div>
   );
 }

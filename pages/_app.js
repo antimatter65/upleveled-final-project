@@ -1,22 +1,18 @@
-// import '../styles/burger.css';
+import '../styles/menu.css';
 import { css, Global } from '@emotion/react';
-import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import Layout from '../components/Layout';
-import darkbackground1 from '../public/darkbackground1.jpeg';
 
-//import { User } from '../utls/database';
+// import { User } from '../utls/database';
 
-const backgroundImageStyles = css`
-  z-index: -0;
-  width: 1%;
-  opacity: 0.5;
-`;
+// const backgroundImageStyles = css`
+//   z-index: -0;
+//   width: 1%;
+//   opacity: 0.5;
+// `;
 
 export default function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState();
-
-  // console.log('hey', user);
 
   // callback used so only created one time - optimisation
 
@@ -73,9 +69,13 @@ export default function MyApp({ Component, pageProps }) {
           * {
             box-sizing: border-box;
           }
+          body {
+            background-color: #efefef;
+          }
         `}
       />
 
+      <div>a</div>
       <Layout user={user} refreshUserProfile={refreshUserProfile}>
         {/*         <div ccs={backgroundImageStyles}>
           <Image src={darkbackground1} />

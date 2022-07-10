@@ -9,9 +9,11 @@ import { getTourDates } from '../utils/database';
 
 const titleStyles = css`
   margin-left: 600px;
+  color: #e499d1;
 `;
 
-const releasesListStyles = css`
+const tourDatesListStyles = css`
+  z-index: 0;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -49,11 +51,12 @@ const releasesListItemStyles = css`
   }
 `;
 
-const releasesListItemLinkStyles = css`
-  color: grey;
-  text-decoration: underline;
+const indivdualTourDateListStyles = css`
   border: 1px solid black;
-  flex-direction: column;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  padding: 2%;
   .a {
     color: green;
   }
@@ -71,32 +74,37 @@ export default function releaseList(props) {
       <hr />
 
       <main>
-        <div css={releasesListStyles}>
-          {props.tourdates.map((tour) => {
-            return (
-              <div key={`release-${tour.id}`} css={releasesListItemLinkStyles}>
-                <div>Location: {tour.location}</div>
-                <br />
-                <div>Date: {tour.date}</div>
-                <br />
-                <div>Event Location: {tour.eventLocation}</div>
-                <br />
-                <div>Type: {tour.type}</div>
-                <br />
-                <div>Event Link: {tour.eventLink}</div>
-                <br />
-                <div>Tickets: {tour.ticketLink}</div>
-                <br />
-                <div>Streaming Link: {tour.streamingLink}</div>
-                <br />
-                <div>Tickets Left: {tour.ticketsLeft}</div>
-                <br />
-                {/* <Link href={`/releases/${release.id}`}>
+        <div css={tourDatesListStyles}>
+          {props.tourdates
+            .sort((a, b) => a.id - b.id)
+            .map((tour) => {
+              return (
+                <div
+                  key={`release-${tour.id}`}
+                  css={indivdualTourDateListStyles}
+                >
+                  <div>{tour.location} |</div>
+                  <br />
+                  <div>{tour.date} |</div>
+                  <br />
+                  <div> {tour.eventLocation} |</div>
+                  <br />
+                  <div>{tour.type} |</div>
+                  <br />
+                  <div>Event Link: {tour.eventLink} |</div>
+                  <br />
+                  <div>Tickets: {tour.ticketLink} |</div>
+                  <br />
+                  <div>Streaming Link: {tour.streamingLink} |</div>
+                  <br />
+                  <div>Tickets Left: {tour.ticketsLeft} |</div>
+                  <br />
+                  {/* <Link href={`/releases/${release.id}`}>
                   <Image src={`/${release.id}.jpeg`} width="600" height="400" />
                 </Link> */}
-              </div>
-            );
-          })}
+                </div>
+              );
+            })}
         </div>
       </main>
     </div>
