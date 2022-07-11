@@ -11,15 +11,20 @@ const mainReleaseStyles = css`
   position: relative;
   align-items: center;
   flex-direction: column;
-  height: 49vw;
-  padding-top: 50px;
-  padding-left: 100px;
+  padding-top: 5%;
   justify-items: center;
+  color: white;
 `;
 
 const imageStyles = css`
   margin: 0;
   justify-content: center;
+  overflow: hidden;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
 `;
 
 const sectionStyles = css`
@@ -27,7 +32,6 @@ const sectionStyles = css`
   position: relative;
   flex-direction: column;
   align-items: center;
-  padding: 50px;
   font-size: 18px;
   // background-color: white;
   height: 600px;
@@ -41,7 +45,9 @@ const trackDataStyles = css`
   display: flex;
   position: relative;
   flex-direction: column;
-  // border: black solid 2px;
+  align-items: center;
+  padding-left: 0%;
+  margin-left: 0%;
 `;
 
 const singleTrackDataStyles = css`
@@ -81,7 +87,7 @@ export default function Release(props) {
 
       <div>
         <main css={mainReleaseStyles}>
-          <div>{props.allReleaseData.releaseName}</div>
+          <h1>{props.allReleaseData.releaseName}</h1>
           <br />
           <div>
             <Image
@@ -98,11 +104,11 @@ export default function Release(props) {
                 {props.allReleaseData.trackData.map((release) => {
                   return (
                     <div css={singleTrackDataStyles} key="releaseId">
-                      <li key={`release-${release.releaseId}`}>
+                      <ul key={`release-${release.releaseId}`}>
                         <div>
                           {release.trackNumber}.{'                    '}{' '}
-                          {release.trackName} {release.trackLength}
-                          {release.colab}
+                          {release.trackName} {release.colab}{' '}
+                          {release.trackLength}
                         </div>
                         <br />
                         {/* <div>{release.trackNumber}</div>
@@ -110,7 +116,7 @@ export default function Release(props) {
                         <div>{release.colab}</div>
                         <div> {release.trackLength}</div>
                         <div>{release.trackNumber}</div> */}
-                      </li>
+                      </ul>
                     </div>
                   );
                 })}
@@ -119,7 +125,6 @@ export default function Release(props) {
           </section>
           <section css={sectionStyles}>
             {/* <div>{props.allReleaseData.releaseName}</div> */}
-
             {/* <div>Tracks: {props.allReleaseData.tracks}</div> */}
             <br />
             <div>Label: {props.allReleaseData.recordLabel}</div>
@@ -144,34 +149,6 @@ export default function Release(props) {
             <div>Track Length: {props.allReleaseData.trackLength}</div>
             <br /> */}
             <br />
-          </section>
-          <section>
-            <div>
-              track names:
-              <ul>
-                {props.allReleaseData.trackData.map((release) => {
-                  return (
-                    <li key={`release-${release.releaseId}`}>
-                      {release.trackName}
-                      <br />
-                      {release.trackLength}
-                      <br />
-                      {release.colab}
-                      <br />
-                      {release.trackNumber}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-            {/* <div>
-            foods:
-            <ul>
-              {props.animalWithFoods.foods.map((food) => {
-                return <li key={`food-${food.id}`}>{food.name}</li>;
-              })}
-            </ul>
-          </div>           */}
           </section>
         </main>
       </div>

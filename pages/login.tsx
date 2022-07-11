@@ -14,6 +14,7 @@ const signInBoxStyles1 = css`
   border: 1px black solid;
   padding-top: 5%;
   padding-bottom: 5%;
+  z-index: 11;
 `;
 
 export default function About(props) {
@@ -80,6 +81,10 @@ export default function About(props) {
         <div css={signInBoxStyles1}>
           <h1 css={signInBoxStyles}>Login:</h1>
           <section css={signInBoxStyles}>
+            <br />
+            <br />
+            <br />
+            <br />
             <label>
               username:
               <input
@@ -89,8 +94,7 @@ export default function About(props) {
                 }}
               />
             </label>
-            <br />
-            <br />
+
             <label>
               password:
               <input

@@ -1,4 +1,5 @@
 import '../styles/menu.css';
+import '../styles/carousel.css';
 import { css, Global } from '@emotion/react';
 import { useCallback, useEffect, useState } from 'react';
 import Layout from '../components/Layout';
@@ -53,12 +54,13 @@ export default function MyApp({ Component, pageProps }) {
           body {
             text-decoration: none;
             padding: 0%;
+            padding-top: 0%;
             margin-left: 0%;
+            margin-top: 0%;
             margin-right: 0%;
             font-family: Lexend Zetta, sans-serif, Dosis, -apple-system,
               BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
               Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-            background-color: white;
           }
 
           a {
@@ -75,7 +77,6 @@ export default function MyApp({ Component, pageProps }) {
         `}
       />
 
-      <div>a</div>
       <Layout user={user} refreshUserProfile={refreshUserProfile}>
         {/*         <div ccs={backgroundImageStyles}>
           <Image src={darkbackground1} />

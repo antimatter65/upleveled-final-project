@@ -12,6 +12,8 @@ const linkStyles = css`
   display: flex;
   flex-direction: column;
   border: 1px solid black;
+  color: white;
+  padding: 0%;
 `;
 
 type props = {
@@ -39,11 +41,7 @@ export default function UserPage(props: props) {
         <meta name="description" content="private edit menu page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
-        <br />
-        <br />
-        <br />
+      <main css={linkStyles}>
         <br />
         <br />
         <h1>Edit Menu</h1>
@@ -53,18 +51,13 @@ export default function UserPage(props: props) {
         <div css={linkStyles}>
           <Link href="/users/add-new-release">Update Releases</Link>
           <br />
-          <br />
           <Link href="/users/add-tour-dates">Add DJ/Live Dates </Link>
-          <br />
           <br />
           <Link href="/users/edit-about">Add Profile Info </Link>
           <br />
-          <br />
           <Link href="/">Update Featured Mixes</Link>
           <br />
-          <br />
           <Link href="/">Change Contact Information</Link>
-          <br />
           <br />
           <Link href="/">Change Landing Page Video</Link>
         </div>

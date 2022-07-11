@@ -17,10 +17,11 @@ const releasesListStyles = css`
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+
   margin: 30px;
   justify-content: flex-start;
   justify-content: space-evenly;
+  border: white 3px solid;
 `;
 
 const releasesListItemStyles = css`
@@ -50,11 +51,18 @@ const releasesListItemStyles = css`
 `;
 
 const releasesListItemLinkStyles = css`
+  display: flex;
+  flex-direction: column;
   color: grey;
   text-decoration: underline;
   .a {
     color: green;
   }
+`;
+
+const linkStyles = css`
+  display: flex;
+  flex-direction: row;
 `;
 
 export default function releaseList(props) {
@@ -84,7 +92,9 @@ export default function releaseList(props) {
                   </Link> */}
                   </div>
                   {/* <div>Length: {releases.release_date}</div> */}
-                  <div>Name: {release.releaseName}</div>
+                  <Link href={`/releases/${release.id}`}>
+                    <div>Name: {release.releaseName}</div>
+                  </Link>
                   <br />
                   <div>Number of Tracks: {release.tracks}</div>
                   <br />
@@ -96,14 +106,16 @@ export default function releaseList(props) {
                   <Link href={`/releases/${release.id}`}>
                     <Image
                       src={`/${release.id}.jpeg`}
-                      width="300"
-                      height="300"
+                      width="200"
+                      height="200"
                     />
                   </Link>
                   <br />
-                  <Link href={release.buyLink}>Beatport</Link>
-                  <Link href={release.streamingLink}>Stream</Link>
-                  <Link href={release.bandcampLink}>Bandcamp</Link>
+                  <div css={linkStyles}>
+                    <Link href={release.buyLink}>Beatport</Link>
+                    <Link href={release.streamingLink}>Stream</Link>
+                    <Link href={release.bandcampLink}>Bandcamp</Link>
+                  </div>
                 </div>
               );
             })}

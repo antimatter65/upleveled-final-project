@@ -1,34 +1,17 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { MdClose } from 'react-icons/md';
 import whitelogo from '../public/whitelogo.png';
 
-const headerStyles = css`
-  color: grey;
-  position: static;
-  z-index: 5;
-  width: 100%;
-  height: 5%;
-  background: #000000;
-  opacity: 0.95;
-  border-bottom: grey 1px solid;
-  font-size: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 10;
-  // background-color: grey;
-`;
-
 const headerlogo = css`
   display: flex;
   position: relative;
-  margin-top: 0.5%;
   position: fixed;
   z-index: 10;
+  padding: 2%;
 `;
 
 const headerLinkContainerStyles = css`
@@ -54,7 +37,8 @@ const headerLinkStyles = css`
   padding-top: 0%;
   padding-right: 100%;
   width: 400px;
-  font-size: 32px;
+  font-size: 28px;
+  opacity: 100;
 
   text-decoration: none;
   // #d3f71b
@@ -74,6 +58,11 @@ const headerLogoStyles = css`
 const navBarStyles = css`
   display: flex;
   position: relative;
+  margin-top: 0%;
+  height: 0%;
+  background-color: black;
+  z-index: 10;
+  padding-top: 0%;
 `;
 
 // const navBar = css`
@@ -81,11 +70,20 @@ const navBarStyles = css`
 // `;
 
 const buttonContainerStyles = css`
+  position: fixed;
   margin-left: 60%;
-  right: 0;
+  right: 0%;
+  margin-top: 0%;
+  margin-bottom: 0%;
   border: none;
-  background-color: none;
+  padding-top: 0%;
+  box-shadow: none;
+  background-color: black;
+  opacity: 0.75;
   z-index: 10;
+  padding: 1%;
+
+  // border: 3px green solid;
 `;
 
 const navMenuButtonStyles = css`
@@ -97,7 +95,6 @@ const navMenuButtonStyles = css`
   height: 40px;
   background-color: none;
   z-index: 10;
-  margin-left: 1500%;
 `;
 
 const navMenuButtonClosedStyles = css`
@@ -105,10 +102,10 @@ const navMenuButtonClosedStyles = css`
   display: flex;
   color: #beceb4;
   background-color: none;
-  width: 500%;
-  height: 100%;
+  width: 100%;
+  height: 40px;
+  background-color: none;
   z-index: 10;
-  margin-left: 800%;
 `;
 
 export default function Navbar(props) {
@@ -200,8 +197,12 @@ export default function Navbar(props) {
           <div css={headerLinkStyles}>
             <Link href="/logout">Logout</Link>
           </div>
+          <br />
+          <br />
+          <div css={headerLinkStyles}>
+            USER: {props.user && props.user.username}
+          </div>
         </div>
-        <div css={headerLinkStyles}>{props.user && props.user.username}</div>
       </ul>
     </nav>
   );

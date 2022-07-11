@@ -1,6 +1,8 @@
 import { css } from '@emotion/react';
 // import Image from 'next/image';
 import { Component } from 'react';
+import Background from './Background';
+import BackgroundLight from './BackgroundLight';
 // import darkbackground from '../public/dark-background-2.jpeg';
 import Footer from './Footer';
 import Header from './Header';
@@ -20,7 +22,12 @@ export default function Layout(props) {
           user={props.user}
           refreshUserProfile={props.refreshUserProfile}
         /> */}
-        <Navbar />
+        <Background />
+        {/* <BackgroundLight /> */}
+        <Navbar
+          user={props.user}
+          refreshUserProfile={props.refreshUserProfile}
+        />
         {/* <img
           src="../public/light-background-1.jpeg"
           alt="light background"
