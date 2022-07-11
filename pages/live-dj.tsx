@@ -8,21 +8,24 @@ import { getTourDates } from '../utils/database';
 // import { releases.Database } from '../util/database';
 
 const titleStyles = css`
-  margin-left: 600px;
+  display: flex;
+  position: relative;
+  justify-content: center;
   color: #e499d1;
 `;
 
 const tourDatesListStyles = css`
+  color: white;
   z-index: 0;
   display: flex;
   position: relative;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 10px;
-  margin: 30px;
+  padding: 1%;
+  margin: 8%;
   justify-content: flex-start;
   justify-content: space-evenly;
-  border: 1px solid black;
+  border: 1px solid greenyellow;
 `;
 
 const releasesListItemStyles = css`
@@ -46,13 +49,13 @@ const releasesListItemStyles = css`
     width: 500px;
     padding: 10px 16px;
     margin: 20px;
-    border: solid black 10px;
+    border: solid white 10px;
     box-shadow: #5e5df0 0 10px 20px -10px;
   }
 `;
 
 const indivdualTourDateListStyles = css`
-  border: 1px solid black;
+  border: 1px solid aqua;
   display: flex;
   position: relative;
   flex-direction: row;
@@ -71,12 +74,10 @@ export default function releaseList(props) {
         {/* <link rel="icon" href="/faviconmixtape.png" /> */}
       </Head>
       <h1 css={titleStyles}>Live & DJ</h1>
-      <hr />
-
       <main>
         <div css={tourDatesListStyles}>
           {props.tourdates
-            .sort((a, b) => a.id - b.id)
+            .sort((a, b) => a.date - b.date)
             .map((tour) => {
               return (
                 <div

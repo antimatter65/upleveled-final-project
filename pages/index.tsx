@@ -1,8 +1,11 @@
+// import 'boxicons';
 import { css } from '@emotion/react';
 import Head from 'next/head';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
+// react-youtube used due to eslint problems with requiring sandboxes for iframes
+import YouTube from 'react-youtube';
 import darkbackground1 from '../public/darkbackground1.jpeg';
 import styles from '../styles/Home.module.css';
 
@@ -41,6 +44,20 @@ export default function Home(props: Props) {
     props.refreshUserProfile().catch(() => console.log('refresh user profile'));
   }, [props]);
 
+  const onPlayerReady: YouTubeProps['onReady'] = (event) => {
+    // access to player in all event handlers via event.target
+    event.target.pauseVideo();
+  };
+
+  const opts: YouTubeProps['opts'] = {
+    height: '580',
+    width: '1080',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0,
+    },
+  };
+
   return (
     <div>
       <Head>
@@ -61,18 +78,8 @@ export default function Home(props: Props) {
         </section>
 
         <section css={mainVideoStyles}>
-          {/* <div ccs={backgroundImageStyles}>
-            <Image src={darkbackground1} />
-          </div> */}
-          <iframe
-            width="1020"
-            height="530"
-            src="https://www.youtube-nocookie.com/embed/HwwtvZ45PB4"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          <br />
+          <YouTube videoId="HwwtvZ45PB4" opts={opts} onReady={onPlayerReady} />
         </section>
         <br />
         <section css={footerTextStyles}>
@@ -92,6 +99,7 @@ export default function Home(props: Props) {
             </Link>
           </div>
         </section>
+        {/* <box-icon type="solid" name="hot"></box-icon> */}
       </main>
     </div>
   );

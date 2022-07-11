@@ -7,10 +7,12 @@ import { getUserByValidSessionToken, TourDate } from '../../utils/database';
 const mainHeaderStyles = css`
   margin: 2%;
   font-size: 13px;
+  color: white;
 `;
 const mainInputArea = css`
   margin: 1%;
   font-size: 10px;
+  color: white;
 `;
 
 const inputStyles = css`

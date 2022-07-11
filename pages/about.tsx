@@ -93,6 +93,9 @@ export default function releaseList(props) {
             );
           })}
         </div>
+        <div>
+          <div>Credit where it's due. We always hurt the ones we love.</div>
+        </div>
       </main>
     </div>
   );

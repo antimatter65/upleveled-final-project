@@ -8,7 +8,10 @@ import { getReleases } from '../utils/database';
 // import { releases.Database } from '../util/database';
 
 const titleStyles = css`
-  margin-left: 600px;
+  display: flex;
+  position: relative;
+  color: white;
+  justify-content: center;
 `;
 
 const releasesListStyles = css`
@@ -18,10 +21,10 @@ const releasesListStyles = css`
   flex-direction: column;
   align-items: center;
 
-  margin: 30px;
+  margin: 7%;
   justify-content: flex-start;
   justify-content: space-evenly;
-  border: white 3px solid;
+  border: blueviolet 3px solid;
 `;
 
 const releasesListItemStyles = css`
@@ -53,8 +56,8 @@ const releasesListItemStyles = css`
 const releasesListItemLinkStyles = css`
   display: flex;
   flex-direction: column;
-  color: grey;
-  text-decoration: underline;
+  color: white;
+  text-decoration: wavy;
   .a {
     color: green;
   }
@@ -63,6 +66,22 @@ const releasesListItemLinkStyles = css`
 const linkStyles = css`
   display: flex;
   flex-direction: row;
+`;
+
+const albumArtStyles = css`
+  display: flex;
+  position: fixed;
+  align-items: center;
+  align-self: center;
+  width: 90%;
+  padding: 8%;
+  padding-top: 0;
+  position: fixed;
+  align-items: center;
+  height: 80vh;
+  width: 90vw;
+  overflow: hidden;
+  z-index: -1;
 `;
 
 export default function releaseList(props) {
@@ -74,7 +93,6 @@ export default function releaseList(props) {
         {/* <link rel="icon" href="/faviconmixtape.png" /> */}
       </Head>
       <h1 css={titleStyles}>Releases</h1>
-      <hr />
 
       <main>
         <div css={releasesListStyles}>
@@ -86,11 +104,7 @@ export default function releaseList(props) {
                   key={`release-${release.id}`}
                   css={releasesListItemLinkStyles}
                 >
-                  <div css={release.ListItemLinkStyles}>
-                    {/* <Link href={`/releases/${releases.id}`}>
-                    {releases.release_name}
-                  </Link> */}
-                  </div>
+                  <div css={release.ListItemLinkStyles}></div>
                   {/* <div>Length: {releases.release_date}</div> */}
                   <Link href={`/releases/${release.id}`}>
                     <div>Name: {release.releaseName}</div>
@@ -103,19 +117,50 @@ export default function releaseList(props) {
                   <div>Released: {release.releaseDate}</div>
                   <br />
                   {/* <div>Cover Art Link: {release.coverArtLink}</div> */}
-                  <Link href={`/releases/${release.id}`}>
-                    <Image
-                      src={`/${release.id}.jpeg`}
-                      width="200"
-                      height="200"
-                    />
-                  </Link>
+                  <div css={albumArtStyles}>
+                    <Link href={`/releases/${release.id}`}>
+                      <Image
+                        src={`/${release.id}.jpeg`}
+                        width="700"
+                        height="700"
+                      />
+                    </Link>
+                  </div>
                   <br />
                   <div css={linkStyles}>
                     <Link href={release.buyLink}>Beatport</Link>
                     <Link href={release.streamingLink}>Stream</Link>
                     <Link href={release.bandcampLink}>Bandcamp</Link>
                   </div>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
                 </div>
               );
             })}
@@ -127,7 +172,7 @@ export default function releaseList(props) {
 
 // Code in getServerSideProps runs in
 // Node.js (on the server)
-//
+
 // Important: ONLY in the /pages directory
 export async function getServerSideProps() {
   // from database.js
