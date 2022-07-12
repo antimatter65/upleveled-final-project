@@ -124,7 +124,7 @@ export default function Navbar(props) {
   };
 
   return (
-    <nav css={navBarStyles}>
+    <div css={navBarStyles}>
       <br />
       <div css={headerlogo}>
         <Link href="/">
@@ -202,8 +202,13 @@ export default function Navbar(props) {
           <div css={headerLinkStyles}>
             USER: {props.user && props.user.username}
           </div>
+          <br />
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
         </div>
       </ul>
-    </nav>
+    </div>
   );
 }

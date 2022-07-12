@@ -5,18 +5,24 @@ import { useEffect, useState } from 'react';
 import { getUserByValidSessionToken, TourDate } from '../../utils/database';
 
 const mainHeaderStyles = css`
-  margin: 2%;
+  display: flex;
+  position: relative;
+  justify-content: center;
   font-size: 13px;
   color: white;
 `;
 const mainInputArea = css`
-  margin: 1%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   font-size: 10px;
   color: white;
+  border: 2px green solid;
 `;
 
 const inputStyles = css`
-  margin: 1%;
   font-family: Lexend Zetta;
   font-size: 10px;
   width: 30%;
@@ -24,9 +30,7 @@ const inputStyles = css`
   flex-direction: column;
 `;
 
-const mainStyles = css`
-  margin-left: 10%;
-`;
+const mainStyles = css``;
 
 export default function ApiFrontEndTourDates() {
   const [tourDatesList, setTourDatesList] = useState<TourDate[]>([]);

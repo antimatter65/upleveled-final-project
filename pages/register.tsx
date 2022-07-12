@@ -8,19 +8,56 @@ import { RegisterResponseBody } from './api/register';
 export const errorStyles = css`
   color: white;
   background-color: #f37c7c;
+  max-width: 50%;
+  border-radius: 15px;
+  font-size: 16px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-left: 22%;
 `;
 
 const signInBoxStyles = css`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  flex-direction: column;
   padding-left: 5%;
-`;
-const signInBoxStyles1 = css`
-  padding-left: 5%;
-  border: 1px black solid;
   padding-top: 5%;
-  padding-bottom: 5%;
+  color: white;
+  max-width: 75%;
+  font-size: 24px;
 `;
 
-export default function Register(props) {
+const signInBoxStyles1 = css`
+  padding-left: 5%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  z-index: 11;
+`;
+
+const inputBoxStyles = css`
+  width: 50%;
+  height: 1.5vw;
+  opacity: 0.6;
+  margin-left: 5%;
+  font-size: 24px;
+  color: greenyellow;
+  background-color: black;
+`;
+
+const buttonStyles = css`
+  width: 10%;
+  height: 50px;
+  margin-left: 60%;
+  border-radius: 15px;
+  opacity: 0.5;
+  background-color: greenyellow;
+  color: black;
+  font-size: 24px;
+`;
+
+export default function Register(props: any) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<
@@ -94,6 +131,7 @@ export default function Register(props) {
             <label>
               Username:
               <input
+                css={inputBoxStyles}
                 value={username}
                 onChange={(event) => {
                   setUsername(event.currentTarget.value);
@@ -103,8 +141,9 @@ export default function Register(props) {
             <br />
             <br />
             <label>
-              Password:
+              Password :
               <input
+                css={inputBoxStyles}
                 value={password}
                 onChange={(event) => {
                   setPassword(event.currentTarget.value);
@@ -113,7 +152,10 @@ export default function Register(props) {
             </label>
             <br />
             <br />
-            <button onClick={() => registerHandler()}>Register</button>
+            <button css={buttonStyles} onClick={() => registerHandler()}>
+              Register
+            </button>
+            <br />
             {errors.map((error) => (
               <div css={errorStyles} key={`error-${error.message}`}>
                 {error.message}

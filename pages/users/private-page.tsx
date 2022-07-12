@@ -8,12 +8,57 @@ import { getUserByValidSessionToken, User } from '../../utils/database';
 
 // creating the dynamic page for private profile
 
+const mainStyles = css`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  display: flex;
+  color: white;
+`;
+
 const linkStyles = css`
   display: flex;
-  flex-direction: column;
-  border: 1px solid black;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 85%;
+  margin: 5%;
+  height: 15px;
   color: white;
-  padding: 0%;
+  font-size: 20px;
+`;
+
+const linkButtonStyles = css`
+  display: flex;
+  position: relative;
+  justify-content: space-evenly;
+  align-content: center;
+  align-content: center;
+  align-self: center;
+  border: 3px solid white;
+  width: 40%;
+  border-radius: 15px;
+  background-color: black;
+  color: white;
+  margin: 1%;
+  margin-left: 3%;
+  padding: 1%;
+  opacity: 0.75;
+`;
+
+const headerStyles = css`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-top: 3%;
+`;
+
+const mainHeaderStyles = css`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-top: 0%;
 `;
 
 type props = {
@@ -41,25 +86,29 @@ export default function UserPage(props: props) {
         <meta name="description" content="private edit menu page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main css={linkStyles}>
-        <br />
-        <br />
-        <h1>Edit Menu</h1>
-        <h2>User #: {props.user.id}</h2>
-        {/* <h2>Username: {props.user.username}</h2> */}
-        <h2>Whats Up {props.user.username} what do you want to do today..?</h2>
+      <main css={mainStyles}>
+        <h1 css={mainHeaderStyles}>Edit Menu</h1>
+        <h2 css={headerStyles}>Whats Up {props.user.username}!?</h2>
+        <h2 css={headerStyles}>What do you want to do today..?</h2>
         <div css={linkStyles}>
-          <Link href="/users/add-new-release">Update Releases</Link>
-          <br />
-          <Link href="/users/add-tour-dates">Add DJ/Live Dates </Link>
-          <br />
-          <Link href="/users/edit-about">Add Profile Info </Link>
-          <br />
-          <Link href="/">Update Featured Mixes</Link>
-          <br />
-          <Link href="/">Change Contact Information</Link>
-          <br />
-          <Link href="/">Change Landing Page Video</Link>
+          <div css={linkButtonStyles}>
+            <Link href="/users/add-new-release">Update Releases</Link>
+          </div>
+          <div css={linkButtonStyles}>
+            <Link href="/users/add-tour-dates">Add DJ/Live Dates </Link>
+          </div>
+          <div css={linkButtonStyles}>
+            <Link href="/users/edit-about">Add Profile Info </Link>
+          </div>
+          <div css={linkButtonStyles}>
+            <Link href="/">Update Featured Mixes</Link>
+          </div>
+          <div css={linkButtonStyles}>
+            <Link href="/">Change Contact Information</Link>
+          </div>
+          <div css={linkButtonStyles}>
+            <Link href="/">Change Landing Page Video</Link>
+          </div>
         </div>
       </main>
     </div>

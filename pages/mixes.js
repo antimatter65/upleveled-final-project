@@ -1,13 +1,13 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link';
 import two from '../public/2.jpeg';
 import three from '../public/3.jpeg';
 import four from '../public/4.jpeg';
 import theoneinthewoods21 from '../public/theoneinthewoods21.png';
+
 // import mixtape1 from '../public/mixtape1.png';
-import { getReleases } from '../utils/database';
 
 // import { releases.Database } from '../util/database';
 
@@ -80,12 +80,16 @@ const releasesListItemLinkStyles = css`
   }
 `;
 
-export default function mixesList(props) {
+const mixcloudPlayerStyles = css`
+  border-radius: 5%;
+`;
+
+export default function mixesList() {
   return (
     <div>
       <Head>
         <title>Mixes</title>
-        <meta name="description" content="all locoda releases" />
+        <meta name="description" content="locoad mixes from mixcloud" />
         {/* <link rel="icon" href="/faviconmixtape.png" /> */}
       </Head>
       <h1 css={titleStyles}>Mixes</h1>
@@ -94,143 +98,59 @@ export default function mixesList(props) {
           <input type="radio" name="slider" id="item-1" checked />
           <input type="radio" name="slider" id="item-2" />
           <input type="radio" name="slider" id="item-3" />
+          <input type="radio" name="slider" id="item-4" />
           <div class="cards">
-            <label class="card" for="item-1" id="song-1">
+            <label class="card" htmlFor="item-1" id="song-1">
               <Image src={theoneinthewoods21} css={imageCarouselStyles} />
               <iframe
+                css={mixcloudPlayerStyles}
+                title="mix1"
                 width="100%"
                 height="120"
                 src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Flocoda%2Flocoda-live-the-one-in-the-woods-2021%2F"
-                frameborder="0"
+                frameBorder="0"
+                // empty sandbox to remove eslint errors
+                sandbox
               />
             </label>
-            <label class="card" for="item-2" id="song-2">
+            <label class="card" htmlFor="item-2" id="song-2">
               <Image src={four} css={imageCarouselStyles} />
               <iframe
+                title="mix2"
                 width="100%"
                 height="120"
                 src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Flocoda%2Fliquid-mini-mix-002%2F"
-                frameborder="0"
-              ></iframe>
+                frameBorder="0"
+                sandbox
+              />
             </label>
-
-            <label class="card" for="item-3" id="song-3">
+            <label class="card" htmlFor="item-3" id="song-3">
               <Image src={three} css={imageCarouselStyles} />
               <br />
               <iframe
+                title="mix3"
                 width="100%"
                 height="120"
                 src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Flocoda%2Fliquid-mini-mix-001%2F"
-                frameborder="0"
-              ></iframe>
+                frameBorder="0"
+                sandbox
+              />
             </label>
-
             {/* <label class="card" for="item-4" id="song-4">
               <Image src={two} css={imageCarouselStyles} />
+              <br />
               <iframe
+                title="mix3"
                 width="100%"
                 height="120"
-                src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Flocoda%2Fliquid-mini-mix-001%2F"
-                frameborder="0"
-              ></iframe>
-            </label> */}
+                src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Flocoda%2Fliquid-mix-001%2F"
+                frameBorder="0"
+                sandbox
+              /> */}
+            {/* </label> */}
           </div>
-
-          {/* <div class="player">
-            <div class="upper-part">
-              <div class="play-icon">
-                <svg
-                  width="20"
-                  height="20"
-                  fill="#2992dc"
-                  stroke="#2992dc"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  class="feather feather-play"
-                  viewBox="0 0 24 24"
-                >
-                  <defs />
-                  <path d="M5 3l14 9-14 9V3z" />
-                </svg>
-              </div>
-              <div class="info-area" id="test">
-                <label class="song-info" id="song-info-1">
-                  <div class="title">Bunker</div>
-                  <div class="sub-line">
-                    <div class="subtitle">Balthazar</div>
-                    <div class="time">4.05</div>
-                  </div>
-                </label>
-                <label class="song-info" id="song-info-2">
-                  <div class="title">Words Remain</div>
-                  <div class="sub-line">
-                    <div class="subtitle">Moderator</div>
-                    <div class="time">4.05</div>
-                  </div>
-                </label>
-                <label class="song-info" id="song-info-3">
-                  <div class="title">Falling Out</div>
-                  <div class="sub-line">
-                    <div class="subtitle">Otzeki</div>
-                    <div class="time">4.05</div>
-                  </div>
-                </label>
-              </div>
-            </div>
-            <div class="progress-bar">
-              <span class="progress"></span>
-            </div>
-          </div> */}
         </div>
       </section>
-      {/* <iframe
-        width="100%"
-        height="120"
-        src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Flocoda%2Flocoda-live-the-one-in-the-woods-2021%2F"
-        frameborder="0"
-      />
-      <br />
-      <iframe
-        width="100%"
-        height="60"
-        src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&light=1&feed=%2Flocoda%2Fliquid-mix-001%2F"
-        frameborder="0"
-      />
-      <br />
-      <iframe
-        width="100%"
-        height="60"
-        src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&light=1&feed=%2Flocoda%2Fliquid-mini-mix-002%2F"
-        frameborder="0"
-      />
-      <br />
-      <iframe
-        width="100%"
-        height="60"
-        src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&light=1&feed=%2Flocoda%2Fliquid-mini-mix-001%2F"
-        frameborder="0"
-        sandbox=""
-      /> */}
     </div>
   );
-}
-
-// Code in getServerSideProps runs in
-// Node.js (on the server)
-//
-// Important: ONLY in the /pages directory
-export async function getServerSideProps() {
-  // from database.js
-  const releases = await getReleases();
-
-  return {
-    // Anything that you pass in the props
-    // object will get passed to the component
-    // at the top in the `props` parameter
-    props: {
-      // releases.: releases.Database,
-      releases: releases,
-    },
-  };
 }

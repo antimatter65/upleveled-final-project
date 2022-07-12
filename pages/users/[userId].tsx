@@ -1,8 +1,16 @@
+import { css } from '@emotion/react';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { userInfo } from 'os';
 import Layout from '../../components/Layout';
 import { getUserByUserId, User } from '../../utils/database';
+
+const mainStyles = css`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  color: white;
+`;
 
 /// start again with creating the dynamic page
 
@@ -32,7 +40,7 @@ export default function UserPage(props: props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main css={mainStyles}>
         <h1>User Page</h1>
         <h2>
           User #: {props.user.id} (username: {props.user.username})

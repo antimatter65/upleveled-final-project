@@ -1,5 +1,6 @@
 import '../styles/menu.css';
 import '../styles/carousel.css';
+import '../styles/slider.css';
 import { css, Global } from '@emotion/react';
 import { useCallback, useEffect, useState } from 'react';
 import Layout from '../components/Layout';

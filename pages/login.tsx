@@ -6,18 +6,46 @@ import { LoginResponseBody } from './api/login';
 import { errorStyles } from './register';
 
 const signInBoxStyles = css`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  flex-direction: column;
   padding-left: 5%;
+  padding-top: 5%;
+  color: white;
+  max-width: 75%;
+  font-size: 24px;
 `;
 
 const signInBoxStyles1 = css`
   padding-left: 5%;
-  border: 1px black solid;
   padding-top: 5%;
   padding-bottom: 5%;
   z-index: 11;
 `;
 
-export default function About(props) {
+const inputBoxStyles = css`
+  width: 50%;
+  height: 1.5vw;
+  opacity: 0.6;
+  margin-left: 5%;
+  font-size: 24px;
+  color: greenyellow;
+  background-color: black;
+`;
+
+const buttonStyles = css`
+  width: 10%;
+  height: 50px;
+  margin-left: 60%;
+  border-radius: 15px;
+  opacity: 0.5;
+  background-color: greenyellow;
+  color: black;
+  font-size: 24px;
+`;
+
+export default function About(props: any) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<
@@ -86,18 +114,20 @@ export default function About(props) {
             <br />
             <br />
             <label>
-              username:
+              Username:
               <input
+                css={inputBoxStyles}
                 value={username}
                 onChange={(event) => {
                   setUsername(event.currentTarget.value);
                 }}
               />
             </label>
-
+            <br />
             <label>
-              password:
+              Password :
               <input
+                css={inputBoxStyles}
                 value={password}
                 type="password"
                 onChange={(event) => {
@@ -107,7 +137,10 @@ export default function About(props) {
             </label>
             <br />
             <br />
-            <button onClick={() => loginHandler()}>Login</button>
+            <button css={buttonStyles} onClick={() => loginHandler()}>
+              Login
+            </button>
+            <br />
             {errors.map((error) => (
               <div css={errorStyles} key={`error-${error.message}`}>
                 {error.message}
