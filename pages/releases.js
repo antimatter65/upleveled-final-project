@@ -27,31 +27,31 @@ const releasesListStyles = css`
   border: blueviolet 3px solid;
 `;
 
-const releasesListItemStyles = css`
-  border: solid black 1px;
-  margin: 10px;
-  padding: 30px;
-  background-color: white;
+// const releasesListItemStyles = css`
+//   border: solid black 1px;
+//   margin: 10px;
+//   padding: 30px;
+//   background-color: white;
 
-  align-items: center;
-  width: 75%;
-  box-shadow: #5e5df0 0 10px 20px -10px;
-  .div {
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    //justify-content: space-between;
-    margin: 30px;
-    background: #fdfdfd;
-    font-size: 13px;
-    height: 500px;
-    width: 500px;
-    padding: 10px 16px;
-    margin: 20px;
-    border: solid black 10px;
-    box-shadow: #5e5df0 0 10px 20px -10px;
-  }
-`;
+//   align-items: center;
+//   width: 75%;
+//   box-shadow: #5e5df0 0 10px 20px -10px;
+//   .div {
+//     display: flex;
+//     position: relative;
+//     flex-direction: row;
+//     //justify-content: space-between;
+//     margin: 30px;
+//     background: #fdfdfd;
+//     font-size: 13px;
+//     height: 500px;
+//     width: 500px;
+//     padding: 10px 16px;
+//     margin: 20px;
+//     border: solid black 10px;
+//     box-shadow: #5e5df0 0 10px 20px -10px;
+//   }
+// `;
 
 const releasesListItemLinkStyles = css`
   display: flex;
@@ -104,7 +104,7 @@ export default function releaseList(props) {
                   key={`release-${release.id}`}
                   css={releasesListItemLinkStyles}
                 >
-                  <div css={release.ListItemLinkStyles}></div>
+                  <div css={release.ListItemLinkStyles}>X</div>
                   {/* <div>Length: {releases.release_date}</div> */}
                   <Link href={`/releases/${release.id}`}>
                     <div>Name: {release.releaseName}</div>

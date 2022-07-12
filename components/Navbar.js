@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import NavLink from 'next/link';
 import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { MdClose } from 'react-icons/md';
@@ -33,23 +34,39 @@ const headerLinkStyles = css`
   flex-direction: row;
   margin-top: 1%;
   margin-bottom: 2%;
-  color: #beceb4;
+  color: #e8ffda;
   padding-top: 0%;
   padding-right: 100%;
   width: 400px;
   font-size: 28px;
-  opacity: 100;
-
   text-decoration: none;
-  // #d3f71b
+`;
+
+const headerLinkButtonStyles = css`
+  z-index: 10;
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  color: #e8ffda;
+  padding-top: 0%;
+  padding-right: 100%;
+  width: 400px;
+  font-size: 28px;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  font-family: Lexend Zetta;
 
   :hover {
     color: white;
-    background: grey;
-    text-decoration-color: grey;
+    text-decoration: underline;
     border-color: grey;
   }
 `;
+
 const headerLogoStyles = css`
   width: 50%;
   margin-left: 10%;
@@ -60,7 +77,6 @@ const navBarStyles = css`
   position: relative;
   margin-top: 0%;
   height: 0%;
-  background-color: black;
   z-index: 10;
   padding-top: 0%;
 `;
@@ -79,7 +95,7 @@ const buttonContainerStyles = css`
   padding-top: 0%;
   box-shadow: none;
   background-color: black;
-  opacity: 0.75;
+  background: transparent;
   z-index: 10;
   padding: 1%;
 
@@ -100,7 +116,7 @@ const navMenuButtonStyles = css`
 const navMenuButtonClosedStyles = css`
   position: relative;
   display: flex;
-  color: #beceb4;
+  color: #e8ffda;
   background-color: none;
   width: 100%;
   height: 40px;
@@ -119,9 +135,10 @@ export default function Navbar(props) {
     setNavbarOpen(!navbarOpen);
   };
   // function to close nav bar onClick of links
-  const closeMenu = () => {
+  function closeMenu() {
     setNavbarOpen(false);
-  };
+    console.log('is this onclick doing anything?');
+  }
 
   return (
     <div css={navBarStyles}>
@@ -156,52 +173,47 @@ export default function Navbar(props) {
       {/* <button onClick={handleToggle}>{navbarOpen ? 'Close' : 'Open'}</button> */}
       <ul className={`menuNav ${navbarOpen ? ' showMenu' : ''}`}>
         <div css={headerLinkContainerStyles}>
-          <div css={headerLinkStyles}>
-            <Link href="/" onClick={() => closeMenu()}>
-              Home
-            </Link>
-          </div>
-          <div css={headerLinkStyles}>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+            <Link href="/">Home</Link>
+          </button>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/live-dj" onClick={() => closeMenu()}>
               Live/DJ
             </Link>
-          </div>
-          <div css={headerLinkStyles}>
+          </button>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/releases">Releases</Link>
-          </div>
-          <div css={headerLinkStyles}>
+          </button>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/mixes">Mixes</Link>
-          </div>
-          <div css={headerLinkStyles}>
+          </button>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/about/">About</Link>
-          </div>
-          <div css={headerLinkStyles}>
+          </button>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/merch">Merch</Link>
-          </div>
-          <div css={headerLinkStyles}>
+          </button>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/contact/">Contact/Booking</Link>
-          </div>
-          <div css={headerLinkStyles} href="/login">
+          </button>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/login">Login</Link>
-          </div>
-          <div css={headerLinkStyles}>
+          </button>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/register">Register</Link>
-          </div>
-
-          <div css={headerLinkStyles}>
+          </button>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/users/private-page">Edit Data</Link>
-          </div>
-          {/* <div css={headerLinkStyles}>
-          <Link href="/users/private-page">{props.user.username}</Link>
-        </div> */}
-          <div css={headerLinkStyles}>
+          </button>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/logout">Logout</Link>
-          </div>
+          </button>
           <br />
           <br />
           <div css={headerLinkStyles}>
             USER: {props.user && props.user.username}
           </div>
+          <br />
           <br />
           <label class="switch">
             <input type="checkbox" />

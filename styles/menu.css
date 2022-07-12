@@ -4,17 +4,15 @@
   position: relative;
 }
 
-
 .menuNav {
   overflow-y: scroll;
   list-style: none;
   position: fixed;
   top: 0;
-  background: black;
+  background: rgba(0, 0, 0, 0.5);
   right: 0;
   bottom: 0;
   margin-top: 0;
-  opacity: 0.75;
   height: 100vh;
   width: 0%;
   overflow: hidden;
@@ -30,6 +28,6 @@
 a {
   display: block;
   text-decoration: none;
-  color: #beceb4;
+  color: #e8ffda;
   padding-top: 5%;
 }

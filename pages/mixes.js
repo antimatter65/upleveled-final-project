@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
 // import Link from 'next/link';
-import two from '../public/2.jpeg';
+// import two from '../public/2.jpeg';
 import three from '../public/3.jpeg';
 import four from '../public/4.jpeg';
 import theoneinthewoods21 from '../public/theoneinthewoods21.png';
@@ -36,49 +36,6 @@ const imageCarouselStyles = css`
   z-index: 12;
 `;
 
-const releasesListStyles = css`
-  display: flex;
-  position: relative;
-  flex-wrap: wrap;
-  padding: 10px;
-  margin: 30px;
-  justify-content: flex-start;
-  justify-content: space-evenly;
-`;
-
-const releasesListItemStyles = css`
-  border: solid black 1px;
-  margin: 10px;
-  padding: 30px;
-  background-color: white;
-
-  align-items: center;
-  width: 75%;
-  box-shadow: #5e5df0 0 10px 20px -10px;
-  .div {
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    //justify-content: space-between;
-    margin: 30px;
-    background: #fdfdfd;
-    font-size: 13px;
-    height: 500px;
-    width: 500px;
-    padding: 10px 16px;
-    margin: 20px;
-    border: solid black 10px;
-    box-shadow: #5e5df0 0 10px 20px -10px;
-  }
-`;
-
-const releasesListItemLinkStyles = css`
-  color: grey;
-  text-decoration: underline;
-  .a {
-    color: green;
-  }
-`;
 
 const mixcloudPlayerStyles = css`
   border-radius: 5%;
