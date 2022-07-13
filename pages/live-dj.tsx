@@ -65,7 +65,12 @@ const indivdualTourDateListStyles = css`
   }
 `;
 
-export default function releaseList(props) {
+const dataStyles = css`
+  padding: 3%;
+  border: 2px aqua solid;
+`;
+
+export default function releaseList(props: any) {
   return (
     <div>
       <Head>
@@ -77,14 +82,14 @@ export default function releaseList(props) {
       <main>
         <div css={tourDatesListStyles}>
           {props.tourdates
-            .sort((a, b) => a.date - b.date)
+            .sort((a, b) => a.id - b.id)
             .map((tour) => {
               return (
                 <div
                   key={`release-${tour.id}`}
                   css={indivdualTourDateListStyles}
                 >
-                  <div>{tour.location} |</div>
+                  <div css={dataStyles}>{tour.location} |</div>
                   <br />
                   <div>{tour.date} |</div>
                   <br />

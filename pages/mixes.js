@@ -36,9 +36,9 @@ const imageCarouselStyles = css`
   z-index: 12;
 `;
 
-
 const mixcloudPlayerStyles = css`
   border-radius: 5%;
+  // color: #fe5670;
 `;
 
 export default function mixesList() {

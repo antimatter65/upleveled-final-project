@@ -45,6 +45,11 @@ const linkButtonStyles = css`
   margin-left: 3%;
   padding: 1%;
   opacity: 0.75;
+
+  :hover {
+    background-color: white;
+    color: black;
+  }
 `;
 
 const headerStyles = css`
@@ -61,11 +66,11 @@ const mainHeaderStyles = css`
   margin-top: 0%;
 `;
 
-type props = {
-  user?: User | undefined;
-};
+// type props = {
+//   user?: User | undefined;
+// };
 
-export default function UserPage(props: props) {
+export default function UserPage(props: any) {
   if (!props.user) {
     return (
       <>

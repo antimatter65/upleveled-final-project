@@ -44,7 +44,7 @@ export default function Layout(props) {
           // Page content
           props.children
         }
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </div>
   );

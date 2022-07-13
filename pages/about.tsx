@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link';
 import aboutbackground from '../public/aboutbackground.jpeg';
 import { getAboutInfo } from '../utils/database';
 
@@ -73,7 +73,7 @@ export default function releaseList(props) {
               height="800"
             />
           </div>
-          {props.aboutInfo.map((about) => {
+          {props.aboutInfo.map((about: any) => {
             return (
               <div key={`release-${about.id}`} css={releasesListItemLinkStyles}>
                 <div>{about.paragraph1}</div>

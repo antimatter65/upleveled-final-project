@@ -1,65 +1,58 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import { BsInstagram, BsSpotify } from 'react-icons/bs';
+import { FaMixcloud } from 'react-icons/fa';
+import { ImSoundcloud } from 'react-icons/im';
+import { SiBeatport } from 'react-icons/si';
 
 const footerStyles = css`
   position: relative;
-  padding: 8px 14px;
-  height: 50px;
-  background: white;
-  border-radius: 10px;
-  margin-top: 30px;
-  font-size: 10px;
+  color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: row;
-  > div > a + a {
-    margin-left: 30px;
-  }
+  margin-top: 5%;
 `;
 
-const footerLinkStyles = css`
-  /*   border: white 1px solid;
- */
+const iconsSectionStyles = css`
   display: flex;
   position: relative;
-  font-size: 5px;
-  a {
-    border-radius: 4px;
-    color: black;
-    width: 200px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 0px;
-    text-decoration: none;
-  }
-  a:hover {
-    color: white;
-    background: black;
-  }
+  justify-content: center;
+  color: white;
+`;
+
+const iconStyles = css`
+  margin-left: 3%;
+  margin-right: 3%;
+  padding: 1%;
+  color: white;
+  opacity: 0.75;
+  width: 50px;
+  height: 50px;
 `;
 
 export default function Footer() {
   return (
     <footer css={footerStyles}>
-      ©️ antimatter65 2022
-      <div>This website is for demonstration purposes only</div>
-      <div css={footerLinkStyles}>
-        {/* <div css={footerLinkStyles}> */}
-        <div>
-          <Link href="/">home</Link>
-        </div>
-        {/* </div> */}
-        <div>
-          {/* <div css={footerLinkStyles}> */}
-          <Link href="/faq">faq</Link>
-        </div>
-        {/* </div> */}
-        <div>
-          {/* <div css={footerLinkStyles}> */}
-          <Link href="/contact">contact</Link>
-          {/* </div> */}
-        </div>
-      </div>
+      {/* <div>©️ antimatter65 2022</div> */}
+      <section css={iconsSectionStyles}>
+        <Link href="https://www.mixcloud.com/locoda/">
+          <FaMixcloud css={iconStyles} />
+        </Link>
+        <Link href="https://www.beatport.com/artist/locoda/1050341">
+          <SiBeatport css={iconStyles} />
+        </Link>
+        <Link href="https://soundcloud.com/locodadnb">
+          <ImSoundcloud css={iconStyles} />
+        </Link>
+        <Link href="https://www.instagram.com/locodadnb/">
+          <BsInstagram css={iconStyles} />
+        </Link>
+        <Link href="https://open.spotify.com/artist/2zkTffsWfjclGCUNdLp1R4?si=4cDF_Jn1Qfeccby3quC0gA">
+          <BsSpotify css={iconStyles} />
+        </Link>
+      </section>
+      {/* <div>This website is for demonstration purposes only</div> */}
     </footer>
   );
 }

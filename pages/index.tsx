@@ -6,8 +6,9 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 // react-youtube used due to eslint problems with requiring sandboxes for iframes
 import YouTube from 'react-youtube';
-import darkbackground1 from '../public/darkbackground1.jpeg';
-import styles from '../styles/Home.module.css';
+
+// import darkbackground1 from '../public/darkbackground1.jpeg';
+// import styles from '../styles/Home.module.css';
 
 const mainVideoStyles = css`
   display: flex;
@@ -39,19 +40,20 @@ const footerTextStyles = css`
 type Props = {
   refreshUserProfile: () => Promise<void>;
 };
+
 export default function Home(props: Props) {
   useEffect(() => {
     props.refreshUserProfile().catch(() => console.log('refresh user profile'));
   }, [props]);
 
-  const onPlayerReady: YouTubeProps['onReady'] = (event) => {
+  const onPlayerReady: YouTubeProps['onReady'] = (event: any) => {
     // access to player in all event handlers via event.target
     event.target.pauseVideo();
   };
 
   const opts: YouTubeProps['opts'] = {
-    height: '580',
-    width: '1080',
+    height: '480',
+    width: '880',
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,

@@ -13,6 +13,8 @@ const headerlogo = css`
   position: fixed;
   z-index: 10;
   padding: 2%;
+  background: transparent;
+  border: none;
 `;
 
 const headerLinkContainerStyles = css`
@@ -143,7 +145,7 @@ export default function Navbar(props) {
   return (
     <div css={navBarStyles}>
       <br />
-      <div css={headerlogo}>
+      <button css={headerlogo} onClick={() => closeMenu()}>
         <Link href="/">
           <div css={headerLogoStyles}>
             <Image
@@ -154,7 +156,7 @@ export default function Navbar(props) {
             />
           </div>
         </Link>
-      </div>
+      </button>
       <button css={buttonContainerStyles} onClick={handleToggle}>
         {navbarOpen ? (
           <MdClose css={navMenuButtonClosedStyles} />
