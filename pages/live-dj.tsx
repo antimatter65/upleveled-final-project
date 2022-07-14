@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 // import Image from 'next/image';
-// import Link from 'next/link';
+import Link from 'next/link';
 // import mixtape1 from '../public/mixtape1.png';
 import { getTourDates } from '../utils/database';
 
@@ -14,6 +14,22 @@ const titleStyles = css`
   color: #e499d1;
 `;
 
+const headingStyles = css`
+  display: flex;
+  position: relative;
+  margin: 8%;
+  color: white;
+`;
+
+const tableHeadingStyles = css`
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  margin: 15%;
+  padding-left: 3%;
+  color: white;
+`;
+
 const tourDatesListStyles = css`
   color: white;
   z-index: 0;
@@ -23,8 +39,6 @@ const tourDatesListStyles = css`
   flex-wrap: wrap;
   padding: 1%;
   margin: 8%;
-  justify-content: flex-start;
-  justify-content: space-evenly;
   border: 1px solid greenyellow;
 `;
 
@@ -66,11 +80,18 @@ const indivdualTourDateListStyles = css`
 `;
 
 const dataStyles = css`
+  display: flex;
+  position: relative;
+  width: auto;
+  flex-direction: row;
   padding: 3%;
   border: 2px aqua solid;
 `;
 
 export default function releaseList(props: any) {
+  const str = '2022-09-24';
+  const date = new Date(str);
+
   return (
     <div>
       <Head>
@@ -80,30 +101,47 @@ export default function releaseList(props: any) {
       </Head>
       <h1 css={titleStyles}>Live & DJ</h1>
       <main>
+        <h1 css={headingStyles}>Upcoming Dates:</h1>
+        <section css={tableHeadingStyles}>
+          <h2>Location</h2>
+          <h2>Date</h2>
+          <h2>Venue</h2>
+          <h2>Live/DJ</h2>
+          <h2>Event Link</h2>
+          <h2>Tickets</h2>
+        </section>
+
         <div css={tourDatesListStyles}>
           {props.tourdates
-            .sort((a, b) => a.id - b.id)
+            .sort((a, b) => b.id - a.id)
             .map((tour) => {
               return (
                 <div
                   key={`release-${tour.id}`}
                   css={indivdualTourDateListStyles}
                 >
+                  <div css={dataStyles}>{tour.id} |</div>
+                  <br />
                   <div css={dataStyles}>{tour.location} |</div>
                   <br />
-                  <div>{tour.date} |</div>
+                  <div css={dataStyles}>{tour.date} |</div>
                   <br />
-                  <div> {tour.eventLocation} |</div>
+                  <div css={dataStyles}> {tour.eventLocation} |</div>
                   <br />
-                  <div>{tour.type} |</div>
+                  <div css={dataStyles}>{tour.type} |</div>
                   <br />
-                  <div>Event Link: {tour.eventLink} |</div>
+                  <div css={dataStyles}>Event Link: {tour.eventLink} |</div>
                   <br />
-                  <div>Tickets: {tour.ticketLink} |</div>
+                  <button css={dataStyles}>
+                    <Link href={tour.ticketLink}>TICKET</Link>
+                  </button>
                   <br />
-                  <div>Streaming Link: {tour.streamingLink} |</div>
                   <br />
-                  <div>Tickets Left: {tour.ticketsLeft} |</div>
+                  <div css={dataStyles}>Stream: {tour.streamingLink} |</div>
+                  <br />
+
+                  {/* add if statement for Sold Out or Tickest Left */}
+                  <div css={dataStyles}>Tickets Left: {tour.ticketsLeft} |</div>
                   <br />
                   {/* <Link href={`/releases/${release.id}`}>
                   <Image src={`/${release.id}.jpeg`} width="600" height="400" />

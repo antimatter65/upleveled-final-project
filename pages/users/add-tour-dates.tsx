@@ -8,29 +8,111 @@ const mainHeaderStyles = css`
   display: flex;
   position: relative;
   justify-content: center;
-  font-size: 13px;
+  font-size: 26px;
   color: white;
+  padding-top: 2%;
 `;
+
+const subHeaderStyles = css`
+  display: flex;
+  position: relative;
+  font-size: 26px;
+  margin-left: 5%;
+  color: white;
+  padding-top: 5%;
+  width: 80%;
+  border-bottom: solid 1px white;
+`;
+
 const mainInputArea = css`
   display: flex;
   position: relative;
-  justify-content: center;
-  align-items: center;
+  padding-left: 20%;
   flex-direction: column;
   font-size: 10px;
   color: white;
-  border: 2px green solid;
+  padding: 5%;
+  border-bottom: white 1px solid;
+`;
+
+const singleInputArea = css`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  font-size: 13px;
+  color: white;
+  height: 1%;
+  margin-top: 1%;
 `;
 
 const inputStyles = css`
   font-family: Lexend Zetta;
-  font-size: 10px;
-  width: 30%;
+  font-size: 13px;
+  width: 40%;
+  height: auto;
   display: flex;
+  right: 0%;
+  border-radius: 10px;
+  margin-left: 50%;
+`;
+
+const inputStylesDate = css`
+  font-family: Lexend Zetta;
+  font-size: 13px;
+  width: 15%;
+  height: auto;
+  display: flex;
+  right: 0%;
+  border-radius: 10px;
+  margin-left: 50%;
+`;
+
+const inputStylesCheckbox = css`
+  font-family: Lexend Zetta;
+  font-size: 13px;
+  width: 15%;
+  height: auto;
+  display: flex;
+  right: 0%;
+  border-radius: 10px;
+`;
+
+const buttonStyles = css`
+  margin: 1%;
+  padding: 1%;
+  font-family: Lexend Zetta;
+  font-size: 10px;
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  background-color: greenyellow;
+  color: black;
+  opacity: 0.5;
+  border-radius: 15px;
+  margin-left: 50%;
+  box-shadow: gold;
+  :hover {
+    color: greenyellow;
+    background-color: black;
+  }
+`;
+
+const mainStyles = css`
+  color: white;
+  display: flex;
+  position: relative;
+  justify-content: center;
   flex-direction: column;
 `;
 
-const mainStyles = css``;
+const checkboxStyles = css`
+  border-radius: 15px;
+  width: 15%;
+  font-family: Lexend Zetta;
+  font-size: 13px;
+  font-size: 10px;
+  margin-left: 50%;
+`;
 
 export default function ApiFrontEndTourDates() {
   const [tourDatesList, setTourDatesList] = useState<TourDate[]>([]);
@@ -175,16 +257,13 @@ export default function ApiFrontEndTourDates() {
       </Head>
 
       <main css={mainStyles}>
-        <br />
-        <br />
-        <br />
-        <br />
-        <section css={mainHeaderStyles}>
-          <h1>Add New Event:</h1>
+        <h1 css={mainHeaderStyles}> Edit Live Dates </h1>
+        <section>
+          <h2 css={subHeaderStyles}>Add New Event:</h2>
         </section>
         <hr />
         <section css={mainInputArea}>
-          <label>
+          <label css={singleInputArea}>
             Event Location:
             <input
               css={inputStyles}
@@ -192,15 +271,16 @@ export default function ApiFrontEndTourDates() {
               onChange={(event) => setNewLocation(event.currentTarget.value)}
             />
           </label>
-          <label>
+          <label css={singleInputArea}>
             Event Date:
             <input
-              css={inputStyles}
-              value={newEventDate}
+              css={inputStylesDate}
+              type="date"
+              min="2021-01-01"
               onChange={(event) => setNewEventDate(event.currentTarget.value)}
             />
           </label>
-          <label>
+          <label css={singleInputArea}>
             Event Venue:
             <input
               css={inputStyles}
@@ -208,7 +288,7 @@ export default function ApiFrontEndTourDates() {
               onChange={(event) => setNewEventVenue(event.currentTarget.value)}
             />
           </label>
-          <label>
+          <label css={singleInputArea}>
             Performance Type (Live / DJ / Etc):
             <input
               css={inputStyles}
@@ -217,7 +297,7 @@ export default function ApiFrontEndTourDates() {
             />
           </label>
           <br />
-          <label>
+          <label css={singleInputArea}>
             Link to Event (Website / Event Page / RA / Facebook / Etc) :
             <input
               css={inputStyles}
@@ -225,7 +305,7 @@ export default function ApiFrontEndTourDates() {
               onChange={(event) => setNewEventLink(event.currentTarget.value)}
             />
           </label>
-          <label>
+          <label css={singleInputArea}>
             Tickets Link:
             <input
               css={inputStyles}
@@ -233,7 +313,7 @@ export default function ApiFrontEndTourDates() {
               onChange={(event) => setNewTicketLink(event.currentTarget.value)}
             />
           </label>
-          <label>
+          <label css={singleInputArea}>
             StreamingLink:
             <input
               css={inputStyles}
@@ -243,7 +323,7 @@ export default function ApiFrontEndTourDates() {
               }
             />
           </label>
-          <label>
+          {/* <label css={singleInputArea}>
             Event Sold Out (Yes/No):
             <input
               css={inputStyles}
@@ -252,8 +332,20 @@ export default function ApiFrontEndTourDates() {
                 setNewSoldOutCheck(event.currentTarget.value)
               }
             />
-          </label>
+          </label> */}
+          <br />
+          <div css={singleInputArea}> Event Sold Out?</div>
+          <select css={checkboxStyles}>
+            <option css={inputStylesCheckbox} value="0">
+              Tickets Left
+            </option>
+            <option css={inputStylesCheckbox} value="1">
+              Sold Out
+            </option>
+          </select>
+
           <button
+            css={buttonStyles}
             onClick={() => {
               newTourDateHandler().catch(() => {
                 console.log('request to add new tour date to database failed');
@@ -265,10 +357,10 @@ export default function ApiFrontEndTourDates() {
           <br />
           <br />
           <hr />
-          <h2>Edit Events In Database:</h2>
           <hr />
         </section>
         <br />
+        <h2 css={subHeaderStyles}>Edit Events In Database:</h2>
         {tourDatesList
           .sort((a, b) => a.id - b.id)
           .map((eventdate) => {
@@ -276,7 +368,7 @@ export default function ApiFrontEndTourDates() {
             return eventdate.id === editActiveOnEventNumber ? (
               <section css={mainInputArea} key={eventdate.id}>
                 <div>Event Id: {eventdate.id}</div>
-                <label>
+                <label css={singleInputArea}>
                   Location:
                   <input
                     css={inputStyles}
@@ -286,17 +378,19 @@ export default function ApiFrontEndTourDates() {
                     }
                   />
                 </label>
-                <label>
-                  Event Date:
+                <label css={singleInputArea}>
+                  Event Date 2:
                   <input
                     css={inputStyles}
-                    value={editEventDate}
+                    type="date"
+                    min="2021-01-01"
                     onChange={(event) =>
                       setEditEventDate(event.currentTarget.value)
                     }
                   />
                 </label>
-                <label>
+
+                <label css={singleInputArea}>
                   Event Venue:
                   <input
                     css={inputStyles}
@@ -307,7 +401,7 @@ export default function ApiFrontEndTourDates() {
                   />
                 </label>
                 <br />
-                <label>
+                <label css={singleInputArea}>
                   Performance Type (Live / DJ / Etc):
                   <input
                     css={inputStyles}
@@ -318,7 +412,7 @@ export default function ApiFrontEndTourDates() {
                   />
                 </label>
 
-                <label>
+                <label css={singleInputArea}>
                   Link to Event (Website / Event Page / RA / Facebook / Etc) :
                   <input
                     css={inputStyles}
@@ -328,7 +422,7 @@ export default function ApiFrontEndTourDates() {
                     }
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Tickets Link:
                   <input
                     css={inputStyles}
@@ -339,7 +433,7 @@ export default function ApiFrontEndTourDates() {
                   />
                 </label>
                 <br />
-                <label>
+                <label css={singleInputArea}>
                   Streaming Link:
                   <input
                     css={inputStyles}
@@ -349,7 +443,7 @@ export default function ApiFrontEndTourDates() {
                     }
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Event Sold Out (Yes/No):
                   <input
                     css={inputStyles}
@@ -360,6 +454,7 @@ export default function ApiFrontEndTourDates() {
                   />
                 </label>
                 <button
+                  css={buttonStyles}
                   onClick={() => {
                     setEditActiveOnEventNumber(undefined);
                     updateEventHandler(eventdate.id).catch(() => {
@@ -373,6 +468,7 @@ export default function ApiFrontEndTourDates() {
                 </button>
                 <br />
                 <button
+                  css={buttonStyles}
                   onClick={() => {
                     deleteTourDateHandler(eventdate.id).catch(() => {
                       console.log(
@@ -384,12 +480,11 @@ export default function ApiFrontEndTourDates() {
                   Delete Event
                 </button>
                 <br />
-                <hr />
               </section>
             ) : (
               <section css={mainInputArea} key={eventdate.id}>
                 <div>Event Id: {eventdate.id}</div>
-                <label>
+                <label css={singleInputArea}>
                   Event Location:
                   <input
                     css={inputStyles}
@@ -397,7 +492,7 @@ export default function ApiFrontEndTourDates() {
                     disabled
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Event Date:
                   <input css={inputStyles} value={eventdate.date} disabled />
                 </label>
@@ -409,12 +504,12 @@ export default function ApiFrontEndTourDates() {
                     disabled
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Performance Type (Live / DJ / Etc):
                   <input css={inputStyles} value={eventdate.type} disabled />
                 </label>
                 <br />
-                <label>
+                <label css={singleInputArea}>
                   Link to Event (Website / Event Page / RA / Facebook / Etc) :
                   <input
                     css={inputStyles}
@@ -422,7 +517,7 @@ export default function ApiFrontEndTourDates() {
                     disabled
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Tickets Link:
                   <input
                     css={inputStyles}
@@ -431,7 +526,7 @@ export default function ApiFrontEndTourDates() {
                   />
                 </label>
                 <br />
-                <label>
+                <label css={singleInputArea}>
                   Streaming Link:
                   <input
                     css={inputStyles}
@@ -439,7 +534,7 @@ export default function ApiFrontEndTourDates() {
                     disabled
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Event Sold Out (Yes/No):
                   <input
                     css={inputStyles}
@@ -448,6 +543,7 @@ export default function ApiFrontEndTourDates() {
                   />
                 </label>
                 <button
+                  css={buttonStyles}
                   onClick={() => {
                     setEditActiveOnEventNumber(eventdate.id);
                     setEditLocation(eventdate.location);
@@ -464,7 +560,6 @@ export default function ApiFrontEndTourDates() {
                   Edit
                 </button>
                 <br />
-                <hr />
               </section>
             );
           })}

@@ -27,6 +27,10 @@ const linkStyles = css`
   height: 15px;
   color: white;
   font-size: 20px;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 
 const linkButtonStyles = css`

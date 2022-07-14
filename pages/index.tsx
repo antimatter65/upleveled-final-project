@@ -25,6 +25,11 @@ const headerTextStyles = css`
   align-items: center;
   flex-direction: column;
   color: white;
+
+  @media screen and (max-width: 1000px) {
+    color: pink;
+  }
+
   // border: 2px green solid;
 `;
 

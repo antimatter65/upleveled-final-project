@@ -64,9 +64,9 @@ Past Dates:
   INSERT INTO tourdates
   (location, date, event_link, ticket_link, tickets_left, streaming_link )
   VALUES
-  ('Liverpool, UK', '2022/07/22', 'theoneinthewoods.com','https://theoneinthewoods.com/tickets/', true, ''),
+  ('Liverpool, UK', '2022-07-22', 'theoneinthewoods.com','https://theoneinthewoods.com/tickets/', true, ''),
   ('Mayrhofen, Austria', '2022-04-07', 'Snowbombing 2022 (DJ)', 'Snowbombing 2022 (DJ)',  false, ''),
-  ('Liverpool, UK', '2021.08.21', 'theoneinthewoods.com', '', false, 'Mixcloud Link'   )
+  ('Liverpool, UK', '2021-08-21', 'theoneinthewoods.com', '', false, 'Mixcloud Link'   )
   ;
 \
     INSERT INTO tourdates

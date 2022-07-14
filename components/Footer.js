@@ -31,6 +31,8 @@ const iconStyles = css`
   height: 50px;
 `;
 
+// icons for links to insta, streaming, mand buy links using icons from react-icons, check the licences for projects
+
 export default function Footer() {
   return (
     <footer css={footerStyles}>

@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import NavLink from 'next/link';
 import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { MdClose } from 'react-icons/md';
@@ -15,6 +14,11 @@ const headerlogo = css`
   padding: 2%;
   background: transparent;
   border: none;
+  color: black;
+  // this chage the header logo from white to black
+  @media (prefers-color-scheme: light) {
+    filter: invert(1);
+  }
 `;
 
 const headerLinkContainerStyles = css`
@@ -126,6 +130,11 @@ const navMenuButtonClosedStyles = css`
   z-index: 10;
 `;
 
+const toggleButtonStyles = css`
+  background: transparent;
+  border: none;
+`;
+
 export default function Navbar(props) {
   // useState
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -217,10 +226,12 @@ export default function Navbar(props) {
           </div>
           <br />
           <br />
-          <label class="switch">
-            <input type="checkbox" />
-            <span class="slider round"></span>
-          </label>
+          <button css={toggleButtonStyles}>
+            <label class="switch">
+              <input type="checkbox" />
+              <span class="slider round"></span>
+            </label>
+          </button>
         </div>
       </ul>
     </div>
