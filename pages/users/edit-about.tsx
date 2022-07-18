@@ -1,21 +1,120 @@
 import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { AboutData, getUserByValidSessionToken } from '../../utils/database';
 
+const mainHeaderStyles = css`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  font-size: 26px;
+  color: white;
+  padding-top: 2%;
+  text-shadow: 1px 1px 1px #3c5c5e;
+`;
+
+const subHeaderStyles = css`
+  display: flex;
+  position: relative;
+  font-size: 26px;
+  margin-left: 5%;
+  color: white;
+  padding-top: 5%;
+  width: 80%;
+  border-bottom: solid 1px white;
+  text-shadow: 1px 1px 1px #3c5c5e;
+`;
+
 const mainInputArea = css`
-  margin: 1%;
+  display: flex;
+  position: relative;
+  padding-left: 20%;
+  flex-direction: column;
   font-size: 10px;
+  color: white;
+  padding: 5%;
+  border-bottom: white 1px solid;
+  text-shadow: 1px 1px 1px #3c5c5e;
+`;
+
+const singleInputArea = css`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  font-size: 13px;
+  color: white;
+  height: 1%;
+  margin-top: 1%;
+  text-shadow: 1px 1px 1px #3c5c5e;
 `;
 
 const inputStyles = css`
+  font-family: Lexend Zetta;
+  font-size: 13px;
+  width: 80%;
+  height: 130px;
+  display: flex;
+  right: 0%;
+  border-radius: 10px;
+  margin-left: 20%;
+`;
+
+const inputStylesDate = css`
+  font-family: Lexend Zetta;
+  font-size: 13px;
+  width: 15%;
+  height: auto;
+  display: flex;
+  right: 0%;
+  border-radius: 10px;
+  margin-left: 50%;
+`;
+
+const inputStylesCheckbox = css`
+  font-family: Lexend Zetta;
+  font-size: 13px;
+  width: 15%;
+  height: auto;
+  display: flex;
+  right: 0%;
+  border-radius: 10px;
+`;
+
+export const buttonStyles = css`
   margin: 1%;
+  padding: 1%;
   font-family: Lexend Zetta;
   font-size: 10px;
-  width: 80%;
-  height: 20%;
+  width: 10%;
   display: flex;
+  flex-direction: column;
+  background-color: greenyellow;
+  color: black;
+  opacity: 0.75;
+  border-radius: 15px;
+  margin-left: 50%;
+  box-shadow: gold;
+  :hover {
+    color: greenyellow;
+    background-color: black;
+  }
+  @media (prefers-color-scheme: light) {
+    color: #57387f;
+    background-color: white;
+    :hover {
+      background-color: #57387f;
+      color: white;
+    }
+  }
+`;
+
+const mainStyles = css`
+  color: white;
+  display: flex;
+  position: relative;
+  justify-content: center;
   flex-direction: column;
 `;
 
@@ -83,6 +182,9 @@ export default function ApiFrontEndAbout() {
     console.log('compare about newstate', newState);
   }
 
+  // used to reload window onClick due to out of sync problems
+  const router = useRouter();
+
   return (
     <div>
       <Head>
@@ -95,19 +197,13 @@ export default function ApiFrontEndAbout() {
       </Head>
 
       <main>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <h2>Edit About Page:</h2>
+        <h1 css={mainHeaderStyles}>Edit About Page:</h1>
         <br />
         {aboutList.map((aboutinput) => {
           // if the aboutList.id is equal to the active edit activeEdit then the input values are enabled otherwise they are disabled
           return aboutinput.id === activeEdit ? (
             <section css={mainInputArea} key={aboutinput.id}>
-              <label>
+              <label css={singleInputArea}>
                 Paragraph 1:
                 <textarea
                   css={inputStyles}
@@ -117,7 +213,7 @@ export default function ApiFrontEndAbout() {
                   }
                 />
               </label>
-              <label>
+              <label css={singleInputArea}>
                 Paragraph 2:
                 <textarea
                   css={inputStyles}
@@ -127,7 +223,7 @@ export default function ApiFrontEndAbout() {
                   }
                 />
               </label>
-              <label>
+              <label css={singleInputArea}>
                 Paragraph 3:
                 <textarea
                   css={inputStyles}
@@ -138,7 +234,7 @@ export default function ApiFrontEndAbout() {
                 />
               </label>
               <br />
-              <label>
+              <label css={singleInputArea}>
                 Paragraph 4:
                 <textarea
                   css={inputStyles}
@@ -148,7 +244,7 @@ export default function ApiFrontEndAbout() {
                   }
                 />
               </label>
-              <label>
+              <label css={singleInputArea}>
                 External Link 1:
                 <textarea
                   css={inputStyles}
@@ -158,7 +254,7 @@ export default function ApiFrontEndAbout() {
                   }
                 />
               </label>
-              <label>
+              <label css={singleInputArea}>
                 External Link 2:
                 <textarea
                   css={inputStyles}
@@ -169,7 +265,7 @@ export default function ApiFrontEndAbout() {
                 />
               </label>
               <br />
-              <label>
+              <label css={singleInputArea}>
                 External Link 3:
                 <textarea
                   css={inputStyles}
@@ -180,6 +276,7 @@ export default function ApiFrontEndAbout() {
                 />
               </label>
               <button
+                css={buttonStyles}
                 onClick={() => {
                   setActiveEdit(undefined);
                   updateAboutHandler(aboutinput.id).catch(() => {
@@ -187,6 +284,7 @@ export default function ApiFrontEndAbout() {
                       'request to update about info in database failed',
                     );
                   });
+                  router.reload();
                 }}
               >
                 Save Changes
@@ -197,7 +295,7 @@ export default function ApiFrontEndAbout() {
             </section>
           ) : (
             <section css={mainInputArea} key={aboutinput.id}>
-              <label>
+              <label css={singleInputArea}>
                 Paragraph 1:
                 <input
                   css={inputStyles}
@@ -205,7 +303,7 @@ export default function ApiFrontEndAbout() {
                   disabled
                 />
               </label>
-              <label>
+              <label css={singleInputArea}>
                 Paragarph 2:
                 <input
                   css={inputStyles}
@@ -213,7 +311,7 @@ export default function ApiFrontEndAbout() {
                   disabled
                 />
               </label>
-              <label>
+              <label css={singleInputArea}>
                 Paragarph 3:
                 <input
                   css={inputStyles}
@@ -222,7 +320,7 @@ export default function ApiFrontEndAbout() {
                 />
               </label>
               <br />
-              <label>
+              <label css={singleInputArea}>
                 Paragarph 4:
                 <input
                   css={inputStyles}
@@ -230,7 +328,7 @@ export default function ApiFrontEndAbout() {
                   disabled
                 />
               </label>
-              <label>
+              <label css={singleInputArea}>
                 External Link 1:
                 <input
                   css={inputStyles}
@@ -238,7 +336,7 @@ export default function ApiFrontEndAbout() {
                   disabled
                 />
               </label>
-              <label>
+              <label css={singleInputArea}>
                 External Link 2:
                 <input
                   css={inputStyles}
@@ -247,7 +345,7 @@ export default function ApiFrontEndAbout() {
                 />
               </label>
               <br />
-              <label>
+              <label css={singleInputArea}>
                 External Link 3:
                 <input
                   css={inputStyles}
@@ -256,6 +354,7 @@ export default function ApiFrontEndAbout() {
                 />
               </label>
               <button
+                css={buttonStyles}
                 onClick={() => {
                   setActiveEdit(aboutinput.id);
                   setEditParagraphOne(aboutinput.paragraph1);

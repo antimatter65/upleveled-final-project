@@ -26,7 +26,7 @@ export default function UserPage(props: props) {
           <title>USER NOT FOUND!</title>
           <meta name="description" content="user not found" />
         </Head>
-        <h1>USER NOT FOUND!</h1>
+        <h1 css={mainStyles}>USER NOT FOUND!</h1>
         <div>try again</div>
       </>
     );

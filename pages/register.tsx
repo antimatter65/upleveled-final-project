@@ -4,8 +4,11 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { RegisterResponseBody } from './api/register';
+import { buttonStyles } from './releases';
 
 export const errorStyles = css`
+  justify-content: center;
+  align-items: center;
   color: white;
   background-color: #f37c7c;
   max-width: 50%;
@@ -27,6 +30,7 @@ const signInBoxStyles = css`
   color: white;
   max-width: 75%;
   font-size: 24px;
+  text-shadow: 1px 1px 1px #3c5c5e;
 `;
 
 const signInBoxStyles1 = css`
@@ -34,28 +38,34 @@ const signInBoxStyles1 = css`
   padding-top: 5%;
   padding-bottom: 5%;
   z-index: 11;
+  text-shadow: 1px 1px 1px #3c5c5e;
 `;
 
 const inputBoxStyles = css`
   width: 50%;
   height: 1.5vw;
-  opacity: 0.6;
+  opacity: 0.75;
   margin-left: 5%;
   font-size: 24px;
   color: greenyellow;
-  background-color: black;
+  background-color: grey;
+  @media (max-width: 1000px) {
+    width: 100%;
+    height: 100%;
+    margin: 5%;
+  }
 `;
 
-const buttonStyles = css`
-  width: 10%;
-  height: 50px;
-  margin-left: 60%;
-  border-radius: 15px;
-  opacity: 0.5;
-  background-color: greenyellow;
-  color: black;
-  font-size: 24px;
-`;
+// const buttonStyles = css`
+//   width: 10%;
+//   height: 50px;
+//   margin-left: 60%;
+//   border-radius: 15px;
+//   opacity: 0.5;
+//   background-color: greenyellow;
+//   color: black;
+//   font-size: 24px;
+// `;
 
 export default function Register(props: any) {
   const [username, setUsername] = useState('');
@@ -145,6 +155,7 @@ export default function Register(props: any) {
               <input
                 css={inputBoxStyles}
                 value={password}
+                type="password"
                 onChange={(event) => {
                   setPassword(event.currentTarget.value);
                 }}

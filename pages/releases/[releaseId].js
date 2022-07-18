@@ -14,6 +14,7 @@ const mainReleaseStyles = css`
   padding-top: 5%;
   justify-items: center;
   color: white;
+  text-shadow: 1px 1px 1px #3c5c5e;
 `;
 
 const imageStyles = css`
@@ -39,6 +40,7 @@ const sectionStyles = css`
   justify-content: center;
   width: 60%;
   font-size: 13px;
+  text-shadow: 1px 1px 1px #3c5c5e;
 `;
 
 const trackDataStyles = css`
@@ -58,7 +60,7 @@ const singleTrackDataStyles = css`
 `;
 
 export default function Release(props) {
-  if (!props.allReleaseData.id) {
+  if (!props.allReleaseData) {
     return (
       <div>
         <Head>
@@ -75,6 +77,7 @@ export default function Release(props) {
   }
 
   const newLocal = 'props.allReleaseData.bandcampLink';
+
   return (
     <div>
       <Head>
@@ -159,6 +162,14 @@ export default function Release(props) {
 export async function getServerSideProps(context) {
   const selectedRelease = await getReleaseByReleaseId(context.query.releaseId);
   console.log('what is here 2?', selectedRelease);
+
+  // if ((selectedRelease = [])) {
+  //   return {
+  //     props: {
+  //       allReleaseData: selectedRelease,
+  //     },
+  //   };
+  // }
 
   const singleReleaseAllData = getReducedRelease(selectedRelease);
 

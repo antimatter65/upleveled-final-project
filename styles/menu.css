@@ -23,9 +23,24 @@
 }
 
 .menuNav.showMenu {
-  width: 100%;
+  width: 100vw !important;
   background: rgba(0, 0, 0, 0.5);
+  margin: 0;
 }
+
+/* .menuNav.showMenu @media (max-width: 1000px) {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  padding-right: 100%;
+  padding-bottom: 100%;
+  padding-top: 20%;
+  height: 100%;
+} */
+
+/* display: flex;
+  position: relative;
+  justify-content: center; */
 
 a {
   display: block;

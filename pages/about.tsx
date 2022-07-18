@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 // import Link from 'next/link';
 import aboutbackground from '../public/aboutbackground.jpeg';
 import { getAboutInfo } from '../utils/database';
@@ -16,11 +17,10 @@ const backgroundImageStyles = css`
   position: fixed;
   align-items: center;
   align-self: center;
-  width: 90%;
+  width: 80%;
   padding: 8%;
+  margin-top: 5%;
   padding-top: 0;
-  position: fixed;
-  align-items: center;
   height: 80vh;
   width: 90vw;
   overflow: hidden;
@@ -28,9 +28,12 @@ const backgroundImageStyles = css`
 `;
 
 const titleStyles = css`
-  margin-left: 600px;
+  display: flex;
+  position: relative;
+  justify-content: center;
   z-index: 0;
   color: white;
+  margin-bottom: 0;
 `;
 
 const releasesListStyles = css`
@@ -40,14 +43,19 @@ const releasesListStyles = css`
   flex-wrap: wrap;
   padding: 1%;
   margin: 1%;
+  margin-top: 0;
   justify-content: flex-start;
   justify-content: space-evenly;
   max-height: 100%;
 `;
 
-const releasesListItemLinkStyles = css`
+const aboutSectionAllStyles = css`
+  /* display: flex;
+  position: fixed; */
   color: #ffffff;
   margin: 20%;
+  margin-left: 15%;
+  margin-top: 10%;
   flex-direction: column;
   .a {
     color: green;
@@ -75,7 +83,7 @@ export default function releaseList(props) {
           </div>
           {props.aboutInfo.map((about: any) => {
             return (
-              <div key={`release-${about.id}`} css={releasesListItemLinkStyles}>
+              <section key={`release-${about.id}`} css={aboutSectionAllStyles}>
                 <div>{about.paragraph1}</div>
                 <br />
                 <div> {about.paragraph2}</div>
@@ -84,17 +92,23 @@ export default function releaseList(props) {
                 <br />
                 <div>{about.paragraph4}</div>
                 <br />
-                <div>{about.externalLink1}</div>
-                <br />
-                <div>{about.externalLink2}</div>
-                <br />
-                <div>{about.externalLink3}</div>
-              </div>
+                <div>
+                  <Link href={about.externalLink1}>{about.externalLink1}</Link>
+                </div>
+                <div>
+                  <Link href={about.externalLink2}>{about.externalLink2}</Link>
+                </div>
+                <div>
+                  <Link href={about.externalLink3}>{about.externalLink3}</Link>
+                </div>
+              </section>
             );
           })}
         </div>
         <div>
-          <div>Credit where it's due. We always hurt the ones we love.</div>
+          {/* <div css={aboutSectionAllStyles}>
+            Credit where it's due. We always hurt the ones we love.
+          </div> */}
         </div>
       </main>
     </div>

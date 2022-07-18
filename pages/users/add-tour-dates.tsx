@@ -11,6 +11,7 @@ const mainHeaderStyles = css`
   font-size: 26px;
   color: white;
   padding-top: 2%;
+  text-shadow: 1px 1px 1px #3c5c5e;
 `;
 
 const subHeaderStyles = css`
@@ -22,6 +23,9 @@ const subHeaderStyles = css`
   padding-top: 5%;
   width: 80%;
   border-bottom: solid 1px white;
+  @media (prefers-color-scheme: light) {
+    color: #57387f;
+  }
 `;
 
 const mainInputArea = css`
@@ -43,6 +47,9 @@ const singleInputArea = css`
   color: white;
   height: 1%;
   margin-top: 1%;
+  @media (prefers-color-scheme: light) {
+    color: #57387f;
+  }
 `;
 
 const inputStyles = css`
@@ -78,6 +85,9 @@ const inputStylesCheckbox = css`
 `;
 
 const buttonStyles = css`
+  display: flex;
+  position: relative;
+  justify-content: center;
   margin: 1%;
   padding: 1%;
   font-family: Lexend Zetta;
@@ -90,10 +100,18 @@ const buttonStyles = css`
   opacity: 0.5;
   border-radius: 15px;
   margin-left: 50%;
-  box-shadow: gold;
+  box-shadow: black;
   :hover {
     color: greenyellow;
     background-color: black;
+  }
+  @media (prefers-color-scheme: light) {
+    color: #57387f;
+    background-color: white;
+    :hover {
+      background-color: #57387f;
+      color: white;
+    }
   }
 `;
 
@@ -334,15 +352,18 @@ export default function ApiFrontEndTourDates() {
             />
           </label> */}
           <br />
-          <div css={singleInputArea}> Event Sold Out?</div>
-          <select css={checkboxStyles}>
-            <option css={inputStylesCheckbox} value="0">
-              Tickets Left
-            </option>
-            <option css={inputStylesCheckbox} value="1">
-              Sold Out
-            </option>
-          </select>
+          <div css={singleInputArea}>
+            Event Sold Out?
+            {/* commented out due to hydration errors */}
+            {/* <select css={checkboxStyles}>
+              <option css={inputStylesCheckbox} value="0">
+                Tickets Left
+              </option>
+              <option css={inputStylesCheckbox} value="1">
+                Sold Out
+              </option>
+            </select> */}
+          </div>
 
           <button
             css={buttonStyles}

@@ -40,6 +40,10 @@
 
 input:checked + .slider {
   background-color: #e8ffda;
+
+  @media (prefers-color-scheme: light) {
+    background-color: #57387f;
+  }
 }
 
 input:focus + .slider {

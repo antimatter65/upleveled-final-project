@@ -2,86 +2,149 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-// import mixtape1 from '../public/mixtape1.png';
+import { BsSpotify } from 'react-icons/bs';
+import { SiBandcamp, SiBeatport } from 'react-icons/si';
 import { getReleases } from '../utils/database';
 
 // import { releases.Database } from '../util/database';
 
-const titleStyles = css`
+export const titleStyles = css`
   display: flex;
   position: relative;
   color: white;
   justify-content: center;
+  text-shadow: 1px 1px 1px #3c5c5e;
+  @media (max-width: 1000px) {
+    margin-top: 20%;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const releasesListStyles = css`
   display: flex;
   position: relative;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-
-  margin: 7%;
+  margin-bottom: 1%;
   justify-content: flex-start;
   justify-content: space-evenly;
-  border: blueviolet 3px solid;
 `;
 
-// const releasesListItemStyles = css`
-//   border: solid black 1px;
-//   margin: 10px;
-//   padding: 30px;
-//   background-color: white;
-
-//   align-items: center;
-//   width: 75%;
-//   box-shadow: #5e5df0 0 10px 20px -10px;
-//   .div {
-//     display: flex;
-//     position: relative;
-//     flex-direction: row;
-//     //justify-content: space-between;
-//     margin: 30px;
-//     background: #fdfdfd;
-//     font-size: 13px;
-//     height: 500px;
-//     width: 500px;
-//     padding: 10px 16px;
-//     margin: 20px;
-//     border: solid black 10px;
-//     box-shadow: #5e5df0 0 10px 20px -10px;
-//   }
-// `;
+const releasesTextStyles = css`
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  flex-direction: column;
+  font-size: 16px;
+  margin-left: 2%;
+  padding-left: 5%;
+  height: auto;
+  padding-right: 30%;
+  justify-content: flex-start;
+  justify-content: space-evenly;
+  background-color: grey;
+  border-bottom: 1px solid greenyellow;
+  opacity: 0.75;
+  color: white;
+  text-shadow: 1px 1px 1px #3c5c5e;
+  @media (max-width: 1000px) {
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
 const releasesListItemLinkStyles = css`
   display: flex;
-  flex-direction: column;
-  color: white;
-  text-decoration: wavy;
-  .a {
-    color: green;
+  position: relative;
+  flex-direction: row;
+  margin-top: 13%;
+  margin-bottom: 13%;
+  @media (max-width: 1000px) {
+    flex-direction: column;
   }
 `;
 
 const linkStyles = css`
+  padding-left: 25%;
   display: flex;
   flex-direction: row;
 `;
 
 const albumArtStyles = css`
   display: flex;
-  position: fixed;
+  position: relative;
+  padding: 0%;
+  width: 100%;
+  box-shadow: -5px -15px 50px 15px #aaaaaa;
+  border-radius: 15px;
+  margin-left: 5%;
+  @media (max-width: 1000px) {
+    width: 50%;
+  }
+`;
+
+const iconTitleStyles = css`
+  padding: 5%;
+  margin: 5%;
+  padding-left: 10%;
+`;
+
+export const iconStyles = css`
+  margin-left: 3%;
+  margin-right: 3%;
+  padding: 5%;
+  color: white;
+  opacity: 0.75;
+  width: 50px;
+  height: 50px;
+  :hover {
+    color: black;
+  }
+`;
+
+export const iconsSectionStyles = css`
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  color: white;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
+`;
+
+export const buttonStyles = css`
+  display: flex;
+  position: relative;
+  justify-content: center;
   align-items: center;
-  align-self: center;
-  width: 90%;
-  padding: 8%;
-  padding-top: 0;
-  position: fixed;
-  align-items: center;
-  height: 80vh;
-  width: 90vw;
-  overflow: hidden;
-  z-index: -1;
+  margin: 1%;
+  font-family: Lexend Zetta;
+  font-size: 10px;
+  width: 30%;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  background-color: greenyellow;
+  color: black;
+  opacity: 0.75;
+  border-radius: 15px;
+  box-shadow: gold;
+  :hover {
+    color: greenyellow;
+    background-color: black;
+  }
+  @media (prefers-color-scheme: light) {
+    color: #57387f;
+    background-color: white;
+    :hover {
+      background-color: #57387f;
+      color: white;
+    }
+  }
 `;
 
 export default function releaseList(props) {
@@ -104,62 +167,59 @@ export default function releaseList(props) {
                   key={`release-${release.id}`}
                   css={releasesListItemLinkStyles}
                 >
-                  <div css={release.ListItemLinkStyles}>X</div>
-                  {/* <div>Length: {releases.release_date}</div> */}
-                  <Link href={`/releases/${release.id}`}>
-                    <div>Name: {release.releaseName}</div>
-                  </Link>
-                  <br />
-                  <div>Number of Tracks: {release.tracks}</div>
-                  <br />
-                  <div>Label: {release.recordLabel}</div>
-                  <br />
-                  <div>Released: {release.releaseDate}</div>
-                  <br />
-                  {/* <div>Cover Art Link: {release.coverArtLink}</div> */}
                   <div css={albumArtStyles}>
                     <Link href={`/releases/${release.id}`}>
                       <Image
                         src={`/${release.id}.jpeg`}
-                        width="700"
-                        height="700"
+                        width="900"
+                        height="900"
                       />
                     </Link>
                   </div>
-                  <br />
-                  <div css={linkStyles}>
-                    <Link href={release.buyLink}>Beatport</Link>
-                    <Link href={release.streamingLink}>Stream</Link>
-                    <Link href={release.bandcampLink}>Bandcamp</Link>
-                  </div>
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
+                  <section css={releasesTextStyles}>
+                    <div css={release.ListItemLinkStyles} />
+                    {/* <div>Length: {releases.release_date}</div> */}
+                    <Link href={`/releases/${release.id}`}>
+                      <div>Name: {release.releaseName}</div>
+                    </Link>
+                    <br />
+                    <div>Number of Tracks: {release.tracks}</div>
+                    <br />
+                    <div>Label: {release.recordLabel}</div>
+                    <br />
+                    <div>Released: {release.releaseDate}</div>
+                    <br />
+                    <button css={buttonStyles}>
+                      <Link href={`/releases/${release.id}`}>
+                        <div>More Info</div>
+                      </Link>
+                    </button>
+                    {/* <div>Cover Art Link: {release.coverArtLink}</div> */}
+                    <div css={linkStyles}>
+                      <section css={iconsSectionStyles}>
+                        <div css={iconTitleStyles}>
+                          Beatport:
+                          <br />
+                          <Link href={release.buyLink}>
+                            <SiBeatport css={iconStyles} />
+                          </Link>
+                        </div>
+                        <div css={iconTitleStyles}>
+                          Stream:
+                          <Link href={release.streamingLink}>
+                            <BsSpotify css={iconStyles} />
+                          </Link>
+                        </div>
+                        <br />
+                        <div css={iconTitleStyles}>
+                          Bandcamp:
+                          <Link href={release.bandcampLink}>
+                            <SiBandcamp css={iconStyles} />
+                          </Link>
+                        </div>
+                      </section>
+                    </div>
+                  </section>
                   <br />
                 </div>
               );

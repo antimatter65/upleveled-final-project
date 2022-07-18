@@ -4,16 +4,34 @@ import Head from 'next/head';
 // import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
-// react-youtube used due to eslint problems with requiring sandboxes for iframes
-import YouTube from 'react-youtube';
 
-// import darkbackground1 from '../public/darkbackground1.jpeg';
-// import styles from '../styles/Home.module.css';
+// react-youtube used due to eslint problems with requiring sandboxes for iframes
+// import YouTube from 'react-youtube';
 
 const mainVideoStyles = css`
+  width: 100%;
+  @media (max-width: 600px) {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+const youTubeVideoStyles = css`
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  @media (max-width: 600px) {
+    position: relative;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    padding-top: 50%;
+    padding-left: 5%;
+    overflow: hidden;
+  }
 `;
 
 const mainStyles = css`
@@ -25,9 +43,12 @@ const headerTextStyles = css`
   align-items: center;
   flex-direction: column;
   color: white;
+  text-shadow: 1px 1px 1px #3c5c5e;
 
-  @media screen and (max-width: 1000px) {
+  @media (max-width: 1000px) {
     color: pink;
+    margin-top: 10%;
+    font-size: 10px;
   }
 
   // border: 2px green solid;
@@ -40,6 +61,7 @@ const footerTextStyles = css`
   align-items: center;
   flex-direction: row;
   color: white;
+  text-shadow: 1px 1px 1px #3c5c5e;
 `;
 
 type Props = {
@@ -86,7 +108,25 @@ export default function Home(props: Props) {
 
         <section css={mainVideoStyles}>
           <br />
-          <YouTube videoId="HwwtvZ45PB4" opts={opts} onReady={onPlayerReady} />
+          <div css={youTubeVideoStyles}>
+            <iframe
+              width="880"
+              height="480"
+              src="https://www.youtube.com/embed/HwwtvZ45PB4"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              sandbox
+            />
+          </div>
+          {/* <div css={youTubeVideoStyles}>
+            <YouTube
+              videoId="HwwtvZ45PB4"
+              opts={opts}
+              onReady={onPlayerReady}
+            />
+          </div> */}
         </section>
         <br />
         <section css={footerTextStyles}>
@@ -105,13 +145,7 @@ export default function Home(props: Props) {
               | Bandcamp
             </Link>
           </div>
-          {/* <div>
-            <Link href="https://api.mixcloud.com/spartacus/party-time/embed-html/">
-              something
-            </Link>
-          </div> */}
         </section>
-        {/* <box-icon type="solid" name="hot"></box-icon> */}
       </main>
     </div>
   );

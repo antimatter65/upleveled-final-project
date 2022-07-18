@@ -14,6 +14,10 @@ const mainStyles = css`
   flex-direction: column;
   display: flex;
   color: white;
+  @media (max-width: 1000px) {
+    margin-top: 25%;
+    margin-left: 0;
+  }
 `;
 
 const linkStyles = css`
@@ -28,19 +32,22 @@ const linkStyles = css`
   color: white;
   font-size: 20px;
 
-  @media screen and (max-width: 1000px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
+    flex-wrap: nowrap;
+    margin-top: 60%;
+    margin-left: 0%;
   }
 `;
 
 const linkButtonStyles = css`
   display: flex;
   position: relative;
-  justify-content: space-evenly;
+  justify-content: center;
   align-content: center;
   align-content: center;
   align-self: center;
-  border: 3px solid white;
+  border: 1px solid white;
   width: 40%;
   border-radius: 15px;
   background-color: black;
@@ -48,11 +55,21 @@ const linkButtonStyles = css`
   margin: 1%;
   margin-left: 3%;
   padding: 1%;
+  padding-bottom: 2%;
   opacity: 0.75;
 
   :hover {
     background-color: white;
     color: black;
+  }
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    margin-left: 0;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20%;
+    margin-bottom: 2%;
   }
 `;
 
@@ -61,6 +78,10 @@ const headerStyles = css`
   position: relative;
   justify-content: center;
   margin-top: 3%;
+  text-shadow: 1px 1px 1px #3c5c5e;
+  @media (max-width: 1000px) {
+    margin-left: 5%;
+  }
 `;
 
 const mainHeaderStyles = css`
@@ -68,6 +89,7 @@ const mainHeaderStyles = css`
   position: relative;
   justify-content: center;
   margin-top: 0%;
+  text-shadow: 1px 1px 1px #3c5c5e;
 `;
 
 // type props = {
@@ -110,15 +132,29 @@ export default function UserPage(props: any) {
             <Link href="/users/edit-about">Add Profile Info </Link>
           </div>
           <div css={linkButtonStyles}>
-            <Link href="/">Update Featured Mixes</Link>
+            <Link href="/underconstuction">Update Featured Mixes</Link>
           </div>
           <div css={linkButtonStyles}>
-            <Link href="/">Change Contact Information</Link>
+            <Link href="/underconstuction">Change Contact Information</Link>
           </div>
           <div css={linkButtonStyles}>
-            <Link href="/">Change Landing Page Video</Link>
+            <Link href="/underconstuction">Change Landing Page Video</Link>
           </div>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </main>
     </div>
   );

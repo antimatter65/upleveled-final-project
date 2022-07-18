@@ -5,25 +5,107 @@ import { useEffect, useState } from 'react';
 import { getUserByValidSessionToken, Release } from '../../utils/database';
 
 const mainHeaderStyles = css`
-  margin: 2%;
-  font-size: 13px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  font-size: 26px;
+  color: white;
+  padding-top: 2%;
+  text-shadow: 1px 1px 1px #3c5c5e;
 `;
+
+const subHeaderStyles = css`
+  display: flex;
+  position: relative;
+  font-size: 26px;
+  margin-left: 5%;
+  color: white;
+  padding-top: 5%;
+  width: 80%;
+  border-bottom: solid 1px white;
+`;
+
 const mainInputArea = css`
-  margin: 1%;
+  display: flex;
+  position: relative;
+  padding-left: 20%;
+  flex-direction: column;
   font-size: 10px;
+  color: white;
+  padding: 5%;
+  border-bottom: white 1px solid;
+  text-shadow: 1px 1px 1px #3c5c5e;
+`;
+
+const singleInputArea = css`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  font-size: 13px;
+  color: white;
+  height: 1%;
+  margin-top: 1%;
+  text-shadow: 1px 1px 1px #3c5c5e;
 `;
 
 const inputStyles = css`
+  font-family: Lexend Zetta;
+  font-size: 13px;
+  width: 40%;
+  height: auto;
+  display: flex;
+  right: 0%;
+  border-radius: 10px;
+  margin-left: 50%;
+`;
+
+const inputStylesDate = css`
+  font-family: Lexend Zetta;
+  font-size: 13px;
+  width: 15%;
+  height: auto;
+  display: flex;
+  right: 0%;
+  border-radius: 10px;
+  margin-left: 50%;
+`;
+
+const inputStylesCheckbox = css`
+  font-family: Lexend Zetta;
+  font-size: 13px;
+  width: 15%;
+  height: auto;
+  display: flex;
+  right: 0%;
+  border-radius: 10px;
+`;
+
+const buttonStyles = css`
   margin: 1%;
+  padding: 1%;
   font-family: Lexend Zetta;
   font-size: 10px;
-  width: 30%;
+  width: 10%;
   display: flex;
   flex-direction: column;
+  background-color: greenyellow;
+  color: black;
+  opacity: 0.5;
+  border-radius: 15px;
+  margin-left: 50%;
+  box-shadow: gold;
+  :hover {
+    color: greenyellow;
+    background-color: black;
+  }
 `;
 
 const mainStyles = css`
-  padding-left: 20%;
+  color: white;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 export default function ApiFrontEndReleases() {
@@ -166,16 +248,12 @@ export default function ApiFrontEndReleases() {
       </Head>
 
       <main css={mainStyles}>
-        <br />
-        <br />
-        <br />
-        <br />
         <section css={mainHeaderStyles}>
           <h1>Add Release:</h1>
         </section>
         <hr />
         <section css={mainInputArea}>
-          <label>
+          <label css={singleInputArea}>
             Release Name:
             <input
               css={inputStyles}
@@ -183,7 +261,7 @@ export default function ApiFrontEndReleases() {
               onChange={(event) => setNewReleaseName(event.currentTarget.value)}
             />
           </label>
-          <label>
+          <label css={singleInputArea}>
             Release Date
             <input
               css={inputStyles}
@@ -191,7 +269,7 @@ export default function ApiFrontEndReleases() {
               onChange={(event) => setNewReleaseDate(event.currentTarget.value)}
             />
           </label>
-          <label>
+          <label css={singleInputArea}>
             Record Label:
             <input
               css={inputStyles}
@@ -199,7 +277,7 @@ export default function ApiFrontEndReleases() {
               onChange={(event) => setNewRecordLabel(event.currentTarget.value)}
             />
           </label>
-          <label>
+          <label css={singleInputArea}>
             Tracks:
             <input
               css={inputStyles}
@@ -210,7 +288,7 @@ export default function ApiFrontEndReleases() {
             />
           </label>
           <br />
-          <label>
+          <label css={singleInputArea}>
             CoverArtLink:
             <input
               css={inputStyles}
@@ -220,7 +298,7 @@ export default function ApiFrontEndReleases() {
               }
             />
           </label>
-          <label>
+          <label css={singleInputArea}>
             Buy Link:
             <input
               css={inputStyles}
@@ -228,7 +306,7 @@ export default function ApiFrontEndReleases() {
               onChange={(event) => setNewBuyLink(event.currentTarget.value)}
             />
           </label>
-          <label>
+          <label css={singleInputArea}>
             StreamingLink:
             <input
               css={inputStyles}
@@ -238,7 +316,7 @@ export default function ApiFrontEndReleases() {
               }
             />
           </label>
-          <label>
+          <label css={singleInputArea}>
             Bandcamp Link:
             <input
               css={inputStyles}
@@ -249,6 +327,7 @@ export default function ApiFrontEndReleases() {
             />
           </label>
           <button
+            css={buttonStyles}
             onClick={() => {
               newReleaseHandeler().catch(() => {
                 console.log('request to add new releases to database failed');
@@ -258,11 +337,10 @@ export default function ApiFrontEndReleases() {
             Add New Release
           </button>
           <br />
-          <br />
-          <hr />
-          <h2>Edit Releases In Database:</h2>
-          <hr />
         </section>
+        <hr />
+        <h2>Edit Releases In Database:</h2>
+        <hr />
         <br />
         {releaseList
           .sort((a, b) => a.id - b.id)
@@ -271,7 +349,7 @@ export default function ApiFrontEndReleases() {
             return release.id === currentReleaseEdit ? (
               <section css={mainInputArea} key={release.id}>
                 <div>Release Id: {release.id}</div>
-                <label>
+                <label css={singleInputArea}>
                   Release Name:
                   <input
                     css={inputStyles}
@@ -281,7 +359,7 @@ export default function ApiFrontEndReleases() {
                     }
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Release Date:
                   <input
                     css={inputStyles}
@@ -291,7 +369,7 @@ export default function ApiFrontEndReleases() {
                     }
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Record Label:
                   <input
                     css={inputStyles}
@@ -302,7 +380,7 @@ export default function ApiFrontEndReleases() {
                   />
                 </label>
                 <br />
-                <label>
+                <label css={singleInputArea}>
                   Tracks:
                   <input
                     css={inputStyles}
@@ -313,7 +391,7 @@ export default function ApiFrontEndReleases() {
                   />
                 </label>
 
-                <label>
+                <label css={singleInputArea}>
                   CoverArtLink:
                   <input
                     css={inputStyles}
@@ -323,7 +401,7 @@ export default function ApiFrontEndReleases() {
                     }
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Buy Link:
                   <input
                     css={inputStyles}
@@ -334,7 +412,7 @@ export default function ApiFrontEndReleases() {
                   />
                 </label>
                 <br />
-                <label>
+                <label css={singleInputArea}>
                   StreamingLink:
                   <input
                     css={inputStyles}
@@ -344,7 +422,7 @@ export default function ApiFrontEndReleases() {
                     }
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Bandcamp Link:
                   <input
                     css={inputStyles}
@@ -355,6 +433,7 @@ export default function ApiFrontEndReleases() {
                   />
                 </label>
                 <button
+                  css={buttonStyles}
                   onClick={() => {
                     setCurrentReleaseEdit(undefined);
                     updateReleaseHandler(release.id).catch(() => {
@@ -368,6 +447,7 @@ export default function ApiFrontEndReleases() {
                 </button>
                 <br />
                 <button
+                  css={buttonStyles}
                   onClick={() => {
                     deleteReleaseHandeler(release.id).catch(() => {
                       console.log(
@@ -384,7 +464,7 @@ export default function ApiFrontEndReleases() {
             ) : (
               <section css={mainInputArea} key={release.id}>
                 <div>Release Id: {release.id}</div>
-                <label>
+                <label css={singleInputArea}>
                   Release Name:
                   <input
                     css={inputStyles}
@@ -392,7 +472,7 @@ export default function ApiFrontEndReleases() {
                     disabled
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Release Date:
                   <input
                     css={inputStyles}
@@ -400,7 +480,7 @@ export default function ApiFrontEndReleases() {
                     disabled
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Record Label:
                   <input
                     css={inputStyles}
@@ -409,7 +489,7 @@ export default function ApiFrontEndReleases() {
                   />
                 </label>
                 <br />
-                <label>
+                <label css={singleInputArea}>
                   Tracks:
                   <input css={inputStyles} value={release.tracks} disabled />
                 </label>
@@ -421,12 +501,12 @@ export default function ApiFrontEndReleases() {
                     disabled
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Buy Link:
                   <input css={inputStyles} value={release.buyLink} disabled />
                 </label>
                 <br />
-                <label>
+                <label css={singleInputArea}>
                   StreamingLink:
                   <input
                     css={inputStyles}
@@ -434,7 +514,7 @@ export default function ApiFrontEndReleases() {
                     disabled
                   />
                 </label>
-                <label>
+                <label css={singleInputArea}>
                   Bandcamp Link:
                   <input
                     css={inputStyles}
@@ -443,6 +523,7 @@ export default function ApiFrontEndReleases() {
                   />
                 </label>
                 <button
+                  css={buttonStyles}
                   onClick={() => {
                     setCurrentReleaseEdit(release.id);
                     setEditReleaseName(release.releaseName);

@@ -12,16 +12,19 @@ const footerStyles = css`
   justify-content: center;
   flex-direction: row;
   margin-top: 5%;
+  @media (max-width: 1000px) {
+    margin-top: 135%;
+  }
 `;
 
-const iconsSectionStyles = css`
+export const iconsSectionStyles = css`
   display: flex;
   position: relative;
   justify-content: center;
   color: white;
 `;
 
-const iconStyles = css`
+export const iconStyles = css`
   margin-left: 3%;
   margin-right: 3%;
   padding: 1%;
@@ -29,9 +32,20 @@ const iconStyles = css`
   opacity: 0.75;
   width: 50px;
   height: 50px;
+  z-index: 0;
+  :hover {
+    color: black;
+  }
+  @media (prefers-color-scheme: light) {
+    color: #57387f;
+    :hover {
+      color: white;
+      opacity: 0.5;
+    }
+  }
 `;
 
-// icons for links to insta, streaming, mand buy links using icons from react-icons, check the licences for projects
+// icons for links to instagram, streaming, and buy links using icons from react-icons, check the licences for future projects
 
 export default function Footer() {
   return (

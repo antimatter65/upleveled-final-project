@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { LoginResponseBody } from './api/login';
 import { errorStyles } from './register';
+import { buttonStyles } from './releases';
 
 const signInBoxStyles = css`
   display: flex;
@@ -15,6 +16,7 @@ const signInBoxStyles = css`
   color: white;
   max-width: 75%;
   font-size: 24px;
+  text-shadow: 1px 1px 1px #3c5c5e;
 `;
 
 const signInBoxStyles1 = css`
@@ -31,18 +33,12 @@ const inputBoxStyles = css`
   margin-left: 5%;
   font-size: 24px;
   color: greenyellow;
-  background-color: black;
-`;
-
-const buttonStyles = css`
-  width: 10%;
-  height: 50px;
-  margin-left: 60%;
-  border-radius: 15px;
-  opacity: 0.5;
-  background-color: greenyellow;
-  color: black;
-  font-size: 24px;
+  background-color: grey;
+  @media (max-width: 1000px) {
+    width: 100%;
+    height: 100%;
+    margin: 5%;
+  }
 `;
 
 export default function About(props: any) {
@@ -93,7 +89,8 @@ export default function About(props: any) {
       await props.refreshUserProfile;
     } else {
       // direct user to home after registering or other page in this case redirect to user profile based on user.id
-      await router.push(`/users/${loginResponseBody.user.id}`);
+      // await router.push(`/users/${loginResponseBody.user.id}`);
+      await router.push(`/users/private-page`);
       // await router.push('/');
     }
   }

@@ -19,6 +19,9 @@ const headerlogo = css`
   @media (prefers-color-scheme: light) {
     filter: invert(1);
   }
+  @media (max-width: 1000px) {
+    padding-left: 20%;
+  }
 `;
 
 const headerLinkContainerStyles = css`
@@ -67,9 +70,15 @@ const headerLinkButtonStyles = css`
   font-family: Lexend Zetta;
 
   :hover {
-    color: white;
-    text-decoration: underline;
+    color: pink;
     border-color: grey;
+  }
+
+  @media (prefers-color-scheme: light) {
+    color: white;
+    :hover {
+      color: #57387f;
+    }
   }
 `;
 
@@ -117,6 +126,12 @@ const navMenuButtonStyles = css`
   height: 40px;
   background-color: none;
   z-index: 10;
+  @media (prefers-color-scheme: light) {
+    color: white;
+    :hover {
+      color: #57387f;
+    }
+  }
 `;
 
 const navMenuButtonClosedStyles = css`
@@ -128,11 +143,30 @@ const navMenuButtonClosedStyles = css`
   height: 40px;
   background-color: none;
   z-index: 10;
+  @media (prefers-color-scheme: light) {
+    color: white;
+    :hover {
+      color: #57387f;
+    }
+  }
 `;
 
 const toggleButtonStyles = css`
   background: transparent;
   border: none;
+`;
+
+const navbarMediaSmall = css`
+  @media (max-width: 1000px) {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    padding-right: 90%;
+    padding-bottom: 100%;
+    padding-top: 20%;
+    height: 100%;
+    font-size: 10px;
+  }
 `;
 
 export default function Navbar(props) {
@@ -182,7 +216,10 @@ export default function Navbar(props) {
         )}
       </button>
       {/* <button onClick={handleToggle}>{navbarOpen ? 'Close' : 'Open'}</button> */}
-      <ul className={`menuNav ${navbarOpen ? ' showMenu' : ''}`}>
+      <ul
+        className={`menuNav ${navbarOpen ? ' showMenu' : ''}`}
+        // css={{`menuNav ${navbarOpen ? ' showMenu' : ''}`}}
+      >
         <div css={headerLinkContainerStyles}>
           <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/">Home</Link>

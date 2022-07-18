@@ -11,7 +11,7 @@ const bgWrap = css`
   z-index: -1;
   background-image: url('/darkbackground1.jpeg');
   @media (max-width: 1000px) {
-    background-image: url('/lightbackground1.jpeg');
+    background-image: url('/darkbackground1cropped.png');
   }
   @media (prefers-color-scheme: light) {
     background-image: url('/lightbackground2.jpeg');
