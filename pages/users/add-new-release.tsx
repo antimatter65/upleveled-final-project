@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getUserByValidSessionToken, Release } from '../../utils/database';
 
@@ -23,6 +24,7 @@ const subHeaderStyles = css`
   padding-top: 5%;
   width: 80%;
   border-bottom: solid 1px white;
+  text-shadow: 1px 1px 1px #3c5c5e;
 `;
 
 const mainInputArea = css`
@@ -149,6 +151,19 @@ export default function ApiFrontEndReleases() {
       console.log('request to get releases from database failed');
     });
   }, []);
+
+  // useEffect to GET the database from releases on first load of the page
+
+  // useEffect(() => {
+  //   async function getReleases1() {
+  //     const response = await fetch('/api/releases/');
+  //     const releases = await response.json();
+  //     setReleaseList(releases);
+  //   }
+  //   getReleases().catch(() => {
+  //     console.log('request to get releases from database failed');
+  //   });
+  // }, []);
 
   // for onclick function to add new release to database
 
@@ -339,7 +354,11 @@ export default function ApiFrontEndReleases() {
           <br />
         </section>
         <hr />
-        <h2>Edit Releases In Database:</h2>
+        <button css={buttonStyles}>
+          <Link href="../users/uploader"> Upload Cover Art</Link>
+        </button>
+        <hr />
+        <h2 css={subHeaderStyles}>Edit Releases In Database:</h2>
         <hr />
         <br />
         {releaseList
