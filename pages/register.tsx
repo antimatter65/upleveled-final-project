@@ -31,6 +31,10 @@ const signInBoxStyles = css`
   max-width: 75%;
   font-size: 24px;
   text-shadow: 1px 1px 1px #3c5c5e;
+  @media (max-width: 1000px) {
+    margin-top: 15%;
+    justify-content: center;
+  }
 `;
 
 const signInBoxStyles1 = css`
