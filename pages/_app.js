@@ -16,6 +16,10 @@ import Layout from '../components/Layout';
 export default function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState();
 
+  // for mutipule layouts
+
+  const getLayout = Component.getLayout || ((page) => page);
+
   // callback used so only created one time - optimisation
 
   const refreshUserProfile = useCallback(async () => {

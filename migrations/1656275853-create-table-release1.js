@@ -5,7 +5,7 @@ exports.up = async (sql) => {
     	id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 			track_number integer NOT NULL,
 			track_name varchar(150) NOT NULL,
-  		contributing_artists varchar(150) NOT NULL UNIQUE,
+  		contributing_artists varchar(150),
 			release_id integer REFERENCES releases (id) ON DELETE CASCADE,
 			track_length varchar(10) NOT NULL
 		)

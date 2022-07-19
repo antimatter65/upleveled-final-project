@@ -2,9 +2,7 @@ import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-// import { userInfo } from 'os';
-// import Layout from '../../components/Layout';
-import { getUserByValidSessionToken, User } from '../../utils/database';
+import { getUserByValidSessionToken } from '../../utils/database';
 
 // creating the dynamic page for private profile
 
@@ -17,6 +15,8 @@ const mainStyles = css`
   @media (max-width: 1000px) {
     margin-top: 25%;
     margin-left: 0;
+    margin-bottom: 0%;
+    height: 50%;
   }
 `;
 
@@ -28,6 +28,7 @@ const linkStyles = css`
   justify-content: center;
   width: 85%;
   margin: 5%;
+  margin-bottom: 20%;
   height: 15px;
   color: white;
   font-size: 20px;
@@ -37,6 +38,7 @@ const linkStyles = css`
     flex-wrap: nowrap;
     margin-top: 60%;
     margin-left: 0%;
+    margin-bottom: 1%;
   }
 `;
 
@@ -81,6 +83,12 @@ const headerStyles = css`
   text-shadow: 1px 1px 1px #3c5c5e;
   @media (max-width: 1000px) {
     margin-left: 5%;
+    justify-items: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1%;
   }
 `;
 
@@ -91,10 +99,6 @@ const mainHeaderStyles = css`
   margin-top: 0%;
   text-shadow: 1px 1px 1px #3c5c5e;
 `;
-
-// type props = {
-//   user?: User | undefined;
-// };
 
 export default function UserPage(props: any) {
   if (!props.user) {
@@ -132,28 +136,15 @@ export default function UserPage(props: any) {
             <Link href="/users/edit-about">Add Profile Info </Link>
           </div>
           <div css={linkButtonStyles}>
-            <Link href="/underconstuction">Update Featured Mixes</Link>
+            <Link href="/under-construction">Update Featured Mixes</Link>
           </div>
           <div css={linkButtonStyles}>
-            <Link href="/underconstuction">Change Contact Information</Link>
+            <Link href="/under-construction">Change Contact Information</Link>
           </div>
           <div css={linkButtonStyles}>
-            <Link href="/underconstuction">Change Landing Page Video</Link>
+            <Link href="/under-construction">Change Landing Page Video</Link>
           </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <br />
       </main>
     </div>

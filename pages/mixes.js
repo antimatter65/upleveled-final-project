@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { FaMixcloud } from 'react-icons/fa';
 // import Link from 'next/link';
 // import two from '../public/2.jpeg';
-import three from '../public/3.jpeg';
-import four from '../public/4.jpeg';
-import theoneinthewoodslogo2 from '../public/theoneinthewoodslogo2.jpeg';
+import three from '../public/3.jpg';
+import four from '../public/4.jpg';
+import theoneinthewoodslogo2 from '../public/theoneinthewoodslogo2.jpg';
 
 const mainStyles = css``;
 

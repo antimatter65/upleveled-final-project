@@ -1,7 +1,5 @@
-// import 'boxicons';
 import { css } from '@emotion/react';
 import Head from 'next/head';
-// import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
@@ -10,10 +8,10 @@ import { useEffect } from 'react';
 
 const mainVideoStyles = css`
   width: 100%;
-  @media (max-width: 600px) {
+  @media (max-width: 1000px) {
     position: absolute;
     top: 5px;
-    left: 0;
+    left: 0%;
     width: 100%;
     height: 100%;
   }
@@ -24,12 +22,12 @@ const youTubeVideoStyles = css`
   position: relative;
   justify-content: center;
   width: 100%;
-  @media (max-width: 600px) {
+  @media (max-width: 1000px) {
     position: relative;
     margin-top: 20%;
     margin-bottom: 20%;
     padding-top: 50%;
-    padding-left: 5%;
+    padding-left: 0%;
     overflow: hidden;
   }
 `;
@@ -46,12 +44,9 @@ const headerTextStyles = css`
   text-shadow: 1px 1px 1px #3c5c5e;
 
   @media (max-width: 1000px) {
-    color: pink;
     margin-top: 10%;
     font-size: 10px;
   }
-
-  // border: 2px green solid;
 `;
 
 const footerTextStyles = css`
@@ -73,19 +68,19 @@ export default function Home(props: Props) {
     props.refreshUserProfile().catch(() => console.log('refresh user profile'));
   }, [props]);
 
-  const onPlayerReady: YouTubeProps['onReady'] = (event: any) => {
-    // access to player in all event handlers via event.target
-    event.target.pauseVideo();
-  };
+  // const onPlayerReady: YouTubeProps['onReady'] = (event: any) => {
+  //   // access to player in all event handlers via event.target
+  //   event.target.pauseVideo();
+  // };
 
-  const opts: YouTubeProps['opts'] = {
-    height: '480',
-    width: '880',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 0,
-    },
-  };
+  // const opts: YouTubeProps['opts'] = {
+  //   height: '480',
+  //   width: '880',
+  //   playerVars: {
+  //     // https://developers.google.com/youtube/player_parameters
+  //     autoplay: 0,
+  //   },
+  // };
 
   return (
     <div>

@@ -15,18 +15,6 @@ const mainHeaderStyles = css`
   text-shadow: 1px 1px 1px #3c5c5e;
 `;
 
-const subHeaderStyles = css`
-  display: flex;
-  position: relative;
-  font-size: 26px;
-  margin-left: 5%;
-  color: white;
-  padding-top: 5%;
-  width: 80%;
-  border-bottom: solid 1px white;
-  text-shadow: 1px 1px 1px #3c5c5e;
-`;
-
 const mainInputArea = css`
   display: flex;
   position: relative;
@@ -43,7 +31,7 @@ const singleInputArea = css`
   display: flex;
   position: relative;
   flex-direction: column;
-  font-size: 13px;
+  font-size: 24px;
   color: white;
   height: 1%;
   margin-top: 1%;
@@ -59,27 +47,20 @@ const inputStyles = css`
   right: 0%;
   border-radius: 10px;
   margin-left: 20%;
+  background-color: grey;
+  color: white;
+  opacity: 0.95;
 `;
 
-const inputStylesDate = css`
+const inputStylesActive = css`
   font-family: Lexend Zetta;
   font-size: 13px;
-  width: 15%;
-  height: auto;
+  width: 80%;
+  height: 130px;
   display: flex;
   right: 0%;
   border-radius: 10px;
-  margin-left: 50%;
-`;
-
-const inputStylesCheckbox = css`
-  font-family: Lexend Zetta;
-  font-size: 13px;
-  width: 15%;
-  height: auto;
-  display: flex;
-  right: 0%;
-  border-radius: 10px;
+  margin-left: 20%;
 `;
 
 export const buttonStyles = css`
@@ -108,14 +89,6 @@ export const buttonStyles = css`
       color: white;
     }
   }
-`;
-
-const mainStyles = css`
-  color: white;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  flex-direction: column;
 `;
 
 export default function ApiFrontEndAbout() {
@@ -206,7 +179,7 @@ export default function ApiFrontEndAbout() {
               <label css={singleInputArea}>
                 Paragraph 1:
                 <textarea
-                  css={inputStyles}
+                  css={inputStylesActive}
                   value={editParagraphOne}
                   onChange={(event) =>
                     setEditParagraphOne(event.currentTarget.value)
@@ -216,7 +189,7 @@ export default function ApiFrontEndAbout() {
               <label css={singleInputArea}>
                 Paragraph 2:
                 <textarea
-                  css={inputStyles}
+                  css={inputStylesActive}
                   value={editParagraphTwo}
                   onChange={(event) =>
                     setEditParagraphTwo(event.currentTarget.value)
@@ -226,7 +199,7 @@ export default function ApiFrontEndAbout() {
               <label css={singleInputArea}>
                 Paragraph 3:
                 <textarea
-                  css={inputStyles}
+                  css={inputStylesActive}
                   value={editParagraphThree}
                   onChange={(event) =>
                     setEditParagraphThree(event.currentTarget.value)
@@ -237,7 +210,7 @@ export default function ApiFrontEndAbout() {
               <label css={singleInputArea}>
                 Paragraph 4:
                 <textarea
-                  css={inputStyles}
+                  css={inputStylesActive}
                   value={editParagraphFour}
                   onChange={(event) =>
                     setEditParagraphFour(event.currentTarget.value)
@@ -247,7 +220,7 @@ export default function ApiFrontEndAbout() {
               <label css={singleInputArea}>
                 External Link 1:
                 <textarea
-                  css={inputStyles}
+                  css={inputStylesActive}
                   value={editExternalLinkOne}
                   onChange={(event) =>
                     setEditExternalLinkOne(event.currentTarget.value)
@@ -257,7 +230,7 @@ export default function ApiFrontEndAbout() {
               <label css={singleInputArea}>
                 External Link 2:
                 <textarea
-                  css={inputStyles}
+                  css={inputStylesActive}
                   value={editExternalLinkTwo}
                   onChange={(event) =>
                     setEditExternalLinkTwo(event.currentTarget.value)
@@ -268,7 +241,7 @@ export default function ApiFrontEndAbout() {
               <label css={singleInputArea}>
                 External Link 3:
                 <textarea
-                  css={inputStyles}
+                  css={inputStylesActive}
                   value={editExternalLinkThree}
                   onChange={(event) =>
                     setEditExternalLinkThree(event.currentTarget.value)

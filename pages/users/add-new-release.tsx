@@ -61,27 +61,6 @@ const inputStyles = css`
   margin-left: 50%;
 `;
 
-const inputStylesDate = css`
-  font-family: Lexend Zetta;
-  font-size: 13px;
-  width: 15%;
-  height: auto;
-  display: flex;
-  right: 0%;
-  border-radius: 10px;
-  margin-left: 50%;
-`;
-
-const inputStylesCheckbox = css`
-  font-family: Lexend Zetta;
-  font-size: 13px;
-  width: 15%;
-  height: auto;
-  display: flex;
-  right: 0%;
-  border-radius: 10px;
-`;
-
 const buttonStyles = css`
   margin: 1%;
   padding: 1%;
@@ -90,15 +69,24 @@ const buttonStyles = css`
   width: 10%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   background-color: greenyellow;
   color: black;
-  opacity: 0.5;
+  opacity: 0.7;
   border-radius: 15px;
   margin-left: 50%;
   box-shadow: gold;
   :hover {
     color: greenyellow;
     background-color: black;
+  }
+  @media (prefers-color-scheme: light) {
+    color: #57387f;
+    background-color: white;
+    :hover {
+      background-color: #57387f;
+      color: white;
+    }
   }
 `;
 
@@ -281,6 +269,8 @@ export default function ApiFrontEndReleases() {
             <input
               css={inputStyles}
               value={newReleaseDate}
+              type="date"
+              min="2021-01-01"
               onChange={(event) => setNewReleaseDate(event.currentTarget.value)}
             />
           </label>
@@ -304,7 +294,7 @@ export default function ApiFrontEndReleases() {
           </label>
           <br />
           <label css={singleInputArea}>
-            CoverArtLink:
+            Cover Art URL:
             <input
               css={inputStyles}
               value={newCoverArtLink}
@@ -354,6 +344,7 @@ export default function ApiFrontEndReleases() {
           <br />
         </section>
         <hr />
+        <h2 css={subHeaderStyles}>Image Uploader:</h2>
         <button css={buttonStyles}>
           <Link href="../users/uploader"> Upload Cover Art</Link>
         </button>
@@ -383,6 +374,8 @@ export default function ApiFrontEndReleases() {
                   <input
                     css={inputStyles}
                     value={editReleaseDate}
+                    type="date"
+                    min="2021-01-01"
                     onChange={(event) =>
                       setEditReleaseDate(event.currentTarget.value)
                     }
@@ -411,7 +404,7 @@ export default function ApiFrontEndReleases() {
                 </label>
 
                 <label css={singleInputArea}>
-                  CoverArtLink:
+                  Cover Art URL:
                   <input
                     css={inputStyles}
                     value={editCoverArtLink}
@@ -512,8 +505,8 @@ export default function ApiFrontEndReleases() {
                   Tracks:
                   <input css={inputStyles} value={release.tracks} disabled />
                 </label>
-                <label>
-                  CoverArtLink:
+                <label css={singleInputArea}>
+                  Cover Art URL:
                   <input
                     css={inputStyles}
                     value={release.coverArtLink}

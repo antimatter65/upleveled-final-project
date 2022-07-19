@@ -2,6 +2,8 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { BsSpotify } from 'react-icons/bs';
+import { SiBandcamp, SiBeatport } from 'react-icons/si';
 import { getReleaseByReleaseId } from '../../utils/database';
 import { getReducedRelease } from '../../utils/dataStructure';
 
@@ -15,17 +17,23 @@ const mainReleaseStyles = css`
   justify-items: center;
   color: white;
   text-shadow: 1px 1px 1px #3c5c5e;
+  @media (max-width: 1000px) {
+    margin-top: 10%;
+  }
 `;
 
-const imageStyles = css`
-  margin: 0;
-  justify-content: center;
-  overflow: hidden;
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  z-index: -1;
+const albumArtStyles = css`
+  display: flex;
+  position: relative;
+  padding: 0%;
+  margin: 0%;
+  width: 25%;
+  /* box-shadow: -5px -15px 50px 15px #aaaaaa; */
+
+  @media (max-width: 1000px) {
+    width: 90%;
+    margin-bottom: 5%;
+  }
 `;
 
 const sectionStyles = css`
@@ -41,6 +49,9 @@ const sectionStyles = css`
   width: 60%;
   font-size: 13px;
   text-shadow: 1px 1px 1px #3c5c5e;
+  @media (max-width: 1000px) {
+    font-size: 12px;
+  }
 `;
 
 const trackDataStyles = css`
@@ -57,6 +68,43 @@ const singleTrackDataStyles = css`
   position: relative;
   flex-direction: row;
   // border: black solid 2px;
+`;
+
+const iconTitleStyles = css`
+  padding: 5%;
+  margin: 5%;
+  padding-left: 10%;
+  font-size: 10px;
+  @media (max-width: 1000px) {
+    padding-left: 0%;
+    border: 1px green solid;
+  }
+`;
+
+export const iconStyles = css`
+  margin-left: 3%;
+  margin-right: 3%;
+  padding: 5%;
+  color: white;
+  opacity: 0.75;
+  width: 50px;
+  height: 50px;
+  :hover {
+    color: black;
+  }
+`;
+
+export const iconsSectionStyles = css`
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: white;
+  @media (max-width: 1000px) {
+    margin-left: 10%;
+  }
 `;
 
 export default function Release(props) {
@@ -76,8 +124,6 @@ export default function Release(props) {
     );
   }
 
-  const newLocal = 'props.allReleaseData.bandcampLink';
-
   return (
     <div>
       <Head>
@@ -92,7 +138,7 @@ export default function Release(props) {
         <main css={mainReleaseStyles}>
           <h1>{props.allReleaseData.releaseName}</h1>
           <br />
-          <div>
+          {/* <div>
             <Image
               css={imageStyles}
               src={`/${props.allReleaseData.id}.jpeg`}
@@ -100,7 +146,14 @@ export default function Release(props) {
               height="500"
               responsive
             />
-          </div>
+          </div> */}
+          <Link href="/releases">
+            <img
+              css={albumArtStyles}
+              src={props.allReleaseData.coverArtLink}
+              alt="cover art for this release"
+            />
+          </Link>
           <section>
             <div>
               <ul css={trackDataStyles}>
@@ -109,9 +162,10 @@ export default function Release(props) {
                     <div css={singleTrackDataStyles} key="releaseId">
                       <ul key={`release-${release.releaseId}`}>
                         <div>
-                          {release.trackNumber}.{'                    '}{' '}
-                          {release.trackName} {release.colab}{' '}
-                          {release.trackLength}
+                          {release.trackNumber}. {'  '} {release.trackName}
+                          {!release.colab ? '' : ' (ft.  '}
+                          {release.colab}
+                          {!release.colab ? '  ' : ')   '} {release.trackLength}
                         </div>
                         <br />
                         {/* <div>{release.trackNumber}</div>
@@ -137,21 +191,29 @@ export default function Release(props) {
             <br />
             {/* <div>Beatport Link: {props.allReleaseData.buyLink}</div> */}
             <br />
-            <Link href={props.allReleaseData.streamingLink}> Stream </Link>
-            {/* <div>Streaming Link: {props.allReleaseData.streamingLink}</div> */}
-
-            <Link href={props.allReleaseData.bandcampLink}> Bandcamp </Link>
-            {/* <div>Bandcamp Link: {props.allReleaseData.bandcampLink}</div> */}
-
-            <Link href={props.allReleaseData.buyLink}> Beatport</Link>
-            <br />
-            {/* <div>Track Name: {props.allReleaseDatatrackName}</div>
-            <br />
-            <div>Colab: {props.allReleaseData.col}</div>
-            <br />
-            <div>Track Length: {props.allReleaseData.trackLength}</div>
-            <br /> */}
-            <br />
+            <div>Find {props.allReleaseData.releaseName} here:</div>
+            <section css={iconsSectionStyles}>
+              <div css={iconTitleStyles}>
+                Beatport:
+                <br />
+                <Link href={props.allReleaseData.buyLink}>
+                  <SiBeatport css={iconStyles} />
+                </Link>
+              </div>
+              <div css={iconTitleStyles}>
+                Stream:
+                <Link href={props.allReleaseData.streamingLink}>
+                  <BsSpotify css={iconStyles} />
+                </Link>
+              </div>
+              <br />
+              <div css={iconTitleStyles}>
+                Bandcamp:
+                <Link href={props.allReleaseData.bandcampLink}>
+                  <SiBandcamp css={iconStyles} />
+                </Link>
+              </div>
+            </section>
           </section>
         </main>
       </div>

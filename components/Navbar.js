@@ -15,9 +15,12 @@ const headerlogo = css`
   background: transparent;
   border: none;
   color: black;
-  // this chage the header logo from white to black
+  // this change the header logo from white to black
   @media (prefers-color-scheme: light) {
     filter: invert(1);
+  }
+  :hover {
+    filter: invert(0.5);
   }
   @media (max-width: 1000px) {
     padding-left: 20%;
@@ -43,12 +46,20 @@ const headerLinkStyles = css`
   flex-direction: row;
   margin-top: 1%;
   margin-bottom: 2%;
+  margin-left: 60%;
   color: #e8ffda;
   padding-top: 0%;
   padding-right: 100%;
   width: 400px;
-  font-size: 28px;
+  font-size: 20px;
   text-decoration: none;
+  @media (max-width: 1000px) {
+    font-size: 16px;
+    justify-content: center;
+  }
+  @media (prefers-color-scheme: light) {
+    color: white;
+  }
 `;
 
 const headerLinkButtonStyles = css`
@@ -61,6 +72,7 @@ const headerLinkButtonStyles = css`
   margin-bottom: 2%;
   color: #e8ffda;
   padding-top: 0%;
+  margin-left: 50%;
   padding-right: 100%;
   width: 400px;
   font-size: 28px;
@@ -70,7 +82,6 @@ const headerLinkButtonStyles = css`
   font-family: Lexend Zetta;
 
   :hover {
-    color: pink;
     border-color: grey;
   }
 
@@ -79,6 +90,16 @@ const headerLinkButtonStyles = css`
     :hover {
       color: #57387f;
     }
+  }
+
+  @media (max-width: 1000px) {
+    justify-content: center;
+    padding-top: 5%;
+    margin: 5%;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 20px;
   }
 `;
 
@@ -96,10 +117,6 @@ const navBarStyles = css`
   padding-top: 0%;
 `;
 
-// const navBar = css`
-//   position: relative;
-// `;
-
 const buttonContainerStyles = css`
   position: fixed;
   margin-left: 60%;
@@ -113,8 +130,6 @@ const buttonContainerStyles = css`
   background: transparent;
   z-index: 10;
   padding: 1%;
-
-  // border: 3px green solid;
 `;
 
 const navMenuButtonStyles = css`
@@ -132,6 +147,8 @@ const navMenuButtonStyles = css`
       color: #57387f;
     }
   }
+  @media (max-width: 1000px) {
+  }
 `;
 
 const navMenuButtonClosedStyles = css`
@@ -148,24 +165,6 @@ const navMenuButtonClosedStyles = css`
     :hover {
       color: #57387f;
     }
-  }
-`;
-
-const toggleButtonStyles = css`
-  background: transparent;
-  border: none;
-`;
-
-const navbarMediaSmall = css`
-  @media (max-width: 1000px) {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    padding-right: 90%;
-    padding-bottom: 100%;
-    padding-top: 20%;
-    height: 100%;
-    font-size: 10px;
   }
 `;
 
@@ -204,15 +203,7 @@ export default function Navbar(props) {
         {navbarOpen ? (
           <MdClose css={navMenuButtonClosedStyles} />
         ) : (
-          <FiMenu
-            css={navMenuButtonStyles}
-            // style={{
-            //   color: '#BECEB4',
-            //   width: '40px',
-            //   height: '40px',
-            //   background: '',
-            // }}
-          />
+          <FiMenu css={navMenuButtonStyles} />
         )}
       </button>
       {/* <button onClick={handleToggle}>{navbarOpen ? 'Close' : 'Open'}</button> */}
@@ -263,12 +254,12 @@ export default function Navbar(props) {
           </div>
           <br />
           <br />
-          <button css={toggleButtonStyles}>
+          {/* <button css={toggleButtonStyles}>
             <label class="switch">
               <input type="checkbox" />
               <span class="slider round"></span>
             </label>
-          </button>
+          </button> */}
         </div>
       </ul>
     </div>

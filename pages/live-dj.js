@@ -34,6 +34,9 @@ const tableHeadingStyles = css`
   padding-left: 3%;
   color: white;
   text-shadow: 1px 1px 1px #3c5c5e;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 
 const tableStyles = css`
@@ -41,15 +44,26 @@ const tableStyles = css`
   position: relative;
   flex-direction: row;
   margin-left: 10%;
+  margin-top: 5%;
+  border: white 2px solid;
+  background: rgba(190, 190, 190, 0.5);
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3%;
+    padding: 0%;
+    width: 90%;
+  }
 `;
 
 const dataHeadStyles = css`
   display: flex;
   position: relative;
-
+  border: 1px solid green;
   font-size: 15px;
   margin-left: 4%;
-  margin-right: 3%;
+  margin-right: 4%;
   margin-top: 0;
   margin-bottom: 1%;
   width: auto;
@@ -57,20 +71,24 @@ const dataHeadStyles = css`
   padding: 1%;
   color: white;
   text-shadow: 1px 1px 1px #3c5c5e;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 const dataStyles = css`
   display: flex;
   position: relative;
-  justify-content: center;
-  font-size: 10px;
+  font-size: 13px;
   flex-direction: row;
-
-  padding: 1%;
-  margin-left: 3%;
+  border: 1px solid green;
   margin-right: 3%;
   width: 13%;
   color: white;
   text-shadow: 1px 1px 1px #3c5c5e;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    width: 30%;
+  }
 `;
 
 const buttonStyles = css`
@@ -172,7 +190,8 @@ export default function releaseList(props) {
 // Code in getServerSideProps runs in
 // Node.js (on the server)
 //
-// Important: ONLY in the /pages directory
+// ONLY in the /pages directory
+
 export async function getServerSideProps() {
   // from database.js
   const tourDates = await getTourDates();

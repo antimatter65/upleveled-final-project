@@ -7,3 +7,10 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
+// module.exports = {
+//   images: {
+//     loader: 'cloudinary',
+//     path: 'https://res.cloudinary.com/dfmmykkmb/image/upload/',
+//   },
+// };

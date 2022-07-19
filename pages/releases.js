@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 import { BsSpotify } from 'react-icons/bs';
 import { SiBandcamp, SiBeatport } from 'react-icons/si';
@@ -24,12 +24,9 @@ export const titleStyles = css`
 const releasesListStyles = css`
   display: flex;
   position: relative;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 1%;
-  justify-content: flex-start;
-  justify-content: space-evenly;
 `;
 
 const releasesTextStyles = css`
@@ -38,32 +35,39 @@ const releasesTextStyles = css`
   flex-wrap: wrap;
   flex-direction: column;
   font-size: 16px;
-  margin-left: 2%;
+  margin-left: 0%;
   padding-left: 5%;
-  height: auto;
   padding-right: 30%;
   justify-content: flex-start;
   justify-content: space-evenly;
-  background-color: grey;
+  background: rgba(190, 190, 190, 0.5);
   border-bottom: 1px solid greenyellow;
-  opacity: 0.75;
+
   color: white;
   text-shadow: 1px 1px 1px #3c5c5e;
   @media (max-width: 1000px) {
-    width: 90%;
+    padding-top: 10%;
+    padding-right: 5%;
+    width: 100%;
     justify-content: center;
     align-items: center;
+    font-size: 10px;
   }
 `;
 
 const releasesListItemLinkStyles = css`
   display: flex;
   position: relative;
+  justify-content: center;
+  margin: 0%;
+  padding-left: 20%;
+  padding-right: 20%;
   flex-direction: row;
   margin-top: 13%;
   margin-bottom: 13%;
   @media (max-width: 1000px) {
     flex-direction: column;
+    margin-bottom: 0%;
   }
 `;
 
@@ -77,12 +81,12 @@ const albumArtStyles = css`
   display: flex;
   position: relative;
   padding: 0%;
-  width: 100%;
-  box-shadow: -5px -15px 50px 15px #aaaaaa;
-  border-radius: 15px;
-  margin-left: 5%;
+  margin: 0%;
+  width: 40%;
+  box-shadow: -px -10px 50px 15px #aaaaaa;
+
   @media (max-width: 1000px) {
-    width: 50%;
+    width: 100%;
   }
 `;
 
@@ -90,6 +94,10 @@ const iconTitleStyles = css`
   padding: 5%;
   margin: 5%;
   padding-left: 10%;
+  @media (max-width: 1000px) {
+    padding-left: 0%;
+    padding-bottom: 1%;
+  }
 `;
 
 export const iconStyles = css`
@@ -103,6 +111,8 @@ export const iconStyles = css`
   :hover {
     color: black;
   }
+  @media (max-width: 1000px) {
+  }
 `;
 
 export const iconsSectionStyles = css`
@@ -113,6 +123,7 @@ export const iconsSectionStyles = css`
   color: white;
   @media (max-width: 1000px) {
     flex-direction: column;
+    margin-bottom: 0%;
   }
 `;
 
@@ -132,7 +143,6 @@ export const buttonStyles = css`
   color: black;
   opacity: 0.75;
   border-radius: 15px;
-  box-shadow: gold;
   :hover {
     color: greenyellow;
     background-color: black;
@@ -144,6 +154,10 @@ export const buttonStyles = css`
       background-color: #57387f;
       color: white;
     }
+  }
+  @media (max-width: 1000px) {
+    width: 100%;
+    margin-bottom: 0%;
   }
 `;
 
@@ -167,15 +181,20 @@ export default function releaseList(props) {
                   key={`release-${release.id}`}
                   css={releasesListItemLinkStyles}
                 >
-                  <div css={albumArtStyles}>
-                    <Link href={`/releases/${release.id}`}>
+                  <Link href={`/releases/${release.id}`}>
+                    <img
+                      src={release.coverArtLink}
+                      alt=""
+                      css={albumArtStyles}
+                    />
+                  </Link>
+                  {/* <Link href={`/releases/${release.id}`}>
                       <Image
-                        src={`/${release.id}.jpeg`}
+                        src={release.coverArtLink}
                         width="900"
                         height="900"
                       />
-                    </Link>
-                  </div>
+                    </Link> */}
                   <section css={releasesTextStyles}>
                     <div css={release.ListItemLinkStyles} />
                     {/* <div>Length: {releases.release_date}</div> */}

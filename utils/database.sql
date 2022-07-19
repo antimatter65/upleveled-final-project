@@ -4,18 +4,6 @@ CREATE TABLE logindatabase (
   username varchar(90) NOT NULL,
   passwordhex varchar(90) NOT NULL,
 );
--- insert the values in to table created
-
--- INSERT INTO mixtapes
---   (name, color, price, length)
--- VALUES
---   ('The Green Mixtape', 'green', 9 , '90 minutes'),
---   ('The Pink Mixtape', 'pink', 9 , '90 minutes'),
---   ('The White Mixtape', 'white', 7, '90 minutes'),
---   ('The Black Mixtape', 'black', 7, '90 minutes'),
---   ('The Clear Neon Mixtape', 'clear', 15, '180 minutes'),
-
-
 
 
 ---- CREATE DATABASE:
@@ -23,7 +11,6 @@ CREATE TABLE logindatabase (
 CREATE DATABASE <database name>;
 CREATE USER <user name> WITH ENCRYPTED PASSWORD '<user password>';
 GRANT ALL PRIVILEGES ON DATABASE <database name> TO <user name>;
-
 
 
 
@@ -53,13 +40,15 @@ VALUES
   INSERT INTO release1
   (track_number, track_name, contributing_artists, release_id, track_length )
   VALUES
-   ('1', 'Closer', 'Tricia McTeague', 1, '5:08'),
-   ('2', 'Closer (Istrumental)', '', 1, '5:08' );
 
-29.07.22 | The One In The Woods (DJ) |Liverpool, UK | theoneinthewoods.com | BUY TICKETS
-Past Dates:
-06.04.22 | Snowbombing 2022 (DJ) |Mayrhofen, Austria | Instagram Link
-21.08.21 | The One In The Woods 21 (DJ) | Liverpool, UK | Stream on Mixcloud
+
+   (1, 'Closer', 'Tricia McTeague', 1, '5:08'),
+   (2, 'Cloer (Instrumental)', '', 1, '5:08'),
+   (1, 'White Label 1 - TEST DATA', 'TEST DATA COLAB', 2, '5:00'),
+   (2, 'White Label 1 (Istrumental)', '', 2, '5:00' ),
+   (1, 'White Label 2 - TEST DATA', 'TEST DATA COLAB', 3, '5:00'),
+   (2, 'White Label 2 - TEST DATA (Istrumental)', '', 3, '5:00' );
+
 
   INSERT INTO tourdates
   (location, date, event_link, ticket_link, tickets_left, streaming_link )

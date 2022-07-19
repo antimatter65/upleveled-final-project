@@ -23,8 +23,11 @@ const bgText = css`
 const imageStyles = css`
   display: flex;
   position: relative;
+  justify-content: center;
   align-items: center;
-  max-width: 50%;
+  align-self: center;
+  justify-items: center;
+  max-width: 30%;
 `;
 
 const jsonDataCss = css`
@@ -39,8 +42,8 @@ const jsonDataCss = css`
   text-shadow: 1px 1px 1px #3c5c5e;
   z-index: 0;
   background-color: grey;
-  background: transparent;
-  border: 2px solid green;
+  opacity: 0.8;
+  width: 110%;
 `;
 
 export default function Home() {
@@ -95,16 +98,16 @@ export default function Home() {
     <div css={bgText}>
       <Head>
         <title>Image Uploader</title>
-        <meta name="uploader" content="Upload your images to cloudinary" />
+        <meta name="uploader" content="Upload album art to cloudinary" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1>Image Uploader</h1>
+        <h1 css={bgText}>Image Uploader</h1>
 
         <form method="POST" onChange={handleOnChange} onSubmit={handleOnSubmit}>
           <p>
-            <input type="file" name="file" />
+            <input css={bgText} type="file" name="file" />
           </p>
 
           <img css={imageStyles} src={imageSrc} alt="" />
@@ -118,7 +121,9 @@ export default function Home() {
           {uploadData && (
             <code>
               <pre css={jsonDataCss}>{JSON.stringify(uploadData, null, 2)}</pre>
-              <div css={jsonDataCss}>Image Upload DONE!</div>
+              {/* {let newurl = JSON.parse(uploadData, null, 2)}
+              <div css={jsonDataCss}>{newurl.url}</div> */}
+              <div css={jsonDataCss}>Image Uploaded!</div>
             </code>
           )}
         </form>
@@ -145,7 +150,7 @@ export default function Home() {
 //       },
 //     };
 //   }
-//   // redirect to login page if not logged then return to the profile page after successfull log in
+//   // redirect to login page if not logged then return to the profile page after successful log in
 //   return {
 //     redirect: {
 //       destination: '/login?returnTo=/users/uploader',

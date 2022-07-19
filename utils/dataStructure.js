@@ -1,4 +1,7 @@
 export function getReducedRelease(releaseWithTrackData) {
+  // if (!releaseWithTrackData) {
+  //   const releaseWithAllTrackData = '';
+  // } else {
   const releaseWithAllTrackData = {
     id: releaseWithTrackData[0].id,
     releaseName: releaseWithTrackData[0].releaseName,
