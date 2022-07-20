@@ -24,6 +24,7 @@ const headerlogo = css`
   }
   @media (max-width: 1000px) {
     padding-left: 20%;
+    margin-top: 2%;
   }
 `;
 
@@ -35,7 +36,10 @@ const headerLinkContainerStyles = css`
   width: 20%;
   margin-left: 0%;
   z-index: 10;
-  // border: red 20px solid;
+
+  @media (max-width: 1000px) {
+    margin-top: 30%;
+  }
 `;
 
 const headerLinkStyles = css`
@@ -47,15 +51,16 @@ const headerLinkStyles = css`
   margin-top: 1%;
   margin-bottom: 2%;
   margin-left: 60%;
-  color: #e8ffda;
+  color: white;
   padding-top: 0%;
   padding-right: 100%;
   width: 400px;
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: none;
   @media (max-width: 1000px) {
     font-size: 16px;
     justify-content: center;
+    margin-top: 5%;
   }
   @media (prefers-color-scheme: light) {
     color: white;
@@ -68,10 +73,10 @@ const headerLinkButtonStyles = css`
   position: relative;
   justify-content: flex-start;
   flex-direction: row;
-  margin-top: 1%;
+  margin-top: 3%;
   margin-bottom: 2%;
-  color: #e8ffda;
-  padding-top: 0%;
+  color: white;
+  padding-top: 12%;
   margin-left: 50%;
   padding-right: 100%;
   width: 400px;
@@ -83,6 +88,7 @@ const headerLinkButtonStyles = css`
 
   :hover {
     border-color: grey;
+    color: yellowgreen;
   }
 
   @media (prefers-color-scheme: light) {
@@ -94,7 +100,7 @@ const headerLinkButtonStyles = css`
 
   @media (max-width: 1000px) {
     justify-content: center;
-    padding-top: 5%;
+    padding-top: 15%;
     margin: 5%;
   }
 
@@ -135,7 +141,7 @@ const buttonContainerStyles = css`
 const navMenuButtonStyles = css`
   position: relative;
   display: flex;
-  color: #beceb4;
+  color: yellowgreen;
   background-color: none;
   width: 40px;
   height: 40px;
@@ -154,16 +160,19 @@ const navMenuButtonStyles = css`
 const navMenuButtonClosedStyles = css`
   position: relative;
   display: flex;
-  color: #e8ffda;
+  color: white;
   background-color: none;
   width: 100%;
   height: 40px;
   background-color: none;
   z-index: 10;
-  @media (prefers-color-scheme: light) {
-    color: white;
-    :hover {
-      color: #57387f;
+  :hover {
+    color: yellowgreen;
+    @media (prefers-color-scheme: light) {
+      color: white;
+      :hover {
+        color: #57387f;
+      }
     }
   }
 `;
@@ -235,23 +244,48 @@ export default function Navbar(props) {
           <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/contact/">Contact/Booking</Link>
           </button>
-          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-            <Link href="/login">Login</Link>
-          </button>
-          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-            <Link href="/register">Register</Link>
-          </button>
-          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-            <Link href="/users/private-page">Edit Data</Link>
-          </button>
-          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-            <Link href="/logout">Logout</Link>
-          </button>
+          {!props.user ? (
+            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+              <Link href="/login">Login</Link>
+            </button>
+          ) : (
+            <div />
+          )}
+          {!props.user ? (
+            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+              <Link href="/register">Register</Link>
+            </button>
+          ) : (
+            <div />
+          )}
+          {props.user ? (
+            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+              <Link href="/users/private-page">Edit Data</Link>
+            </button>
+          ) : (
+            <div />
+          )}
+          {props.user ? (
+            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+              <Link href="/logout">Logout</Link>
+            </button>
+          ) : (
+            <div />
+          )}
           <br />
           <br />
           <div css={headerLinkStyles}>
-            USER: {props.user && props.user.username}
+            {props.user ? 'logged in as user:' : '  '}
           </div>
+          {props.user ? (
+            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+              <Link href={`/users/byname/${props.user.username}`}>
+                {props.user && props.user.username}
+              </Link>
+            </button>
+          ) : (
+            <div />
+          )}
           <br />
           <br />
           {/* <button css={toggleButtonStyles}>

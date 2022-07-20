@@ -39,6 +39,12 @@ const tableStyles = css`
   height: 150px;
   padding: 2%;
   background: rgba(190, 190, 190, 0.5);
+  border-bottom: 1px solid yellowgreen;
+  :hover {
+    border-bottom: 3px solid yellowgreen;
+    background: rgba(190, 190, 190, 0.75);
+  }
+
   @media (max-width: 1000px) {
     flex-direction: column;
     justify-content: center;
@@ -87,7 +93,7 @@ const buttonStyles = css`
   font-family: Lexend Zetta;
   font-size: 10px;
   padding: 10%;
-  width: 200%;
+  width: 300%;
   height: 50px;
   display: flex;
   flex-direction: row;
@@ -120,6 +126,65 @@ export default function releaseList(props) {
   // const str = '2022-09-24';
   // const date = new Date(str);
 
+  console.log('help me find something', props.tourDates);
+
+  // var liveDates = [
+  //   { id: 1, selected: 1, something: 'x' },
+  //   { id: 2, selected: 2, something: '2' },
+  //   { id: 3, selected: 3, something: '2' },
+  //   { id: 4, selected: 4, something: '2' },
+  //   { id: 5, selected: 5, something: '2' },
+  //   { id: 6, selected: 6, something: '2' },
+  //   { id: 7, selected: 6, something: '2' },
+  //   { id: 8, selected: 7, something: '2' },
+  //   { id: 9, selected: 8, something: '2' },
+  //   { id: 10, selected: 9, something: '2' },
+  // ];
+
+  // var updatedTourDates = liveDates.reduce((updatedTourDates, liveDate) => {
+  //   if (liveDate.selected > 5) {
+  //     updatedTourDates.push({ id: liveDate.id, something: liveDate.something });
+  //   }
+  //   return updatedTourDates;
+  // }, []);
+
+  const updatedTourDates = props.tourDates.reduce(
+    (updatedTourDates, tourDate) => {
+      if (tourDate.id > 14) {
+        updatedTourDates.push({
+          id: tourDate.id,
+          location: tourDate.location,
+          eventLocation: tourDate.eventLocation,
+          eventLink: tourDate.eventLink,
+          streamingLink: tourDate.streamingLink,
+          date: tourDate.date,
+          ticketLink: tourDate.ticketLink,
+          ticketsLeft: tourDate.ticketsLeft,
+          type: tourDate.type,
+        });
+      }
+      return updatedTourDates;
+    },
+    [],
+  );
+
+  const oldTourDates = props.tourDates.reduce((oldTourDates, tourDate) => {
+    if (tourDate.id < 15) {
+      oldTourDates.push({
+        id: tourDate.id,
+        location: tourDate.location,
+        eventLocation: tourDate.eventLocation,
+        eventLink: tourDate.eventLink,
+        streamingLink: tourDate.streamingLink,
+        date: tourDate.date,
+        ticketLink: tourDate.ticketLink,
+        ticketsLeft: tourDate.ticketsLeft,
+        type: tourDate.type,
+      });
+    }
+    return oldTourDates;
+  }, []);
+
   return (
     <div>
       <Head>
@@ -130,8 +195,9 @@ export default function releaseList(props) {
       <h1 css={titleStyles}>Live &amp; DJ</h1>
       <main>
         <h1 css={headingStyles}>Upcoming Dates:</h1>
-        {props.tourDates
-          .sort((a, b) => b.id - a.id)
+
+        {updatedTourDates
+          .sort((a, b) => a.id - b.id)
           .map((tour) => {
             return (
               <div key={`release-${tour.id}`} css={tableStyles}>
@@ -158,12 +224,15 @@ export default function releaseList(props) {
               </div>
             );
           })}
+
         {/* add if statement for Sold Out or Tickets Left */}
         {/* <Link href={`/releases/${release.id}`}>
                   <Image src={`/${release.id}.jpeg`} width="600" height="400" />
                 </Link> */}
-        {/* </table> */}}<h1 css={headingStyles}>Past Dates:</h1>
-        {props.tourDates
+        {/* </table> */}
+
+        <h1 css={headingStyles}>Past Dates:</h1>
+        {oldTourDates
           .sort((a, b) => b.id - a.id)
           .map((tour) => {
             return (

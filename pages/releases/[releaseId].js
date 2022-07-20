@@ -223,7 +223,7 @@ export default function Release(props) {
 
 export async function getServerSideProps(context) {
   const selectedRelease = await getReleaseByReleaseId(context.query.releaseId);
-  console.log('what is here 2?', selectedRelease);
+  // console.log('what is here 2?', selectedRelease);
 
   // if ((selectedRelease = [])) {
   //   return {
@@ -235,7 +235,7 @@ export async function getServerSideProps(context) {
 
   const singleReleaseAllData = getReducedRelease(selectedRelease);
 
-  console.log('what is here 3?', singleReleaseAllData);
+  // console.log('what is here 3?', singleReleaseAllData);
 
   return {
     props: {

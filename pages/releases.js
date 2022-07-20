@@ -45,6 +45,10 @@ const releasesTextStyles = css`
 
   color: white;
   text-shadow: 1px 1px 1px #3c5c5e;
+  :hover {
+    border-bottom: 3px solid yellowgreen;
+    background: rgba(190, 190, 190, 0.75);
+  }
   @media (max-width: 1000px) {
     padding-top: 10%;
     padding-right: 5%;

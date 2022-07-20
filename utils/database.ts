@@ -2,6 +2,7 @@ import camelCase from 'camelcase-keys';
 import camelcaseKeys from 'camelcase-keys';
 import { config } from 'dotenv-safe';
 import postgres from 'postgres';
+import { SiHeroku } from 'react-icons/si';
 
 // import setPostgresDefultsOnHeroku from 'setPostgresDefaultsOnHeroku';
 
@@ -16,6 +17,12 @@ declare module globalThis {
 // https://github.com/vercel/next.js/issues/7811#issuecomment-715259370
 function connectOneTimeToDatabase() {
   let sql;
+
+  // for  Deployment to Heroku
+  // Heroku needs SSL connections but
+// has an "unauthorized" certificate
+// https://devcenter.heroku.com/changelog-items/852
+// sql = postgres({ ssl: { rejectUnauthorized: false } });
 
   if (process.env.NODE_ENV === 'production' && process.env.DATABASE_URL) {
     // Heroku needs SSL connections but
