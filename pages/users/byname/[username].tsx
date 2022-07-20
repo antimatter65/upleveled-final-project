@@ -2,7 +2,6 @@ import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useEffect } from 'react';
 import { FaTools } from 'react-icons/fa';
 import { getUserByUserName, User } from '../../../utils/database';
 
@@ -33,11 +32,11 @@ const iconStyles = css`
   }
 `;
 
-type props = {
-  user?: User;
+type Props = {
+  user?: User | undefined;
 };
 
-export default function UserPage(props: props) {
+export default function UserPage(props: Props) {
   if (!props.user) {
     return (
       <>
@@ -90,7 +89,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // for getUserByUsername parseInt is not required
   const user = await getUserByUserName(usernameFromUrl);
 
-  console.log(user);
+  // console.log(user);
 
   if (!user) {
     context.res.statusCode = 404;

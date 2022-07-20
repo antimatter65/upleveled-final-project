@@ -74,15 +74,7 @@ const inputStylesDate = css`
   margin-left: 50%;
 `;
 
-const inputStylesCheckbox = css`
-  font-family: Lexend Zetta;
-  font-size: 13px;
-  width: 15%;
-  height: auto;
-  display: flex;
-  right: 0%;
-  border-radius: 10px;
-`;
+
 
 const buttonStyles = css`
   display: flex;
@@ -123,14 +115,6 @@ const mainStyles = css`
   flex-direction: column;
 `;
 
-const checkboxStyles = css`
-  border-radius: 15px;
-  width: 15%;
-  font-family: Lexend Zetta;
-  font-size: 13px;
-  font-size: 10px;
-  margin-left: 50%;
-`;
 
 export default function ApiFrontEndTourDates() {
   const [tourDatesList, setTourDatesList] = useState<TourDate[]>([]);
@@ -353,7 +337,7 @@ export default function ApiFrontEndTourDates() {
           </label> */}
           <br />
           <div css={singleInputArea}>
-            Event Sold Out?
+            {/* Event Sold Out? */}
             {/* commented out due to hydration errors */}
             {/* <select css={checkboxStyles}>
               <option css={inputStylesCheckbox} value="0">

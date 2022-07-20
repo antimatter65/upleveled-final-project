@@ -1,8 +1,6 @@
 import { css } from '@emotion/react';
-import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { userInfo } from 'os';
-import Layout from '../../components/Layout';
 import { getUserByUserId, User } from '../../utils/database';
 
 const mainStyles = css`
@@ -14,11 +12,11 @@ const mainStyles = css`
 
 /// start again with creating the dynamic page
 
-type props = {
-  user?: User;
+type Props = {
+  user?: User | undefined;
 };
 
-export default function UserPage(props: props) {
+export default function UserPage(props: Props) {
   if (!props.user) {
     return (
       <>
@@ -64,7 +62,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // for getUserByUsername parseInt is not required
   const user = await getUserByUserId(parseInt(userIdFromUrl));
 
-  console.log(user);
+  // console.log(user);
 
   if (!user) {
     context.res.statusCode = 404;

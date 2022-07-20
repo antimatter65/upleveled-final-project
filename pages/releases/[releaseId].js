@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import { BsSpotify } from 'react-icons/bs';
 import { SiBandcamp, SiBeatport } from 'react-icons/si';
@@ -77,7 +76,6 @@ const iconTitleStyles = css`
   font-size: 10px;
   @media (max-width: 1000px) {
     padding-left: 0%;
-    border: 1px green solid;
   }
 `;
 
@@ -138,15 +136,6 @@ export default function Release(props) {
         <main css={mainReleaseStyles}>
           <h1>{props.allReleaseData.releaseName}</h1>
           <br />
-          {/* <div>
-            <Image
-              css={imageStyles}
-              src={`/${props.allReleaseData.id}.jpeg`}
-              width="500"
-              height="500"
-              responsive
-            />
-          </div> */}
           <Link href="/releases">
             <img
               css={albumArtStyles}
@@ -168,11 +157,6 @@ export default function Release(props) {
                           {!release.colab ? '  ' : ')   '} {release.trackLength}
                         </div>
                         <br />
-                        {/* <div>{release.trackNumber}</div>
-                        <div>{release.trackName}</div>
-                        <div>{release.colab}</div>
-                        <div> {release.trackLength}</div>
-                        <div>{release.trackNumber}</div> */}
                       </ul>
                     </div>
                   );
@@ -181,15 +165,11 @@ export default function Release(props) {
             </div>
           </section>
           <section css={sectionStyles}>
-            {/* <div>{props.allReleaseData.releaseName}</div> */}
-            {/* <div>Tracks: {props.allReleaseData.tracks}</div> */}
             <br />
             <div>Label: {props.allReleaseData.recordLabel}</div>
             <br />
             <div>Released: {props.allReleaseData.releaseDate}</div>
-            {/* <div>Cover Art Link: {props.allReleaseData.coverArtLink}</div> */}
             <br />
-            {/* <div>Beatport Link: {props.allReleaseData.buyLink}</div> */}
             <br />
             <div>Find {props.allReleaseData.releaseName} here:</div>
             <section css={iconsSectionStyles}>
@@ -223,19 +203,8 @@ export default function Release(props) {
 
 export async function getServerSideProps(context) {
   const selectedRelease = await getReleaseByReleaseId(context.query.releaseId);
-  // console.log('what is here 2?', selectedRelease);
-
-  // if ((selectedRelease = [])) {
-  //   return {
-  //     props: {
-  //       allReleaseData: selectedRelease,
-  //     },
-  //   };
-  // }
 
   const singleReleaseAllData = getReducedRelease(selectedRelease);
-
-  // console.log('what is here 3?', singleReleaseAllData);
 
   return {
     props: {

@@ -1,11 +1,7 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
-// import Image from 'next/image';
 import Link from 'next/link';
-// import mixtape1 from '../public/mixtape1.png';
 import { getTourDates } from '../utils/database';
-
-// import { releases.Database } from '../util/database';
 
 const titleStyles = css`
   display: flex;
@@ -126,27 +122,7 @@ export default function releaseList(props) {
   // const str = '2022-09-24';
   // const date = new Date(str);
 
-  console.log('help me find something', props.tourDates);
-
-  // var liveDates = [
-  //   { id: 1, selected: 1, something: 'x' },
-  //   { id: 2, selected: 2, something: '2' },
-  //   { id: 3, selected: 3, something: '2' },
-  //   { id: 4, selected: 4, something: '2' },
-  //   { id: 5, selected: 5, something: '2' },
-  //   { id: 6, selected: 6, something: '2' },
-  //   { id: 7, selected: 6, something: '2' },
-  //   { id: 8, selected: 7, something: '2' },
-  //   { id: 9, selected: 8, something: '2' },
-  //   { id: 10, selected: 9, something: '2' },
-  // ];
-
-  // var updatedTourDates = liveDates.reduce((updatedTourDates, liveDate) => {
-  //   if (liveDate.selected > 5) {
-  //     updatedTourDates.push({ id: liveDate.id, something: liveDate.something });
-  //   }
-  //   return updatedTourDates;
-  // }, []);
+  // reduce function to create an array for new tour dates (based on id) needs to to changed to be on date
 
   const updatedTourDates = props.tourDates.reduce(
     (updatedTourDates, tourDate) => {
@@ -168,6 +144,7 @@ export default function releaseList(props) {
     [],
   );
 
+  // reduce function to create an array for old tour dates
   const oldTourDates = props.tourDates.reduce((oldTourDates, tourDate) => {
     if (tourDate.id < 15) {
       oldTourDates.push({

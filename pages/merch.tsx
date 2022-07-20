@@ -38,7 +38,7 @@ export default function Home(props: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <p css={bgText}>
-        <h1 css={titleStyles}>Merch</h1>
+        {/* <h1 css={titleStyles}>Merch</h1> */}
         <div>Locoda Mech Coming Soon</div>
         <br />
         <div>check back later for more info</div>

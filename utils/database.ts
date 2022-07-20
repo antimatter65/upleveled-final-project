@@ -2,7 +2,6 @@ import camelCase from 'camelcase-keys';
 import camelcaseKeys from 'camelcase-keys';
 import { config } from 'dotenv-safe';
 import postgres from 'postgres';
-import { SiHeroku } from 'react-icons/si';
 
 // import setPostgresDefultsOnHeroku from 'setPostgresDefaultsOnHeroku';
 

@@ -73,7 +73,7 @@ const aboutSectionAllStyles = css`
   }
 `;
 
-export default function about(props) {
+export default function aboutPage(props) {
   return (
     <div>
       <Head>

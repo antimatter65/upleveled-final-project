@@ -5,14 +5,6 @@ import { css, Global } from '@emotion/react';
 import { useCallback, useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 
-// import { User } from '../utls/database';
-
-// const backgroundImageStyles = css`
-//   z-index: -0;
-//   width: 1%;
-//   opacity: 0.5;
-// `;
-
 export default function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState();
 
@@ -33,19 +25,6 @@ export default function MyApp({ Component, pageProps }) {
       setUser(undefined);
     }
   }, []);
-
-  // async function refreshUserProfile() {
-  //   const profileResponse = await fetch('/api/profile');
-  //   const profileResponseBody = await profileResponse.json();
-
-  //   if (!('errors' in profileResponseBody)) {
-  //     setUser(profileResponseBody.user);
-  //     // console.log('hey2', profileResponseBody);
-  //   } else {
-  //     profileResponseBody.errors.forEach((error) => console.log(error.message));
-  //     setUser(undefined);
-  //   }
-  // }
 
   useEffect(() => {
     refreshUserProfile().catch(() => console.log('fetch api failed'));
@@ -83,9 +62,6 @@ export default function MyApp({ Component, pageProps }) {
       />
 
       <Layout user={user} refreshUserProfile={refreshUserProfile}>
-        {/*         <div ccs={backgroundImageStyles}>
-          <Image src={darkbackground1} />
-        </div> */}
         <Component {...pageProps} refreshUserProfile={refreshUserProfile} />
       </Layout>
     </>

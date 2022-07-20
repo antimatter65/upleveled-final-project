@@ -69,7 +69,6 @@ const buttonStyles = css`
   width: 10%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   background-color: greenyellow;
   color: black;
   opacity: 0.7;
