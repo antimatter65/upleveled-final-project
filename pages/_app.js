@@ -2,6 +2,7 @@ import '../styles/menu.css';
 import '../styles/carousel.css';
 import '../styles/slider.css';
 import { css, Global } from '@emotion/react';
+import Head from 'next/head';
 import { useCallback, useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 
@@ -60,7 +61,9 @@ export default function MyApp({ Component, pageProps }) {
           }
         `}
       />
-
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Layout user={user} refreshUserProfile={refreshUserProfile}>
         <Component {...pageProps} refreshUserProfile={refreshUserProfile} />
       </Layout>
