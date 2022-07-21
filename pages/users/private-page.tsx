@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { getUserByValidSessionToken } from '../../utils/database';
+import { getUserByValidSessionToken } from '../../util/database';
 
 // creating the dynamic page for private profile
 

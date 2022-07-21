@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { FaTools } from 'react-icons/fa';
-import { getUserByUserName, User } from '../../../utils/database';
+import { getUserByUserName, User } from '../../../util/database';
 
 /// start again with creating the dynamic page
 

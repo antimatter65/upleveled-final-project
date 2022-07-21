@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { getUserByUserId, User } from '../../utils/database';
+import { getUserByUserId, User } from '../../util/database';
 
 const mainStyles = css`
   display: flex;

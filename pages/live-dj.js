@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { getTourDates } from '../utils/database';
+import { getTourDates } from '../util/database';
 
 const titleStyles = css`
   display: flex;

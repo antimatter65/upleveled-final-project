@@ -3,8 +3,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { BsSpotify } from 'react-icons/bs';
 import { SiBandcamp, SiBeatport } from 'react-icons/si';
-import { getReleaseByReleaseId } from '../../utils/database';
-import { getReducedRelease } from '../../utils/dataStructure';
+import { getReleaseByReleaseId } from '../../util/database';
+import { getReducedRelease } from '../../util/dataStructure';
 
 const mainReleaseStyles = css`
   font-size: 13px;

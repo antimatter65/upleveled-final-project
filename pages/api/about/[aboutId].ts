@@ -1,6 +1,6 @@
 // types from next.js fro response and request
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getAboutInfo, updateAboutInfo } from '../../../utils/database';
+import { getAboutInfo, updateAboutInfo } from '../../../util/database';
 
 // import { getReleases, insertNewReleaseIntoReleases } from '../../../utils/database';
 

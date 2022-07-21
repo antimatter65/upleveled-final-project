@@ -1,6 +1,6 @@
 // types from next.js fro response and request
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getAboutInfo } from '../../../utils/database';
+import { getAboutInfo } from '../../../util/database';
 
 // import { updateAboutInfo } from '../../../utils/database';
 // get releases from database using function from database.ts to get this outputs to api in json format

@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { BsSpotify } from 'react-icons/bs';
 import { SiBandcamp, SiBeatport } from 'react-icons/si';
-import { getReleases } from '../utils/database';
+import { getReleases } from '../util/database';
 
 // import { releases.Database } from '../util/database';
 

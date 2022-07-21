@@ -7,7 +7,7 @@ import Link from 'next/link';
 // import NestedLayout from '../components/nested-layout';
 // import Link from 'next/link';
 import aboutBackground from '../public/about-background.jpg';
-import { getAboutInfo } from '../utils/database';
+import { getAboutInfo } from '../util/database';
 
 const backgroundImageStyles = css`
   display: flex;

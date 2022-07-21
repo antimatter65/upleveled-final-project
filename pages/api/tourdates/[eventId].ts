@@ -4,7 +4,7 @@ import {
   deleteEventDateFromTourDatesById,
   getEvent,
   updateEventInTourDates,
-} from '../../../utils/database';
+} from '../../../util/database';
 
 // get tourdates from database using function from database.ts to get this outputs to api in json format
 export default async function handler(

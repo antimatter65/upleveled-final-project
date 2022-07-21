@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { AboutData, getUserByValidSessionToken } from '../../utils/database';
+import { AboutData, getUserByValidSessionToken } from '../../util/database';
 
 const mainHeaderStyles = css`
   display: flex;

@@ -4,7 +4,7 @@ import {
   deleteReleaseFromReleasesById,
   getRelease,
   updateReleaseInReleases,
-} from '../../../utils/database';
+} from '../../../util/database';
 
 // import { getReleases, insertNewReleaseIntoReleases } from '../../../utils/database';
 

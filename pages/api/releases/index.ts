@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import {
   getReleases,
   insertNewReleaseIntoReleases,
-} from '../../../utils/database';
+} from '../../../util/database';
 
 // get releases from database using function from database.ts to get this outputs to api in json format
 export default async function handler(

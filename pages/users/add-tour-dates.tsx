@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { getUserByValidSessionToken, TourDate } from '../../utils/database';
+import { getUserByValidSessionToken, TourDate } from '../../util/database';
 
 const mainHeaderStyles = css`
   display: flex;

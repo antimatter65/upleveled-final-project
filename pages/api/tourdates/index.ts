@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import {
   getTourDates,
   insertNewTourDateIntoTourDates,
-} from '../../../utils/database';
+} from '../../../util/database';
 
 // get tour dates from database tourdates using function from database.ts to get this outputs to api in json format
 export default async function handler(
