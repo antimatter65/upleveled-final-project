@@ -35,7 +35,7 @@ export default async function handler(
 
   if (req.method === 'PUT') {
     if (!individualReleaseId) {
-      res.status(400).json({
+      return res.status(400).json({
         error: 'to insert into current release, a valid release_id is required',
       });
     }

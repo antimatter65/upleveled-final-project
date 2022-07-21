@@ -26,7 +26,7 @@ export default async function handler(
   if (req.method === 'POST') {
     console.log('what is the request.body for the post method', req.body);
     if (!req.body.releaseName || !req.body.releaseDate) {
-      res.status(400).json({
+      return res.status(400).json({
         error:
           'to insert new release, release name, number of tracks and release date are all required as a minimum',
       });

@@ -36,7 +36,7 @@ export default async function handler(
 
   if (req.method === 'PUT') {
     if (!eventId) {
-      res.status(400).json({
+      return res.status(400).json({
         error:
           'to change current event data, a valid date and location is required',
       });
