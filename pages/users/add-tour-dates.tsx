@@ -74,8 +74,6 @@ const inputStylesDate = css`
   margin-left: 50%;
 `;
 
-
-
 const buttonStyles = css`
   display: flex;
   position: relative;
@@ -114,7 +112,6 @@ const mainStyles = css`
   justify-content: center;
   flex-direction: column;
 `;
-
 
 export default function ApiFrontEndTourDates() {
   const [tourDatesList, setTourDatesList] = useState<TourDate[]>([]);
@@ -539,14 +536,15 @@ export default function ApiFrontEndTourDates() {
                     disabled
                   />
                 </label>
-                <label css={singleInputArea}>
+                {/* <label css={singleInputArea}>
                   Event Sold Out (Yes/No):
                   <input
+                    type="checkbox"
                     css={inputStyles}
                     value={eventdate.ticketsLeft}
                     disabled
                   />
-                </label>
+                </label> */}
                 <button
                   css={buttonStyles}
                   onClick={() => {
@@ -559,7 +557,7 @@ export default function ApiFrontEndTourDates() {
                     setEditStreamingLink(eventdate.streamingLink);
                     setEditTicketLink(eventdate.ticketLink);
                     // this is a boolean and may cause problems and therefore may need amending
-                    setEditSoldOutCheck(eventdate.ticketsLeft);
+                    // setEditSoldOutCheck(eventdate.ticketsLeft);
                   }}
                 >
                   Edit
