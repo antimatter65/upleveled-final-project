@@ -81,12 +81,14 @@ export default async function handler(
       session.token,
     );
 
-    res
-      .status(200)
-      // tells the browser to create the cookie
-      .setHeader('set-Cookie', serializedCookie)
-      .json({ user: { id: newUser.id } });
+    return (
+      res
+        .status(200)
+        // tells the browser to create the cookie
+        .setHeader('set-Cookie', serializedCookie)
+        .json({ user: { id: newUser.id } })
+    );
   } else {
-    res.status(405).json({ errors: [{ message: `method no allowed` }] });
+    return res.status(405).json({ errors: [{ message: `method no allowed` }] });
   }
 }

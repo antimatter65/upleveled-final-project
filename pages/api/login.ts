@@ -68,7 +68,7 @@ export default async function handler(
     console.log('password match?', passwordMatchHash);
 
     if (!passwordMatchHash) {
-      res
+      return res
         .status(401)
         .json({ errors: [{ message: `password or username are incorrect` }] });
     }

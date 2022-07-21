@@ -19,17 +19,19 @@ export default async function handler(
     const user = await getUserByValidSessionToken(token);
 
     if (!user) {
-      res
+      return res
         .status(400)
         .json({ errors: [{ message: 'session token not valid' }] });
     }
 
     // return the user
-    res
-      .status(200)
-      // tells the browser to create the cookie
-      .json({ user: user });
+    return (
+      res
+        .status(200)
+        // tells the browser to create the cookie
+        .json({ user: user })
+    );
   } else {
-    res.status(405).json({ errors: [{ message: `method no allowed` }] });
+    return res.status(405).json({ errors: [{ message: `method no allowed` }] });
   }
 }
