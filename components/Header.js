@@ -80,7 +80,7 @@ export default function Header(props) {
     <header css={headerStyles}>
       {/* adds a home link to the image in the header */}
       <div css={headerlogo}>
-        <Anchor href="/">
+        <Link href="/">
           <div css={headerLogoStyles}>
             <Image
               src={whitelogo}
@@ -89,7 +89,7 @@ export default function Header(props) {
               // width="2000"
             />
           </div>
-        </Anchor>
+        </Link>
       </div>
       <div css={headerLinkContainerStyles}>
         <div css={headerLinkStyles}>
