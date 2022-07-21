@@ -90,9 +90,9 @@ export default function mixesList() {
   return (
     <div>
       <Head>
-        <title>Mixes</title>
-        <meta name="description" content="locoad mixes from mixcloud" />
-        {/* <link rel="icon" href="/faviconmixtape.png" /> */}
+        <title>LOCODA | Mixes</title>
+        <meta name="Mixes" content="locoda mixes from mixcloud" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main css={mainStyles}>
         <h1 css={titleStyles}>Mixes</h1>

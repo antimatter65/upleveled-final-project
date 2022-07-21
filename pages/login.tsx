@@ -101,8 +101,9 @@ export default function About(props: any) {
   return (
     <div>
       <Head>
-        <title>Login</title>
+        <title>LOCODA | Login</title>
         <meta name="Login" content="Login a user" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>

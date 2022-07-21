@@ -43,7 +43,7 @@ export default function Contact(props: Props) {
   return (
     <div>
       <Head>
-        <title>Under Construction Page</title>
+        <title>LOCODA | Under Construction</title>
         <meta name="placeholder" content="under construction placeholder" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

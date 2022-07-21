@@ -118,7 +118,7 @@ export default function UserPage(props: any) {
     <div>
       <Head>
         <title>Edit Page</title>
-        <meta name="description" content="private edit menu page" />
+        <meta name="edit page" content="private edit menu page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main css={mainStyles}>
@@ -136,13 +136,13 @@ export default function UserPage(props: any) {
             <Link href="/users/edit-about">Add Profile Info </Link>
           </div>
           <div css={linkButtonStyles}>
-            <Link href="/under-construction">Update Featured Mixes</Link>
+            <Link href="/underconstruction">Update Featured Mixes</Link>
           </div>
           <div css={linkButtonStyles}>
-            <Link href="/under-construction">Change Contact Information</Link>
+            <Link href="/underconstruction">Change Contact Information</Link>
           </div>
           <div css={linkButtonStyles}>
-            <Link href="/under-construction">Change Landing Page Video</Link>
+            <Link href="/underconstruction">Change Landing Page Video</Link>
           </div>
         </div>
         <br />
@@ -169,7 +169,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       },
     };
   }
-  // redirect to login page if not logged then return to the profile page after successfull log in
+  // redirect to login page if not logged then return to the profile page after successful log in
   return {
     redirect: {
       destination: '/login?returnTo=/users/private-page',

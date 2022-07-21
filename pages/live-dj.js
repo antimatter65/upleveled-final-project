@@ -165,9 +165,9 @@ export default function releaseList(props) {
   return (
     <div>
       <Head>
-        <title>Live &amp; DJ</title>
-        <meta name="description" content="all tour dates" />
-        {/* <link rel="icon" href="/favicon_mix_tape.png" /> */}
+        <title>LOCODA | Live &amp; DJ</title>
+        <meta name="Tour Dates" content="past an up coming tour dates" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 css={titleStyles}>Live &amp; DJ</h1>
       <main>
@@ -251,7 +251,7 @@ export async function getServerSideProps() {
   // from database.js
   const tourDates = await getTourDates();
 
-  console.log(tourDates);
+  // console.log(tourDates);
 
   return {
     // Anything that you pass in the props

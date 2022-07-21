@@ -54,7 +54,7 @@ export default function UserPage(props: Props) {
     <div>
       <Head>
         <title>User Page</title>
-        <meta name="description" content="user page" />
+        <meta name="users private page" content="user page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

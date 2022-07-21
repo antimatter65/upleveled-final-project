@@ -13,11 +13,9 @@ export default async function handler(
   const aboutId = Number(req.query.aboutId);
 
   if (!aboutId) {
-    return res
-      .status(400)
-      .json({
-        error: ' database about does not contain that id / id does not exist',
-      });
+    return res.status(400).json({
+      error: ' database about does not contain that id / id does not exist',
+    });
   }
 
   if (req.method === 'GET') {

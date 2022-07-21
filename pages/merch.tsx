@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import { useEffect } from 'react';
-import { titleStyles } from './releases';
 
 const bgText = css`
   display: flex;
@@ -33,7 +32,7 @@ export default function Home(props: Props) {
   return (
     <div>
       <Head>
-        <title>Merch</title>
+        <title>LOCODA | Merch</title>
         <meta name="Merch Page" content="Merch Coming Soon" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

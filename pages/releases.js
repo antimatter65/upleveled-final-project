@@ -169,9 +169,9 @@ export default function releaseList(props) {
   return (
     <div>
       <Head>
-        <title>Releases</title>
+        <title>LOCODA | Releases</title>
         <meta name="description" content="all locoda releases" />
-        {/* <link rel="icon" href="/faviconmixtape.png" /> */}
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 css={titleStyles}>Releases</h1>
 

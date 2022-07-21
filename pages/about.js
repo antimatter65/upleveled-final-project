@@ -77,9 +77,12 @@ export default function aboutPage(props) {
   return (
     <div>
       <Head>
-        <title>ABOUT</title>
-        <meta name="description" content="all locoda tour dates" />
-        {/* <link rel="icon" href="/faviconmixtape.png" /> */}
+        <title> LOCODA | ABOUT</title>
+        <meta
+          name="about"
+          content="all about locoda / background info and links"
+        />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 css={titleStyles}>About</h1>
       <main>

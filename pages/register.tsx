@@ -134,8 +134,9 @@ export default function Register(props: any) {
   return (
     <div>
       <Head>
-        <title>Register</title>
-        <meta name="registration" content="registration" />
+        <title>LOCODA | Register</title>
+        <meta name="registration" content="page for registration of new user" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
