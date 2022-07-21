@@ -24,9 +24,9 @@ export default async function handler(
     const individualRelease = await getRelease(individualReleaseId);
 
     // too make sue that url number refers to a release in the database (this doesn't work as it gives an empty array as getReleaseByReleaseId has a join query for releases and release1 databases)
-    if (!individualRelease) {
-      return res.status(400).json({ error: 'release id does not exist' });
-    }
+    // if (!individualRelease) {
+    //   return res.status(400).json({ error: 'release id does not exist' });
+    // }
 
     return res.status(200).json(individualRelease);
   }

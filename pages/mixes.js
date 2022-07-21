@@ -102,13 +102,13 @@ export default function mixesList() {
       <main css={mainStyles}>
         <h1 css={titleStyles}>Mixes</h1>
         <section css={carouselContainerStyles}>
-          <div class="container">
+          <div className="container">
             <input type="radio" name="slider" id="item-1" checked />
             <input type="radio" name="slider" id="item-2" />
             <input type="radio" name="slider" id="item-3" />
             <input type="radio" name="slider" id="item-4" />
-            <div class="cards">
-              <label class="card" htmlFor="item-1" id="song-1">
+            <div className="cards">
+              <label className="card" htmlFor="item-1" id="song-1">
                 <Image src={theoneinthewoodslogo2} css={imageCarouselStyles} />
                 {/* <iframe
 
@@ -124,7 +124,7 @@ export default function mixesList() {
                   sandbox="allow-scripts allow-same-origin"
                 />
               </label>
-              <label class="card" htmlFor="item-2" id="song-2">
+              <label className="card" htmlFor="item-2" id="song-2">
                 <Image src={four} css={imageCarouselStyles} />
                 <IframeSecure
                   css={mixcloudPlayerStyles}
@@ -136,7 +136,7 @@ export default function mixesList() {
                   sandbox
                 />
               </label>
-              <label class="card" htmlFor="item-3" id="song-3">
+              <label className="card" htmlFor="item-3" id="song-3">
                 <Image src={three} css={imageCarouselStyles} />
                 <br />
                 <IframeSecure
@@ -146,8 +146,7 @@ export default function mixesList() {
                   height="120"
                   src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Flocoda%2Fliquid-mini-mix-001%2F"
                   frameBorder="0"
-                  // eslint-disable-next-line react/jsx-curly-brace-presence
-                  sandbox={'allow-scripts allow-same-origin'}
+                  sandbox="allow-scripts allow-same-origin"
                 />
               </label>
               <section css={footerStyles}>

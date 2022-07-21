@@ -29,7 +29,7 @@ export default function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     refreshUserProfile().catch(() => console.log('fetch api failed'));
-  }, []);
+  }, [refreshUserProfile]);
 
   return (
     <>

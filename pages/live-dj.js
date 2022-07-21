@@ -125,9 +125,9 @@ export default function releaseList(props) {
   // reduce function to create an array for new tour dates (based on id) needs to to changed to be on date
 
   const updatedTourDates = props.tourDates.reduce(
-    (updatedTourDates, tourDate) => {
+    (updatedTourDate, tourDate) => {
       if (tourDate.id > 14) {
-        updatedTourDates.push({
+        updatedTourDate.push({
           id: tourDate.id,
           location: tourDate.location,
           eventLocation: tourDate.eventLocation,
@@ -139,15 +139,15 @@ export default function releaseList(props) {
           type: tourDate.type,
         });
       }
-      return updatedTourDates;
+      return updatedTourDate;
     },
     [],
   );
 
   // reduce function to create an array for old tour dates
-  const oldTourDates = props.tourDates.reduce((oldTourDates, tourDate) => {
+  const oldTourDates = props.tourDates.reduce((oldTourDate, tourDate) => {
     if (tourDate.id < 15) {
-      oldTourDates.push({
+      oldTourDate.push({
         id: tourDate.id,
         location: tourDate.location,
         eventLocation: tourDate.eventLocation,
@@ -159,7 +159,7 @@ export default function releaseList(props) {
         type: tourDate.type,
       });
     }
-    return oldTourDates;
+    return oldTourDate;
   }, []);
 
   return (
