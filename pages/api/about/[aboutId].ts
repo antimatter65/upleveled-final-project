@@ -19,14 +19,14 @@ export default async function handler(
   }
 
   if (req.method === 'GET') {
-    const aboutData1 = await getAboutInfo(aboutId);
+    const aboutData1 = await getAboutInfo();
 
     // too make sue that url number refers to a release in the database (this doesn't work as it gives an empty array as getReleaseByReleaseId has a join query for releases and release1 databases)
-    if (!aboutData1) {
-      return res
-        .status(400)
-        .json({ error: 'about database id does not exist' });
-    }
+    // if (!aboutData1) {
+    //   return res
+    //     .status(400)
+    //     .json({ error: 'about database id does not exist' });
+    // }
 
     return res.status(200).json(aboutData1);
   }
