@@ -63,6 +63,19 @@ type Props = {
   refreshUserProfile: () => Promise<void>;
 };
 
+type IframeSecureProps = { [x: string]: string | boolean } & {
+  title: string;
+  sandbox: string;
+};
+
+export function IframeSecure({
+  title,
+  sandbox,
+  ...restProps
+}: IframeSecureProps) {
+  return <iframe title={title} sandbox={sandbox} {...restProps} />;
+}
+
 export default function Home(props: Props) {
   useEffect(() => {
     props.refreshUserProfile().catch(() => console.log('refresh user profile'));
@@ -104,7 +117,17 @@ export default function Home(props: Props) {
         <section css={mainVideoStyles}>
           <br />
           <div css={youTubeVideoStyles}>
-            <iframe
+            <IframeSecure
+              width="880"
+              height="480"
+              src="https://www.youtube.com/embed/HwwtvZ45PB4"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen={true}
+              sandbox="allow-scripts allow-same-origin"
+            />
+            {/* <iframe
               width="880"
               height="480"
               src="https://www.youtube.com/embed/HwwtvZ45PB4"
@@ -112,8 +135,9 @@ export default function Home(props: Props) {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              sandbox
-            />
+              // eslint-disable-next-line react/jsx-curly-brace-presence
+              sandbox={'allow-scripts allow-same-origin'}
+            /> */}
           </div>
           {/* <div css={youTubeVideoStyles}>
             <YouTube

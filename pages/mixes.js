@@ -86,6 +86,11 @@ const iconStyles = css`
     }
   }
 `;
+
+export function IframeSecure({ title, sandbox, ...restProps }) {
+  return <iframe title={title} sandbox={sandbox} {...restProps} />;
+}
+
 export default function mixesList() {
   return (
     <div>
@@ -105,7 +110,10 @@ export default function mixesList() {
             <div class="cards">
               <label class="card" htmlFor="item-1" id="song-1">
                 <Image src={theoneinthewoodslogo2} css={imageCarouselStyles} />
-                <iframe
+                {/* <iframe
+
+                /> */}
+                <IframeSecure
                   css={mixcloudPlayerStyles}
                   title="mix1"
                   width="100%"
@@ -113,12 +121,12 @@ export default function mixesList() {
                   src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Flocoda%2Flocoda-live-the-one-in-the-woods-2021%2F"
                   frameBorder="0"
                   // empty sandbox to remove eslint errors
-                  sandbox
+                  sandbox="allow-scripts allow-same-origin"
                 />
               </label>
               <label class="card" htmlFor="item-2" id="song-2">
                 <Image src={four} css={imageCarouselStyles} />
-                <iframe
+                <IframeSecure
                   css={mixcloudPlayerStyles}
                   title="mix2"
                   width="100%"
@@ -131,14 +139,15 @@ export default function mixesList() {
               <label class="card" htmlFor="item-3" id="song-3">
                 <Image src={three} css={imageCarouselStyles} />
                 <br />
-                <iframe
+                <IframeSecure
                   css={mixcloudPlayerStyles}
                   title="mix3"
                   width="100%"
                   height="120"
                   src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Flocoda%2Fliquid-mini-mix-001%2F"
                   frameBorder="0"
-                  sandbox
+                  // eslint-disable-next-line react/jsx-curly-brace-presence
+                  sandbox={'allow-scripts allow-same-origin'}
                 />
               </label>
               <section css={footerStyles}>
