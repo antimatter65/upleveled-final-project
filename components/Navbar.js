@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { MdClose } from 'react-icons/md';
-import whitelogo from '../public/whitelogo.png';
+
+// import whitelogo from '../public/whitelogo.png';
 
 const headerlogo = css`
   display: flex;
@@ -200,10 +201,10 @@ export default function Navbar(props) {
         <Link href="/">
           <div css={headerLogoStyles}>
             <Image
-              src={whitelogo}
+              src={'/whitelogo.png'}
               alt="header background locodo logo"
-              // height="300"
-              // width="2000"
+              height="300"
+              width="2000"
             />
           </div>
         </Link>
