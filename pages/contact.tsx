@@ -75,7 +75,7 @@ export default function Contact(props: Props) {
   return (
     <div>
       <Head>
-        <title> LOCODA | Contact</title>
+        <title> LOCODA | Contact Page</title>
         <meta
           name="contact page"
           content="contact email and social media links"

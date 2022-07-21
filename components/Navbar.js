@@ -1,11 +1,10 @@
 import { css } from '@emotion/react';
-// import Image from 'next/image';
-import Anchor from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { MdClose } from 'react-icons/md';
-
-// import whitelogo from '../public/whitelogo.png';
+import whitelogo from '../public/whitelogo.png';
 
 const headerlogo = css`
   display: flex;
@@ -29,7 +28,7 @@ const headerlogo = css`
   }
 `;
 
-const headerAnchorContainerStyles = css`
+const headerLinkContainerStyles = css`
   display: flex;
   position: relative;
   flex-direction: column;
@@ -43,7 +42,7 @@ const headerAnchorContainerStyles = css`
   }
 `;
 
-const headerAnchorStyles = css`
+const headerLinkStyles = css`
   z-index: 10;
   display: flex;
   position: relative;
@@ -68,7 +67,7 @@ const headerAnchorStyles = css`
   }
 `;
 
-const headerAnchorButtonStyles = css`
+const headerLinkButtonStyles = css`
   z-index: 10;
   display: flex;
   position: relative;
@@ -188,7 +187,7 @@ export default function Navbar(props) {
   const handleToggle = () => {
     setNavbarOpen(!navbarOpen);
   };
-  // function to close nav bar onClick of aAnchors
+  // function to close nav bar onClick of links
   function closeMenu() {
     setNavbarOpen(false);
     console.log('is this onclick doing anything?');
@@ -198,11 +197,16 @@ export default function Navbar(props) {
     <div css={navBarStyles}>
       <br />
       <button css={headerlogo} onClick={() => closeMenu()}>
-        <Anchor href="/">
+        <Link href="/">
           <div css={headerLogoStyles}>
-            <img src="/whitelogo.png" alt="header background locodo logo" />
+            <Image
+              src={whitelogo}
+              alt="header background locodo logo"
+              // height="300"
+              // width="2000"
+            />
           </div>
-        </Anchor>
+        </Link>
       </button>
       <button css={buttonContainerStyles} onClick={handleToggle}>
         {navbarOpen ? (
@@ -216,68 +220,68 @@ export default function Navbar(props) {
         className={`menuNav ${navbarOpen ? ' showMenu' : ''}`}
         // css={{`menuNav ${navbarOpen ? ' showMenu' : ''}`}}
       >
-        <div css={headerAnchorContainerStyles}>
-          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
-            <Anchor href="/">Home</Anchor>
+        <div css={headerLinkContainerStyles}>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+            <Link href="/">Home</Link>
           </button>
-          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
-            <Anchor href="/live-dj" onClick={() => closeMenu()}>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+            <Link href="/live-dj" onClick={() => closeMenu()}>
               Live/DJ
-            </Anchor>
+            </Link>
           </button>
-          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
-            <Anchor href="/releases">Releases</Anchor>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+            <Link href="/releases">Releases</Link>
           </button>
-          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
-            <Anchor href="/mixes">Mixes</Anchor>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+            <Link href="/mixes">Mixes</Link>
           </button>
-          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
-            <Anchor href="/about/">About</Anchor>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+            <Link href="/about/">About</Link>
           </button>
-          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
-            <Anchor href="/merch">Merch</Anchor>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+            <Link href="/merch">Merch</Link>
           </button>
-          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
-            <Anchor href="/contact/">Contact/Booking</Anchor>
+          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+            <Link href="/contact/">Contact/Booking</Link>
           </button>
           {!props.user ? (
-            <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
-              <Anchor href="/login">Login</Anchor>
+            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+              <Link href="/login">Login</Link>
             </button>
           ) : (
             <div />
           )}
           {!props.user ? (
-            <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
-              <Anchor href="/register">Register</Anchor>
+            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+              <Link href="/register">Register</Link>
             </button>
           ) : (
             <div />
           )}
           {props.user ? (
-            <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
-              <Anchor href="/users/private-page">Edit Data</Anchor>
+            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+              <Link href="/users/private-page">Edit Data</Link>
             </button>
           ) : (
             <div />
           )}
           {props.user ? (
-            <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
-              <Anchor href="/logout">Logout</Anchor>
+            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+              <Link href="/logout">Logout</Link>
             </button>
           ) : (
             <div />
           )}
           <br />
           <br />
-          <div css={headerAnchorStyles}>
+          <div css={headerLinkStyles}>
             {props.user ? 'logged in as user:' : '  '}
           </div>
           {props.user ? (
-            <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
-              <Anchor href={`/users/byname/${props.user.username}`}>
+            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
+              <Link href={`/users/byname/${props.user.username}`}>
                 {props.user && props.user.username}
-              </Anchor>
+              </Link>
             </button>
           ) : (
             <div />
