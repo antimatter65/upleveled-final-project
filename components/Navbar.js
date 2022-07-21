@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-import Image from 'next/image';
-import Link from 'next/link';
+// import Image from 'next/image';
+import Anchor from 'next';
 import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { MdClose } from 'react-icons/md';
@@ -29,7 +29,7 @@ const headerlogo = css`
   }
 `;
 
-const headerLinkContainerStyles = css`
+const headerAnchorContainerStyles = css`
   display: flex;
   position: relative;
   flex-direction: column;
@@ -43,7 +43,7 @@ const headerLinkContainerStyles = css`
   }
 `;
 
-const headerLinkStyles = css`
+const headerAnchorStyles = css`
   z-index: 10;
   display: flex;
   position: relative;
@@ -68,7 +68,7 @@ const headerLinkStyles = css`
   }
 `;
 
-const headerLinkButtonStyles = css`
+const headerAnchorButtonStyles = css`
   z-index: 10;
   display: flex;
   position: relative;
@@ -188,7 +188,7 @@ export default function Navbar(props) {
   const handleToggle = () => {
     setNavbarOpen(!navbarOpen);
   };
-  // function to close nav bar onClick of links
+  // function to close nav bar onClick of aAnchors
   function closeMenu() {
     setNavbarOpen(false);
     console.log('is this onclick doing anything?');
@@ -198,11 +198,11 @@ export default function Navbar(props) {
     <div css={navBarStyles}>
       <br />
       <button css={headerlogo} onClick={() => closeMenu()}>
-        <Link href="/">
+        <Anchor href="/">
           <div css={headerLogoStyles}>
             <img src="/whitelogo.png" alt="header background locodo logo" />
           </div>
-        </Link>
+        </Anchor>
       </button>
       <button css={buttonContainerStyles} onClick={handleToggle}>
         {navbarOpen ? (
@@ -216,68 +216,68 @@ export default function Navbar(props) {
         className={`menuNav ${navbarOpen ? ' showMenu' : ''}`}
         // css={{`menuNav ${navbarOpen ? ' showMenu' : ''}`}}
       >
-        <div css={headerLinkContainerStyles}>
-          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-            <Link href="/">Home</Link>
+        <div css={headerAnchorContainerStyles}>
+          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
+            <Anchor href="/">Home</Anchor>
           </button>
-          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-            <Link href="/live-dj" onClick={() => closeMenu()}>
+          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
+            <Anchor href="/live-dj" onClick={() => closeMenu()}>
               Live/DJ
-            </Link>
+            </Anchor>
           </button>
-          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-            <Link href="/releases">Releases</Link>
+          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
+            <Anchor href="/releases">Releases</Anchor>
           </button>
-          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-            <Link href="/mixes">Mixes</Link>
+          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
+            <Anchor href="/mixes">Mixes</Anchor>
           </button>
-          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-            <Link href="/about/">About</Link>
+          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
+            <Anchor href="/about/">About</Anchor>
           </button>
-          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-            <Link href="/merch">Merch</Link>
+          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
+            <Anchor href="/merch">Merch</Anchor>
           </button>
-          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-            <Link href="/contact/">Contact/Booking</Link>
+          <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
+            <Anchor href="/contact/">Contact/Booking</Anchor>
           </button>
           {!props.user ? (
-            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-              <Link href="/login">Login</Link>
+            <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
+              <Anchor href="/login">Login</Anchor>
             </button>
           ) : (
             <div />
           )}
           {!props.user ? (
-            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-              <Link href="/register">Register</Link>
+            <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
+              <Anchor href="/register">Register</Anchor>
             </button>
           ) : (
             <div />
           )}
           {props.user ? (
-            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-              <Link href="/users/private-page">Edit Data</Link>
+            <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
+              <Anchor href="/users/private-page">Edit Data</Anchor>
             </button>
           ) : (
             <div />
           )}
           {props.user ? (
-            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-              <Link href="/logout">Logout</Link>
+            <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
+              <Anchor href="/logout">Logout</Anchor>
             </button>
           ) : (
             <div />
           )}
           <br />
           <br />
-          <div css={headerLinkStyles}>
+          <div css={headerAnchorStyles}>
             {props.user ? 'logged in as user:' : '  '}
           </div>
           {props.user ? (
-            <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-              <Link href={`/users/byname/${props.user.username}`}>
+            <button css={headerAnchorButtonStyles} onClick={() => closeMenu()}>
+              <Anchor href={`/users/byname/${props.user.username}`}>
                 {props.user && props.user.username}
-              </Link>
+              </Anchor>
             </button>
           ) : (
             <div />
