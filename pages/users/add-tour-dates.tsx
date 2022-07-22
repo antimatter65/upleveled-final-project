@@ -47,6 +47,7 @@ const singleInputArea = css`
   color: white;
   height: 1%;
   margin-top: 1%;
+
   @media (prefers-color-scheme: light) {
     color: #57387f;
   }
@@ -61,6 +62,21 @@ const inputStyles = css`
   right: 0%;
   border-radius: 10px;
   margin-left: 50%;
+  background-color: grey;
+  color: white;
+`;
+
+const inputStylesActive = css`
+  font-family: Lexend Zetta;
+  font-size: 13px;
+  width: 40%;
+  height: auto;
+  display: flex;
+  right: 0%;
+  border-radius: 10px;
+  margin-left: 50%;
+  background-color: white;
+  color: black;
 `;
 
 const inputStylesDate = css`
@@ -184,7 +200,7 @@ export default function ApiFrontEndTourDates() {
     setTourDatesList(newState);
     setNewLocation('');
     setNewEventDate('');
-    setEditLiveType('');
+    setNewLiveType('');
     setNewEventVenue('');
     setNewTicketLink('');
     setNewSoldOutCheck('');
@@ -265,7 +281,7 @@ export default function ApiFrontEndTourDates() {
           <label css={singleInputArea}>
             Event Location:
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newLocation}
               onChange={(event) => setNewLocation(event.currentTarget.value)}
             />
@@ -282,7 +298,7 @@ export default function ApiFrontEndTourDates() {
           <label css={singleInputArea}>
             Event Venue:
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newEventVenue}
               onChange={(event) => setNewEventVenue(event.currentTarget.value)}
             />
@@ -290,7 +306,7 @@ export default function ApiFrontEndTourDates() {
           <label css={singleInputArea}>
             Performance Type (Live / DJ / Etc):
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newLiveType}
               onChange={(event) => setNewLiveType(event.currentTarget.value)}
             />
@@ -299,7 +315,7 @@ export default function ApiFrontEndTourDates() {
           <label css={singleInputArea}>
             Link to Event (Website / Event Page / RA / Facebook / Etc) :
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newEventLink}
               onChange={(event) => setNewEventLink(event.currentTarget.value)}
             />
@@ -307,7 +323,7 @@ export default function ApiFrontEndTourDates() {
           <label css={singleInputArea}>
             Tickets Link:
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newTicketLink}
               onChange={(event) => setNewTicketLink(event.currentTarget.value)}
             />
@@ -315,7 +331,7 @@ export default function ApiFrontEndTourDates() {
           <label css={singleInputArea}>
             StreamingLink:
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newStreamingLink}
               onChange={(event) =>
                 setNewStreamingLink(event.currentTarget.value)

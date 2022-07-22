@@ -32,10 +32,9 @@ const signInBoxStyles1 = css`
 const inputBoxStyles = css`
   width: 50%;
   height: 1.5vw;
-  opacity: 0.6;
   margin-left: 5%;
   font-size: 24px;
-  color: greenyellow;
+  color: white;
   background-color: grey;
   @media (max-width: 1000px) {
     width: 100%;

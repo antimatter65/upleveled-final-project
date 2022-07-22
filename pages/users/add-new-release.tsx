@@ -59,6 +59,21 @@ const inputStyles = css`
   right: 0%;
   border-radius: 10px;
   margin-left: 50%;
+  background-color: grey;
+  color: white;
+`;
+
+const inputStylesActive = css`
+  font-family: Lexend Zetta;
+  font-size: 13px;
+  width: 40%;
+  height: auto;
+  display: flex;
+  right: 0%;
+  border-radius: 10px;
+  margin-left: 50%;
+  background-color: white;
+  color: black;
 `;
 
 const buttonStyles = css`
@@ -261,7 +276,7 @@ export default function ApiFrontEndReleases() {
           <label css={singleInputArea}>
             Release Name:
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newReleaseName}
               onChange={(event) => setNewReleaseName(event.currentTarget.value)}
             />
@@ -269,7 +284,7 @@ export default function ApiFrontEndReleases() {
           <label css={singleInputArea}>
             Release Date
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newReleaseDate}
               type="date"
               min="2021-01-01"
@@ -279,7 +294,7 @@ export default function ApiFrontEndReleases() {
           <label css={singleInputArea}>
             Record Label:
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newRecordLabel}
               onChange={(event) => setNewRecordLabel(event.currentTarget.value)}
             />
@@ -287,7 +302,7 @@ export default function ApiFrontEndReleases() {
           <label css={singleInputArea}>
             Tracks:
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newNumberOfTracks}
               onChange={(event) =>
                 setNewNumberOfTracks(event.currentTarget.value)
@@ -298,7 +313,7 @@ export default function ApiFrontEndReleases() {
           <label css={singleInputArea}>
             Cover Art URL:
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newCoverArtLink}
               onChange={(event) =>
                 setNewCoverArtLink(event.currentTarget.value)
@@ -308,7 +323,7 @@ export default function ApiFrontEndReleases() {
           <label css={singleInputArea}>
             Buy Link:
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newBuyLink}
               onChange={(event) => setNewBuyLink(event.currentTarget.value)}
             />
@@ -316,7 +331,7 @@ export default function ApiFrontEndReleases() {
           <label css={singleInputArea}>
             StreamingLink:
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newStreamingLink}
               onChange={(event) =>
                 setNewStreamingLink(event.currentTarget.value)
@@ -326,7 +341,7 @@ export default function ApiFrontEndReleases() {
           <label css={singleInputArea}>
             Bandcamp Link:
             <input
-              css={inputStyles}
+              css={inputStylesActive}
               value={newBandcampLink}
               onChange={(event) =>
                 setNewBandcampLink(event.currentTarget.value)
@@ -364,7 +379,7 @@ export default function ApiFrontEndReleases() {
                 <label css={singleInputArea}>
                   Release Name:
                   <input
-                    css={inputStyles}
+                    css={inputStylesActive}
                     value={editReleaseName}
                     onChange={(event) =>
                       setEditReleaseName(event.currentTarget.value)
@@ -374,7 +389,7 @@ export default function ApiFrontEndReleases() {
                 <label css={singleInputArea}>
                   Release Date:
                   <input
-                    css={inputStyles}
+                    css={inputStylesActive}
                     value={editReleaseDate}
                     type="date"
                     min="2021-01-01"
@@ -386,7 +401,7 @@ export default function ApiFrontEndReleases() {
                 <label css={singleInputArea}>
                   Record Label:
                   <input
-                    css={inputStyles}
+                    css={inputStylesActive}
                     value={editRecordLabel}
                     onChange={(event) =>
                       setEditRecordLabel(event.currentTarget.value)
@@ -397,7 +412,7 @@ export default function ApiFrontEndReleases() {
                 <label css={singleInputArea}>
                   Tracks:
                   <input
-                    css={inputStyles}
+                    css={inputStylesActive}
                     value={editNumberOfTracks}
                     onChange={(event) =>
                       setEditNumberOfTracks(event.currentTarget.value)
@@ -408,7 +423,7 @@ export default function ApiFrontEndReleases() {
                 <label css={singleInputArea}>
                   Cover Art URL:
                   <input
-                    css={inputStyles}
+                    css={inputStylesActive}
                     value={editCoverArtLink}
                     onChange={(event) =>
                       setEditCoverArtLink(event.currentTarget.value)
@@ -418,7 +433,7 @@ export default function ApiFrontEndReleases() {
                 <label css={singleInputArea}>
                   Buy Link:
                   <input
-                    css={inputStyles}
+                    css={inputStylesActive}
                     value={editBuyLink}
                     onChange={(event) =>
                       setEditBuyLink(event.currentTarget.value)
@@ -429,7 +444,7 @@ export default function ApiFrontEndReleases() {
                 <label css={singleInputArea}>
                   StreamingLink:
                   <input
-                    css={inputStyles}
+                    css={inputStylesActive}
                     value={editStreamingLink}
                     onChange={(event) =>
                       setEditStreamingLink(event.currentTarget.value)
@@ -439,7 +454,7 @@ export default function ApiFrontEndReleases() {
                 <label css={singleInputArea}>
                   Bandcamp Link:
                   <input
-                    css={inputStyles}
+                    css={inputStylesActive}
                     value={editBandcampLink}
                     onChange={(event) =>
                       setEditBandcampLink(event.currentTarget.value)
