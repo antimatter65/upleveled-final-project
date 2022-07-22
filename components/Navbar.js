@@ -204,11 +204,7 @@ export default function Navbar(props) {
       <button css={headerlogo} onClick={() => closeMenu()}>
         <Link href="/">
           <div css={headerLogoStyles}>
-            <Image
-              src={whitelogo}
-              alt="header background locodo logo"
-              layout="fill"
-            />
+            <Image src={whitelogo} alt="header background locodo logo" />
           </div>
         </Link>
       </button>
