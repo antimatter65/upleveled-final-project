@@ -202,8 +202,7 @@ export default function Navbar(props) {
             <Image
               src={whitelogo}
               alt="header background locodo logo"
-              // height="300"
-              // width="2000"
+              layout="fill"
             />
           </div>
         </Link>
