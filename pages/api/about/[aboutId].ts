@@ -36,7 +36,7 @@ export default async function handler(
   if (req.method === 'PUT') {
     console.log('what is the request.body for the put method', req.body);
     if (!req.body.paragraph1) {
-      res.status(400).json({
+      return res.status(400).json({
         error: 'to edit about page, paragraph_1 is required as a minimum',
       });
     }

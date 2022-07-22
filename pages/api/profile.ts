@@ -13,15 +13,17 @@ export default async function handler(
       res
         .status(400)
         .json({ errors: [{ message: 'no session token passed' }] });
+      return;
     }
     // get the user from the token
 
     const user = await getUserByValidSessionToken(token);
 
     if (!user) {
-      return res
+      res
         .status(400)
         .json({ errors: [{ message: 'session token not valid' }] });
+      return;
     }
 
     // return the user

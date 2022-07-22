@@ -177,6 +177,11 @@ const navMenuButtonClosedStyles = css`
   }
 `;
 
+function Anchor({ children, ...restProps }) {
+  // using a instead of Link since we want to force a full refresh
+  return <a {...restProps}>{children}</a>;
+}
+
 export default function Navbar(props) {
   // useState
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -223,10 +228,8 @@ export default function Navbar(props) {
           <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/">Home</Link>
           </button>
-          <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
-            <Link href="/live-dj" onClick={() => closeMenu()}>
-              Live/DJ
-            </Link>
+          <button css={headerLinkButtonStyles}>
+            <Anchor href="/live-dj">Live/DJ</Anchor>
           </button>
           <button css={headerLinkButtonStyles} onClick={() => closeMenu()}>
             <Link href="/releases">Releases</Link>
