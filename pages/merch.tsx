@@ -34,9 +34,11 @@ export default function Home(props: Props) {
       <Head>
         <title>LOCODA | Merch</title>
         <meta
-          name="Merch Page"
+          name="description"
           content="Merch Coming Soon from Locoda Drum and Bass Artist/Dj/Producer from the Manchester UK "
         />
+<meta
+          name="keywords" content="Locoda, Drum and Bass, DnB, Drum and Bass, Manchester, DJ, Producer, Code Recordings"/>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <p css={bgText}>

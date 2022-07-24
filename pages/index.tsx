@@ -99,7 +99,14 @@ export default function Home(props: Props) {
     <div>
       <Head>
         <title>LOCODA </title>
-        <meta name="LOCODA" content="Welcome to the Locoda Website, new Drum and Bass artist/DJ/Producer form Manchester Uk. Closer out now on code recordings " />
+        <meta
+          name="description"
+          content="Welcome to the Locoda Website, new Drum and Bass artist/DJ/Producer form Manchester Uk. Closer out now on code recordings "
+        />
+        <meta
+          name="keywords"
+          content="Locoda, Drum and Bass, DnB, Drum and Bass, Manchester, DJ, Producer, Code Recordings"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

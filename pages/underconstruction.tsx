@@ -44,7 +44,7 @@ export default function Contact(props: Props) {
     <div>
       <Head>
         <title>LOCODA | Under Construction</title>
-        <meta name="placeholder" content="under construction placeholder" />
+        <meta name="description" content="under construction placeholder" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main css={bgText}>

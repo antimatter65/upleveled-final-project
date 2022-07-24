@@ -77,8 +77,12 @@ export default function Contact(props: Props) {
       <Head>
         <title> LOCODA | Contact Page</title>
         <meta
-          name="contact page"
+          name="description"
           content="contact email and social media links from Locoda Drum and Bass Artist/Dj/Producer from the Manchester UK "
+        />
+        <meta
+          name="keywords"
+          content="Locoda, Drum and Bass, DnB, Drum and Bass, Manchester, DJ, Producer, Code Recordings"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

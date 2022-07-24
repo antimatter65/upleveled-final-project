@@ -171,8 +171,12 @@ export default function releaseList(props) {
       <Head>
         <title>LOCODA | Releases</title>
         <meta
-          name="Locoda Releases"
-          content="List oof all Locoda releases from up and coming tour dates- live and Dj for Locoda Drum and Bass Artist/Dj/Producer from the MAnchester UK"
+          name="description"
+          content="List oof all Locoda releases from up and coming tour dates- live and Dj for Locoda Drum and Bass Artist/Dj/Producer from the Manchester UK"
+        />
+        <meta
+          name="keywords"
+          content="Locoda, Drum and Bass, DnB, Drum and Bass, Manchester, DJ, Producer, Code Recordings"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
