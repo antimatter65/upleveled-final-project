@@ -126,7 +126,7 @@ export default function releaseList(props) {
 
   const updatedTourDates = props.tourDates.reduce(
     (updatedTourDate, tourDate) => {
-      if (tourDate.id > 10) {
+      if (tourDate.id > 11) {
         updatedTourDate.push({
           id: tourDate.id,
           location: tourDate.location,
