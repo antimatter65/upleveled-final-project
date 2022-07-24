@@ -80,7 +80,7 @@ export default function aboutPage(props) {
         <title> LOCODA | ABOUT</title>
         <meta
           name="about"
-          content="all about locoda / background info and links"
+          content="All about Locoda / background info and links - Locoda Drum and Bass Artist/Dj/Producer from the Manchester UK"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

@@ -33,7 +33,10 @@ export default function Home(props: Props) {
     <div>
       <Head>
         <title>LOCODA | Merch</title>
-        <meta name="Merch Page" content="Merch Coming Soon" />
+        <meta
+          name="Merch Page"
+          content="Merch Coming Soon from Locoda Drum and Bass Artist/Dj/Producer from the Manchester UK "
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <p css={bgText}>

@@ -96,7 +96,7 @@ export default function mixesList() {
     <div>
       <Head>
         <title>LOCODA | Mixes</title>
-        <meta name="Mixes" content="locoda mixes from mixcloud" />
+        <meta name="Mixes" content="Dj Sets ad mixes from Mixcloud / Soundcloud from Locoda Drum and Bass Artist/Dj/Producer from the Manchester UK " />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main css={mainStyles}>
