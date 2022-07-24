@@ -23,7 +23,7 @@ const headerlogo = css`
     filter: invert(0.5);
   }
   @media (max-width: 1000px) {
-    padding-left: 20%;
+    padding-left: 23%;
     margin-top: 2%;
   }
 `;
