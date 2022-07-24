@@ -146,7 +146,7 @@ export default function releaseList(props) {
 
   // reduce function to create an array for old tour dates
   const oldTourDates = props.tourDates.reduce((oldTourDate, tourDate) => {
-    if (tourDate.id < 11) {
+    if (tourDate.id < 12) {
       oldTourDate.push({
         id: tourDate.id,
         location: tourDate.location,
