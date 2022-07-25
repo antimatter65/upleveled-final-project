@@ -452,7 +452,7 @@ export default function ApiFrontEndTourDates() {
                 </label>
                 <br />
                 <label css={singleInputArea}>
-                  Streaming Link:
+                  After Event Link (Stream DJ set, Instagram Post Etc... ):
                   <input
                     css={inputStyles}
                     value={editStreamingLink}
@@ -545,7 +545,7 @@ export default function ApiFrontEndTourDates() {
                 </label>
                 <br />
                 <label css={singleInputArea}>
-                  Streaming Link:
+                  After Event Link (Stream DJ set, Instagram Post Etc... ):
                   <input
                     css={inputStyles}
                     value={eventdate.streamingLink}
