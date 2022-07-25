@@ -166,9 +166,14 @@ export default function releaseList(props) {
     <div>
       <Head>
         <title>LOCODA | Live &amp; DJ</title>
-        <meta name="description" content="Up and coming tour dates- live and Dj for Locoda Drum and Bass Artist/Dj/Producer from the Manchester UK" />
         <meta
-          name="keywords" content="Locoda, Drum and Bass, DnB, Drum and Bass, Manchester, DJ, Producer, Code Recordings"/>
+          name="description"
+          content="Up and coming tour dates- live and Dj for Locoda Drum and Bass Artist/Dj/Producer from the Manchester UK"
+        />
+        <meta
+          name="keywords"
+          content="Locoda, Drum and Bass, DnB, Drum and Bass, Manchester, DJ, Producer, Code Recordings"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 css={titleStyles}>Live &amp; DJ</h1>
@@ -220,7 +225,7 @@ export default function releaseList(props) {
                 <div css={dataStyles}>{tour.date}</div>
                 <div css={dataStyles}>{tour.eventLocation} </div>
                 <div css={dataStyles}>{tour.type} </div>
-                <div css={buttonPositionStyles}>
+                {/* <div css={buttonPositionStyles}>
                   <button css={buttonStyles}>
                     <Link href={tour.eventLink}>Event</Link>
                   </button>
@@ -229,12 +234,12 @@ export default function releaseList(props) {
                   <button css={buttonStyles}>
                     <Link href={tour.ticketLink}>Tickets</Link>
                   </button>
-                </div>
-                {/* <div css={dataStyles}>
-                  <button css={buttonStyles}>
-                    <Link href={tour.streamingLink}>Stream Live Set Here</Link>
-                  </button>
                 </div> */}
+                <div css={dataStyles}>
+                  <button css={buttonStyles}>
+                    <Link href={tour.streamingLink}>See What You Missed!</Link>
+                  </button>
+                </div>
                 <div css={dataStyles}>{tour.ticketsLeft}</div>
               </div>
             );
