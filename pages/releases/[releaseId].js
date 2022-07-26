@@ -204,7 +204,11 @@ export default function Release(props) {
 export async function getServerSideProps(context) {
   const selectedRelease = await getReleaseByReleaseId(context.query.releaseId);
 
+  console.log('testing', selectedRelease);
+
   const singleReleaseAllData = getReducedRelease(selectedRelease);
+
+  console.log('testing2', singleReleaseAllData);
 
   return {
     props: {
