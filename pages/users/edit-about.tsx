@@ -152,7 +152,7 @@ export default function ApiFrontEndAbout() {
 
     // update setState Function
     setAboutList(newState);
-    // console.log('compare about newstate', newState);
+    console.log('compare about newstate', newState);
   }
 
   // used to reload window onClick due to out of sync problems
