@@ -43,7 +43,7 @@ The project is deloyed here on Heroku : https://locoda-website.herokuapp.com/
 ## ---------------------------------------------
 
 
-## API design:
+## Example API design:
 
 base URL (for development) :http://localhost:3000/api/
 
