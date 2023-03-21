@@ -38,7 +38,9 @@ The project use the following tech stack:
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/VS%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-The project is deloyed here on Heroku : https://locoda-website.herokuapp.com/
+The project is deloyed here on Heroku : https://locoda-website.herokuapp.com/ until november 2022
+
+The project has now been moved to Vercel with the Postgres database hosted on Supabase : https://locodadnb.vercel.app/
 
 ## ---------------------------------------------
 
